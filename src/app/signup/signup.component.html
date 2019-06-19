@@ -1,0 +1,101 @@
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat|Open+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+
+<body style="background: #f7f7f7;">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-4 col-xs-12 m-auto">
+        <form [formGroup]="signupForm" (ngSubmit)="signup(signupForm)">
+          <div class="dashboard" style="background: #fff;">
+            <p class="p-16">SIGNUP.</p>
+            <p class="p-12">Sign up to continue</p>
+            <div class="input-group mb-4">
+              <div class="input-group-prepend pl-3 pr-1">
+                <i class="ion-person" style="font-size: 20px; color: #ddd;"></i>
+              </div>
+              <input #fullName formControlName="fullName" class="form-control" placeholder="Full Name" required>
+              <div *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)" class="alert alert-danger">
+                <div *ngIf="fullName.errors.required">Full Name is required</div>
+              </div>
+            </div>
+            <div class="input-group mb-4">
+              <div class="input-group-prepend pl-3 pr-1">
+                <i class="ion-person" style="font-size: 20px; color: #ddd;"></i>
+              </div>
+              <input formControlName="phoneNumber" #phoneNumber class="form-control" placeholder="Phone Number"
+                required>
+              <div *ngIf="phoneNumber.touched && phoneNumber.invalid">
+                <div *ngIf="phoneNumber.errors.required">Phone number is required</div>
+              </div>
+            </div>
+            <div class="input-group">
+              <div class="input-group-prepend pl-3 pr-1">
+                <i class="ion-person" style="font-size: 20px; color: #ddd;"></i>
+              </div>
+              <input type="email" formControlName="email" #email class="form-control" placeholder="johndoe@example.com"
+                required>
+              <div *ngIf="email.touched && email.invalid">
+                <div *ngIf="email.errors.required">Email is required</div>
+              </div>
+            </div>
+
+            <div class="input-group mt-4">
+              <div class="input-group-prepend py-1 pl-3 pr-1">
+                <i class="ion-locked" style="font-size: 18px; color: #ddd;"></i>
+              </div>
+              <input type="password" formControlName="password" #password id="password" placeholder="enter password"
+                class="form-control" required />
+              <div *ngIf="password.touched && password.invalid" class="invalid-feedback">
+                <div *ngIf="password.errors.required">Password is required</div>
+                <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+              </div>
+              <a class="py-1 px-3" onclick="toggle(this);">
+                <i class="ion-eye" style="font-size: 20px; color: #ddd;"></i>
+              </a>
+            </div>
+            <div class="p-12 my-3" style="color: #333;">
+              By clicking the sign up button below you agreed to the
+              <a href="#" style="color: #f16722">Terms & Conditions</a>
+            </div>
+            <button type="submit" class="btn btn-Orange w-100 mt-3 rounded">SIGN UP</button>
+            <p class="text-center p-12 my-5">
+              Already Registered?
+              <a routerLink="/login" style="color: #f16722">Login Here</a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <style>
+  </style>
+  <script>
+    function toggle(button) {
+      var password = document.getElementById("password");
+      if (password.type == "password") {
+        button.innerHTML = "<i class='ion-eye-disabled' style='font-size: 20px; color: #ddd;'></i>";
+        password.type = "text";
+      }
+      else {
+        button.innerHTML = "<i class='ion-eye' style='font-size: 20px; color: #ddd;' ></i>";
+        password.type = "password";
+      }
+    }
+  </script>
+</body>
