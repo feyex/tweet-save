@@ -1,15 +1,19 @@
-/* @font-face{
-  src: url('../fonts/avenir/Avenir Roman.otf');
+@font-face{
+  src: url('./assets/fonts/avenir/Avenir Roman.otf');
   font-family: Avenir;
 }
 @font-face{
-  src: url('../fonts/futura/Futura Book font.ttf');
+  src: url('./assets/fonts/futura/Futura Book font.ttf');
   font-family: Futura;
 }
 @font-face{
-src: url('../fonts/source sans pro/SourceSansPro-Regular.ttf');
+src: url('./assets/fonts/source sans pro/SourceSansPro-Regular.ttf');
 font-family: Source sans pro;
-} */
+}
+.btn{
+  background-color: unset !important;
+  border: unset !important;
+}
 body{
   background: #fff;
 }
@@ -370,9 +374,7 @@ color: #323366;
 .wBT::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
-.border-bottom{
-  /* border-bottom: .5px solid #f7f7f7 !important; */
-}
+
 .greyRec{
   border: 1px solid #e8e8e8;
   background: #f7f7f7;
@@ -456,8 +458,7 @@ top: -1.5em !important;
   border-top: none !important;
   box-shadow: none;
 }
-.table thead{
-}
+
 .table thead th{
   font-family: Avenir;
   font-size: 11px;
