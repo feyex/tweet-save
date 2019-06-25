@@ -22,6 +22,15 @@
     background-color: #ffffff !important;
 }
 
+.btn-soc {
+    border-radius: 100% !important;
+}
+
+input[type='text'], input[type='tel'], input[type='email'], input[type='password'], textarea.help {
+    font-family: Avenir;
+    font-size: 14px !important;
+}
+
 .btn-White {
     font-family: Avenir;
     /* max-width: 200px; */
@@ -32,14 +41,4 @@
     border: solid 0.5px #f16722 !important;
     background-color: #ffffff !important;
     transition: .3s ease-in-out !important;
-}
-
-.btnOrange {
-    width: 300px;
-    background-color: #f16722 !important;
-    color: #fff;
-    height: 48px;
-    font-family: Avenir;
-    font-size: 14px;
-    font-weight: 900;
 }

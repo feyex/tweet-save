@@ -9,16 +9,16 @@ import { Observable, BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class UserAuthService {
-
+  
   constructor(private httpClient: HttpClient) { }
   // set backend server url instance
-  apiServer = 'http://localhost:3000';
+  apiServer = 'http://localhost:8000/api';
 
   // assume the API uses Jwtoken to authenticate user access
   authSubject = new BehaviorSubject(false);
 
   signup(user: User): Observable<JwtResponse> {
-    return this.httpClient.post<JwtResponse>(`${this.apiServer}/signup`, user).pipe(
+    return this.httpClient.post<JwtResponse>(`${this.apiServer}/auth/signup`, user).pipe(
       tap((res: JwtResponse) => {
 
         if (res.user) {
@@ -30,6 +30,20 @@ export class UserAuthService {
     );
 
   }
+
+  signin(email,fullname,phone,password,password_confirmation) {
+    const obj = {
+      fullname: fullname,
+      password: password,
+      email: email,
+      phone: phone,
+      password_confirmation: password_confirmation,
+    };
+    console.log(obj);
+    return this.httpClient.post(`${this.apiServer}/auth/signup`, obj);
+        
+  }
+
 
   login(user: User): Observable<JwtResponse> {
     return this.httpClient.post(`${this.apiServer}/login`, user).pipe(

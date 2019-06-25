@@ -21,24 +21,31 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
     this.signupForm = this.formBuilder.group({
-      fullName: ['', [Validators.required]],
-      phoneNumber: ['', [Validators.required]],
+      fullname: ['', [Validators.required]],
+      phone: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]]
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      password_confirmation: ['', [Validators.required, Validators.minLength(8)]]
     });
     console.log('formdetails', this.signupForm);
   }
 
-  signup(form) {
-    // if (this.signupForm.valid) {
-    //   console.log('I am clicked', this.signupForm.value);
-    //   // this.signupForm.reset();
-    //   return this.router.navigate(['/login']);
-    // }
-    this.authService.signup(form.value).subscribe((res) => {
+  signup() {
+    const email = this.signupForm.value.email;
+    const firstname = this.signupForm.value.fullname;
+    const phone = this.signupForm.value.phone;
+    const password= this.signupForm.value.password;
+    const password_confirmation= this.signupForm.value.password_confirmation;
+    console.log('mmm', email,firstname,phone,password,password_confirmation)
+    this.authService.signin( email,firstname,phone,password,password_confirmation).subscribe((res) => {
+      var json: any = res;
+      // this.loading = false;
+      console.log('res',res)
       console.log('Signed up!....>>');
       return this.router.navigate(['/login']);
     });
   }
 
 }
+
+

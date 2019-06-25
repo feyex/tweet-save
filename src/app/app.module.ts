@@ -16,6 +16,8 @@ import { ProfileComponent } from './dashboard/profile/profile.component';
 import { ChangePasswordComponent } from './dashboard/change-password/change-password.component';
 
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { HelpComponent } from './dashboard/help/help.component';
+import { HistoryComponent } from './dashboard/history/history.component';
 
 
 @NgModule({
@@ -30,6 +32,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     ProfileComponent,
     ChangePasswordComponent,
     PagenotfoundComponent,
+    HelpComponent,
+    HistoryComponent,
   ],
   imports: [
   BrowserModule,

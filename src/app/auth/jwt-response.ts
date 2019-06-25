@@ -1,7 +1,7 @@
 export interface JwtResponse {
   user: {
     id: number,
-    fullName: string,
+    fullname: string,
     email: string,
     access_token: string
     expires_in: Date;
