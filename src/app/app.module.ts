@@ -18,6 +18,19 @@ import { ChangePasswordComponent } from './dashboard/change-password/change-pass
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { HelpComponent } from './dashboard/help/help.component';
 import { HistoryComponent } from './dashboard/history/history.component';
+import { AdmindashboardComponent } from './admin/admindashboard/admindashboard.component';
+import { AdminlayoutComponent } from './admin/adminlayout/adminlayout.component';
+import { OrdersComponent } from './admin/orders/orders.component';
+import { PaymentComponent } from './admin/payment/payment.component';
+import { AdminhistoryComponent } from './admin/adminhistory/adminhistory.component';
+import { UserManagementComponent } from './admin/user-management/user-management.component';
+import { ReferralsComponent } from './admin/referrals/referrals.component';
+import { FeedsComponent } from './admin/feeds/feeds.component';
+import { AddDiscoComponent } from './admin/add-disco/add-disco.component';
+import { SupportComponent } from './admin/support/support.component';
+import { UserLayoutComponent } from './dashboard/user-layout/user-layout.component';
+import { UserReferralsComponent } from './dashboard/user-referrals/user-referrals.component';
+import { SupportdashboardComponent } from './admin/supportdashboard/supportdashboard.component';
 
 
 @NgModule({
@@ -34,6 +47,19 @@ import { HistoryComponent } from './dashboard/history/history.component';
     PagenotfoundComponent,
     HelpComponent,
     HistoryComponent,
+    AdmindashboardComponent,
+    AdminlayoutComponent,
+    OrdersComponent,
+    PaymentComponent,
+    AdminhistoryComponent,
+    UserManagementComponent,
+    ReferralsComponent,
+    FeedsComponent,
+    AddDiscoComponent,
+    SupportComponent,
+    UserLayoutComponent,
+    UserReferralsComponent,
+    SupportdashboardComponent,
   ],
   imports: [
   BrowserModule,

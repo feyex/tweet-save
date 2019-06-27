@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="130.057" height="121.171" viewBox="0 0 130.057 121.171">
+  <defs>
+    <style>
+      .cls-1, .cls-4 {
+        fill: #fff;
+      }
+
+      .cls-1 {
+        stroke: #707070;
+      }
+
+      .cls-2 {
+        fill: #f2f2f2;
+      }
+
+      .cls-3 {
+        fill: #f16722;
+      }
+
+      .cls-5 {
+        fill: #323366;
+      }
+
+      .cls-6 {
+        stroke: none;
+      }
+
+      .cls-7 {
+        fill: none;
+      }
+    </style>
+  </defs>
+  <g id="Group_295" data-name="Group 295" transform="translate(0)">
+    <g id="Ellipse_63" data-name="Ellipse 63" class="cls-1" transform="translate(0 65.432)">
+      <circle class="cls-6" cx="2.423" cy="2.423" r="2.423"/>
+      <circle class="cls-7" cx="2.423" cy="2.423" r="1.923"/>
+    </g>
+    <g id="Ellipse_64" data-name="Ellipse 64" class="cls-1" transform="translate(67.048)">
+      <circle class="cls-6" cx="2.827" cy="2.827" r="2.827"/>
+      <circle class="cls-7" cx="2.827" cy="2.827" r="2.327"/>
+    </g>
+    <g id="Ellipse_65" data-name="Ellipse 65" class="cls-1" transform="translate(84.82 115.517)">
+      <circle class="cls-6" cx="2.827" cy="2.827" r="2.827"/>
+      <circle class="cls-7" cx="2.827" cy="2.827" r="2.327"/>
+    </g>
+    <g id="Group_294" data-name="Group 294" transform="translate(19.387 12.117)">
+      <g id="Group_293" data-name="Group 293">
+        <circle id="Ellipse_62" data-name="Ellipse 62" class="cls-2" cx="50.488" cy="50.488" r="50.488" transform="translate(2.423)"/>
+        <rect id="Rectangle_228" data-name="Rectangle 228" class="cls-3" width="24.234" height="11.309" rx="5.655" transform="translate(82.396 16.964)"/>
+        <path id="Path_989" data-name="Path 989" class="cls-4" d="M5.655,0H18.58a5.655,5.655,0,1,1,0,11.309H5.655A5.655,5.655,0,0,1,5.655,0Z" transform="translate(86.435 28.273)"/>
+        <rect id="Rectangle_230" data-name="Rectangle 230" class="cls-2" width="24.234" height="11.309" rx="5.655" transform="translate(0 69.471)"/>
+        <rect id="Rectangle_231" data-name="Rectangle 231" class="cls-3" width="24.234" height="9.694" rx="4.847" transform="translate(2.423 80.781)"/>
+      </g>
+      <g id="smartphone" transform="translate(44.12 29.632)">
+        <path id="Path_2225" data-name="Path 2225" class="cls-5" d="M41.019,0H24.563a3.019,3.019,0,0,0-3.018,3.018V38.829a3.018,3.018,0,0,0,3.018,3.018H41.019a3.018,3.018,0,0,0,3.019-3.018V3.018A3.019,3.019,0,0,0,41.019,0ZM30.772,1.785h4.038a.263.263,0,0,1,0,.527H30.772a.263.263,0,0,1,0-.527Zm-4.025-.633a.421.421,0,1,1-.421.421A.421.421,0,0,1,26.747,1.151ZM24.838.9a.674.674,0,1,1-.674.674A.674.674,0,0,1,24.838.9Zm9.007,39.417H31.738a1.209,1.209,0,1,1,0-2.418h2.107a1.209,1.209,0,1,1,0,2.418Zm8.914-3.373H22.823V4.9H42.76Z" transform="translate(-21.545 0)"/>
+      </g>
+    </g>
+  </g>
+</svg>
