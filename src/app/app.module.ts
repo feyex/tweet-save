@@ -56,7 +56,6 @@ export function tokenGetter() {
     PagenotfoundComponent,
     HelpComponent,
     HistoryComponent,
-<<<<<<< HEAD
     AdmindashboardComponent,
     AdminlayoutComponent,
     OrdersComponent,
@@ -70,9 +69,7 @@ export function tokenGetter() {
     UserLayoutComponent,
     UserReferralsComponent,
     SupportdashboardComponent,
-=======
     NavbarComponent,
->>>>>>> services consumed
   ],
   imports: [
   BrowserModule,
