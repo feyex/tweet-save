@@ -212,12 +212,12 @@
                                   </select>
                               </div>
                               <input type="text" class="form-control mt-3" style="height: 40px;"
-                                  placeholder="Enter Meter Number">
+                                  placeholder="Enter Meter Number" value ={{this.user?.meter_number}}>
 
                               <p class="p-17 mt-5">
                                   How much do you want?
                               </p>
-                              <input type="text" class="form-control mt-3 mb-4">
+                              <input type="text" class="form-control mt-3 mb-4"  value ={{this.user?.amount}}>
                               <button class="btn btn-White mb-2 mr-2" style="width: 203px;">CANCEL</button>
                               <button class="btn btn-Orange mb-2" style="width: 203px;">CONTINUE</button>
                           </div>
