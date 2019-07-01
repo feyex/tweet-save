@@ -2,7 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { JwtModule } from '@auth0/angular-jwt';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+ 
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +17,8 @@ import { ManageWalletComponent } from './dashboard/manage-wallet/manage-wallet.c
 import { PayBillsComponent } from './dashboard/pay-bills/pay-bills.component';
 import { ProfileComponent } from './dashboard/profile/profile.component';
 import { ChangePasswordComponent } from './dashboard/change-password/change-password.component';
+import {AuthGuard} from './auth/auth.guard';
+import {UserAuthService} from './auth/user-auth.service'
 
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { HelpComponent } from './dashboard/help/help.component';
@@ -31,7 +36,11 @@ import { SupportComponent } from './admin/support/support.component';
 import { UserLayoutComponent } from './dashboard/user-layout/user-layout.component';
 import { UserReferralsComponent } from './dashboard/user-referrals/user-referrals.component';
 import { SupportdashboardComponent } from './admin/supportdashboard/supportdashboard.component';
+import { NavbarComponent } from './dashboard/navbar/navbar.component';
 
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
 
 @NgModule({
   declarations: [
@@ -47,6 +56,7 @@ import { SupportdashboardComponent } from './admin/supportdashboard/supportdashb
     PagenotfoundComponent,
     HelpComponent,
     HistoryComponent,
+<<<<<<< HEAD
     AdmindashboardComponent,
     AdminlayoutComponent,
     OrdersComponent,
@@ -60,15 +70,27 @@ import { SupportdashboardComponent } from './admin/supportdashboard/supportdashb
     UserLayoutComponent,
     UserReferralsComponent,
     SupportdashboardComponent,
+=======
+    NavbarComponent,
+>>>>>>> services consumed
   ],
   imports: [
   BrowserModule,
   AppRoutingModule,
   FormsModule,
   ReactiveFormsModule,
-  HttpClientModule
+  HttpClientModule,
+  BrowserAnimationsModule, 
+  ToastrModule.forRoot(),
+  JwtModule.forRoot ({
+    config: {
+      tokenGetter: tokenGetter,
+      whitelistedDomains: ['localhost:4000/dashboard'],
+      blacklistedRoutes: ['localhost:4000/api/login']
+    }
+  })
   ],
-  providers: [],
+  providers: [AuthGuard,UserAuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
