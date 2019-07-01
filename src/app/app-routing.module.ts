@@ -10,19 +10,20 @@ import { ProfileComponent } from './dashboard/profile/profile.component';
 import { ChangePasswordComponent } from './dashboard/change-password/change-password.component';
 import { HelpComponent } from './dashboard/help/help.component';
 import { HistoryComponent } from './dashboard/history/history.component';
-
+import {AuthGuard} from './auth/auth.guard';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 const routes: Routes = [{ path: '', component: HomeComponent},
 { path: 'signup', component: SignupComponent},
 { path: 'login', component: LoginComponent },
-{ path: 'dashboard', component: DashboardComponent},
-{ path: 'manage-wallet', component: ManageWalletComponent },
+{ path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
+{ path: 'manage-wallet', component: ManageWalletComponent,canActivate:[AuthGuard] },
 { path: 'pay-bills', component: PayBillsComponent },
-{ path: 'profile', component: ProfileComponent },
-{ path: 'change-password', component: ChangePasswordComponent },
-{ path: 'help', component: HelpComponent },
-{ path: 'history', component: HistoryComponent },
+{ path: 'pay-bills/:id', component: PayBillsComponent },
+{ path: 'profile', component: ProfileComponent,canActivate:[AuthGuard] },
+{ path: 'change-password', component: ChangePasswordComponent,canActivate:[AuthGuard] },
+{ path: 'help', component: HelpComponent,canActivate:[AuthGuard] },
+{ path: 'history', component: HistoryComponent,canActivate:[AuthGuard] },
 { path: '**', component: PagenotfoundComponent }
 ];
 
