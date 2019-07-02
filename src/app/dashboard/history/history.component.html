@@ -51,34 +51,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>35467653567</td>
-                                <td>Wed April 29, 2016. 13:00 </td>
-                                <td>5,000</td>
-                                <td>76542345653</td>
-                                <td>PayPal</td>
-                                <td><i class="ion-record"></i> Completed</td>
+                            <tr *ngFor="let transactions of user " >
+                                <td>#</td>
+                                <td>{{transactions.meter_number}}</td>
+                                <td>{{transactions.createdAt}} </td>
+                                <td>{{transactions.amount}}</td>
+                                <td>{{transactions.token}}</td>
+                                <td>completed</td>
+                                <td><i class="ion-record"></i> {{transactions.paymentMethod}}</td>
                                 <td>
-                                    <a href="#" class="p-14"><i class="ion-android-expand"
+                                  <a [routerLink]="['/pay-bills', transactions._id]" class="p-14"><i class="ion-android-expand"
                                             style="color: #2fe666;"></i>&nbsp; Re - Initiate</a>
 
                                 </td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>35467653567</td>
-                                <td>Wed April 29, 2016. 13:00 </td>
-                                <td>5,000</td>
-                                <td>76542345653</td>
-                                <td>PayPal</td>
-                                <td><i class="ion-record"></i> Completed</td>
-                                <td>
-                                    <a href="#" class="p-14"><i class="ion-android-expand"
-                                            style="color: #2fe666;"></i>&nbsp; Re - Initiate</a>
-
-                                </td>
-                            </tr>
+                           
                         </tbody>
                     </table>
                 </div>
