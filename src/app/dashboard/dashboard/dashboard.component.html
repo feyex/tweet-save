@@ -1,209 +1,44 @@
+<div>
+    <div class="row">
+        <div class="col-12">
+            <h4>
+                <img src="../../../assets/img/dashboard.svg" alt="Dashboard">&nbsp; Dashboard
+            </h4>
+        </div>
+        <div class="col-12 mt-4">
+            <div class="walletBalance text-center">
+                <p><b>8,000.00<sup>NGN</sup></b><br>
+                    <small class="p-14" style="color: #707070;">Wallet Balance</small>
+                </p>
 
-<nav class="navbar navbar-expand-lg navbar-light fixed-top scrolling-navbar">
-  <div class="container">
-      <a class="navbar-brand" href="/">
-          <div class="d-flex row">
-              <div>
-                  <img src="../../../assets/img/lightt.svg" alt="logo">
-              </div>
-
-              <div class="maxx px-3 py-1"><b>Infinite</b>&nbsp; Light</div>
-          </div>
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
-          aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="ion-android-menu"></i>
-      </button>
-
-      <div class="ml-auto px-1 py-0 border-left">
-          <a class="p-13"  data-offset="90">
-              Ademosu Adeposi <br>
-              <a (click)="logout()" class="p-11">Logout</a>
-          </a>
-      </div>
-     
-  </div>
-</nav>
-<div class="container" style="margin-top: 130px;">
-  <div class="row">
-      <div class="col-lg-2 px-0 d-none d-lg-block">
-          <div class="greyRec py-3">
-              <ul class="list-unstyled ">
-                  <li class="nav-item active">
-                      <a class="nav-link" [routerLink]="['/dashboard']">
-                          <div class="row">
-                              <div class="col-3">
-                                  <img src="../../../assets/img/orange/1.png" height="22px" alt="dashboard">
-                              </div>
-                              <div class="col-9 py-1">
-                                  Dashboard
-                              </div>
-                          </div>
-                      </a>
-                  </li>
-                  <li *ngIf ="loggedIn" class="nav-item">
-                      <a class="nav-link" [routerLink]="['/manage-wallet']">
-                          <div class="row">
-                              <div class="col-3">
-                                  <img src="../../../assets/img/grey/f.png" height="22px" alt="Manage wallet">
-                              </div>
-                              <div class="col-9 py-1">
-                                  Manage Wallet
-                              </div>
-                          </div>
-                      </a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" [routerLink]="['/pay-bills']">
-                          <div class="row">
-                              <div class="col-3">
-                                  <img src="../../../assets/img/grey/b.png" height="22px" alt="pay bills">
-                              </div>
-                              <div class="col-9 py-1">
-                                  Pay Bills
-                              </div>
-                          </div>
-                      </a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" [routerLink]="['/history']">
-                          <div class="row">
-                              <div class="col-3">
-                                  <img src="../../../assets/img/grey/e.png" class="aa" height="22px" alt="History">
-                              </div>
-                              <div class="col-9 py-1">
-                                  History
-                              </div>
-                          </div>
-                      </a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" [routerLink]="['/referrals']">
-                          <div class="row">
-                              <div class="col-3">
-                                  <img src="../../../assets/img/grey/d.png" height="22px" alt="Referrals">
-                              </div>
-                              <div class="col-9 py-1">
-                                  Referrals
-                              </div>
-                          </div>
-                      </a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" [routerLink]="['/help']">
-                          <div class="row">
-                              <div class="col-3">
-                                  <img src="../../../assets/img/grey/c.png" height="22px" alt="Help">
-                              </div>
-                              <div class="col-9 py-1">
-                                  Help
-                              </div>
-                          </div>
-                      </a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href='#pageSubmenu' data-toggle="collapse" aria-expanded="false"
-                          class="dropdown-toggle">
-                          <div class="row p-3">
-                              <div class="col-3">
-                                  <img src="../../../assets/img/grey/settn.png" class="aa" height="22px" alt="Settings">
-                              </div>
-                              <div class="col-9 py-1">
-                                  Settings<i class="ion-ios-arrow-right pull-right"></i>
-                              </div>
-                          </div>
-                          <ul class="collapse list-unstyled px-3" id="pageSubmenu">
-                              <li>
-                                  <a [routerLink]="['/profile']">Profile</a>
-                              </li>
-                              <li>
-                                  <a [routerLink]="['/change-password']">Change Password</a>
-                              </li>
-
-                          </ul>
-                      </a>
-                  </li>
-              </ul>
-          </div>
-      </div>
-      <div class="col-lg-8 main px-lg-5 mb-3">
-          <div class="row">
-              <div class="col-12">
-                  <h4>
-                      <img src="../../../assets/img/dashboard.svg" alt="Dashboard">&nbsp; Dashboard
-                  </h4>
-              </div>
-              <div class="col-12 mt-4">
-                  <div class="walletBalance text-center">
-                      <p><b>8,000.00<sup>NGN</sup></b><br>
-                          <small class="p-14" style="color: #707070;">Wallet Balance</small>
-                      </p>
-
-                  </div>
-              </div>
-              <div class="col-12 mt-4">
-                  <div class="dashboard">
-                      <div class="row">
-                          <div class="col-lg-8">
-                              <p class="p-12">Top Up Statistics</p>
-                              <b class="p-10" style="color: #323366;">Avg. N10,309</b>
-                          </div>
-                          <div class="col-lg-1 mb-2">
-                              <!-- <select name="" id="" class="form-control">
-                                  <option value="">Monthly</option>
-                              </select> -->
-                          </div>
-                          <div class="col-lg-3 mb-2">
-                              <div class="selectBox2">
-                                  <select name="" id="" class="form-control">
-                                      <option value="">Monthly</option>
-                                      <option value="">Quarterly</option>
-                                      <option value="">Yearly</option>
-                                  </select>
-                              </div>
-                          </div>
-                          <div class="col-lg-12 mt-5 px-0">
-                              <div id="container" class="w-100" style=" height: 300px; margin: 0 auto"></div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <div class="col-lg-2">
-          <div class="row">
-              <div class="col-12 ">
-                  <button class="btn btnOutOrange w-100 ml-0" style="font-size: 13px; height: 40px;">
-                      TOP UP WALLET
-                  </button>
-              </div>
-              <div class="col-12 mt-4">
-                  <div class="greyBox p-3">
-                      <h5>Rewards and Offers</h5>
-                      <p class="pt-2 pb-4 p-12 border-bottom">
-                          Top up now with
-                          N6000 and above to
-                          get 10% discount off.
-                      </p>
-                      <p class="pt-2 pb-5 p-12 py-2">
-                          Refer 10 of your friends
-                          to use Infinite Light to
-                          get 5,000 electricity
-                          units.
-                      </p>
-                  </div>
-                  <p class="p-14 mt-4">
-                      Tell someone about Infinite
-                      Light
-                  </p>
-                  <p class="p-14" style="font-weight: 300; color: #707070;">
-                      Share our link on
-                  </p>
-              </div>
-          </div>
-      </div>
-  </div>
+            </div>
+        </div>
+        <div class="col-12 mt-4">
+            <div class="dashboard">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <p class="p-12">Top Up Statistics</p>
+                        <b class="p-10" style="color: #323366;">Avg. N10,309</b>
+                    </div>
+                    <div class="col-lg-1 mb-2">
+                        <!-- <select name="" id="" class="form-control">
+                            <option value="">Monthly</option>
+                        </select> -->
+                    </div>
+                    <div class="col-lg-3 mb-2">
+                        <div class="selectBox2">
+                            <select name="" id="" class="form-control">
+                                <option value="">Monthly</option>
+                                <option value="">Quarterly</option>
+                                <option value="">Yearly</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 mt-5 px-0">
+                        <div id="container" class="w-100" style=" height: 300px; margin: 0 auto"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-
-

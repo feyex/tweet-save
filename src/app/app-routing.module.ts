@@ -13,18 +13,56 @@ import { HistoryComponent } from './dashboard/history/history.component';
 import {AuthGuard} from './auth/auth.guard';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
-const routes: Routes = [{ path: '', component: HomeComponent},
-{ path: 'signup', component: SignupComponent},
+import { AdmindashboardComponent } from './admin/admindashboard/admindashboard.component';
+import { AdminlayoutComponent } from './admin/adminlayout/adminlayout.component';
+import { OrdersComponent } from './admin/orders/orders.component';
+import { PaymentComponent } from './admin/payment/payment.component';
+import { AdminhistoryComponent } from './admin/adminhistory/adminhistory.component';
+import { UserManagementComponent } from './admin/user-management/user-management.component';
+import { ReferralsComponent } from './admin/referrals/referrals.component';
+import { FeedsComponent } from './admin/feeds/feeds.component';
+import { AddDiscoComponent } from './admin/add-disco/add-disco.component';
+import { SupportComponent } from './admin/support/support.component';
+import { UserLayoutComponent } from './dashboard/user-layout/user-layout.component';
+import { UserReferralsComponent } from './dashboard/user-referrals/user-referrals.component';
+import { SupportdashboardComponent } from './admin/supportdashboard/supportdashboard.component';
+
+
+
+const routes: Routes = [{ path: '', component: HomeComponent },
+{ path: 'signup', component: SignupComponent },
 { path: 'login', component: LoginComponent },
-{ path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
-{ path: 'manage-wallet', component: ManageWalletComponent,canActivate:[AuthGuard] },
-{ path: 'pay-bills', component: PayBillsComponent },
-{ path: 'pay-bills/:id', component: PayBillsComponent },
-{ path: 'profile', component: ProfileComponent,canActivate:[AuthGuard] },
-{ path: 'change-password', component: ChangePasswordComponent,canActivate:[AuthGuard] },
-{ path: 'help', component: HelpComponent,canActivate:[AuthGuard] },
-{ path: 'history', component: HistoryComponent,canActivate:[AuthGuard] },
-{ path: '**', component: PagenotfoundComponent }
+{
+  path: 'user', component: UserLayoutComponent,
+  children: [
+    { path: 'dashboard', component: DashboardComponent },
+    { path: 'manage_wallet', component: ManageWalletComponent },
+    { path: 'pay_bills', component: PayBillsComponent },
+    { path: 'profile', component: ProfileComponent },
+    { path: 'change-password', component: ChangePasswordComponent },
+    { path: 'help', component: HelpComponent },
+    { path: 'history', component: HistoryComponent },
+    { path: 'referrals', component: UserReferralsComponent },
+  ]
+},
+{
+  path: 'admin', component: AdminlayoutComponent,
+  children: [
+    { path: 'dashboard', component: AdmindashboardComponent },
+    { path: 'orders', component: OrdersComponent },
+    { path: 'payment', component: PaymentComponent },
+    { path: 'history', component: AdminhistoryComponent },
+    { path: 'user_management', component: UserManagementComponent },
+    { path: 'referrals', component: ReferralsComponent },
+    { path: 'feeds', component: FeedsComponent },
+    { path: 'add_disco', component: AddDiscoComponent },
+    { path: 'support', component: SupportComponent },
+    { path: 'support_dashboard', component: SupportdashboardComponent },
+
+  ]
+},
+{ path: '**', component: PagenotfoundComponent },
+
 ];
 
 @NgModule({
@@ -34,6 +72,6 @@ const routes: Routes = [{ path: '', component: HomeComponent},
 
 
 
-exports: [RouterModule]
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }
