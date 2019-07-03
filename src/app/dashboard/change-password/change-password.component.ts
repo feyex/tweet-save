@@ -7,19 +7,24 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['./change-password.component.css']
 })
 export class ChangePasswordComponent implements OnInit {
-pwdChange: FormGroup;
+  changepwd = {
+    currentpass: "",
+    newpassword: "",
+    confirmpassword:""
+  }
+
+  currentpass: string;
+  newpassword: string;
+  confirmpassword:string;
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.pwdChange = this.fb.group({
-      currentPasswd: [''],
-      newPasswd: ['']
-    });
+    
   }
 
   passwordChange() {
-    console.log('I process change password', this.pwdChange);
+   
   }
 
 }

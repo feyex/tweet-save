@@ -24,7 +24,7 @@ export class SignupComponent implements OnInit {
     this.signupForm = this.formBuilder.group({
       firstname:  ['', Validators.required],
       lastname: ['', [Validators.required]],
-      phone: ['', [Validators.required]],
+      phoneNumber: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]]
 
@@ -36,17 +36,21 @@ export class SignupComponent implements OnInit {
     const email = this.signupForm.value.email;
     const firstname = this.signupForm.value.firstname;
     const lastname = this.signupForm.value.lastname;
-    const phone = this.signupForm.value.phone;
+    const phoneNumber = this.signupForm.value.phoneNumber;
     const password= this.signupForm.value.password;
     
-    console.log('mmm', email,firstname,phone,password,lastname)
-    this.authService.signin( email,firstname,lastname,phone,password).subscribe((res) => {
-      var json: any = res;
-      if(res){
-        return this.router.navigate(['/login']);
+    console.log('mmm', email,firstname,phoneNumber,password,lastname)
+    this.authService.signin( email,firstname,lastname,phoneNumber,password).subscribe((res:any) => {
+    
+      if(res.status == true){
+        this.toast.success("User Registered Successfully.", "Signup", {
+          timeOut: 4000,
+          positionClass: 'toast-top-center'
+        });
+        this.router.navigate(['/login']);
       }
       else{
-        this.toast.error("Please check details.", "Signup Error", {
+        this.toast.error("Registration Failed.", "Signup Error", {
           timeOut: 4000,
           positionClass: 'toast-top-center'
         });

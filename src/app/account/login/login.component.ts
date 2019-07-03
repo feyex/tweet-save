@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
        
         (result:any) =>{
           if(result.status == true){
-            this.router.navigate(['dashboard'])
+            this.router.navigate(['user/dashboard'])
           }
           else{
             this.toast.error("Incorrect Email or Password.", "Signup Error", {

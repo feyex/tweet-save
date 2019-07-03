@@ -35,14 +35,15 @@ const routes: Routes = [{ path: '', component: HomeComponent },
 {
   path: 'user', component: UserLayoutComponent,
   children: [
-    { path: 'dashboard', component: DashboardComponent },
-    { path: 'manage_wallet', component: ManageWalletComponent },
+    { path: 'dashboard', component: DashboardComponent,canActivate:[AuthGuard]},
+    { path: 'manage_wallet', component: ManageWalletComponent,canActivate:[AuthGuard] },
     { path: 'pay_bills', component: PayBillsComponent },
-    { path: 'profile', component: ProfileComponent },
-    { path: 'change-password', component: ChangePasswordComponent },
-    { path: 'help', component: HelpComponent },
-    { path: 'history', component: HistoryComponent },
-    { path: 'referrals', component: UserReferralsComponent },
+    { path: 'pay_bills/:id', component: PayBillsComponent },
+    { path: 'profile', component: ProfileComponent ,canActivate:[AuthGuard] },
+    { path: 'change-password', component: ChangePasswordComponent ,canActivate:[AuthGuard] },
+    { path: 'help', component: HelpComponent ,canActivate:[AuthGuard]},
+    { path: 'history', component: HistoryComponent ,canActivate:[AuthGuard] },
+    { path: 'referrals', component: UserReferralsComponent ,canActivate:[AuthGuard]},
   ]
 },
 {

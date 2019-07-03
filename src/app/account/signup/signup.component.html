@@ -31,10 +31,10 @@
             <div class="input-group-prepend pl-3 pr-1">
               <i class="ion-person" style="font-size: 20px; color: #ddd;"></i>
             </div>
-            <input formControlName="phone" #phone class="form-control" placeholder="Phone Number" required>
-            <div *ngIf="phone.touched && phone.invalid">
-              <div *ngIf="phone.errors.required">Phone number is required</div>
-            </div>
+            <input formControlName="phoneNumber" #phoneNumber class="form-control" placeholder="Phone Number" required>
+            <!-- <div *ngIf="phoneNumber.touched && phoneNumber.invalid">
+              <div *ngIf="phoneNumber.errors.required">Phone number is required</div>
+            </div> -->
           </div>
           <div class="input-group">
             <div class="input-group-prepend pl-3 pr-1">

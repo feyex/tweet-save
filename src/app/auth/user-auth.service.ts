@@ -19,13 +19,13 @@ export class UserAuthService {
   authSubject = new BehaviorSubject(false);
 
   // signup user
-  signin(email,firstname,lastname,phone,password) {
+  signin(email,firstname,lastname,phoneNumber,password) {
     const obj = {
       firstname: firstname,
       lastname: lastname,
       password: password,
       email: email,
-      phone: phone,
+      phoneNumber: phoneNumber,
     };
     return this.httpClient.post(`${this.apiServer}/api/users`, obj);
         
