@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { UserAuthService } from '../../auth/user-auth.service';
+import {NgForm} from '@angular/forms';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-change-password',
@@ -16,15 +20,84 @@ export class ChangePasswordComponent implements OnInit {
   currentpass: string;
   newpassword: string;
   confirmpassword:string;
+  match :string;
+  pwdChange = false;
+  newpwdChange = false;
+  confpwdChange = false;
+  curntpwdChange = true;
+  user: Object;
+  pwdexist: string;
 
-  constructor(private fb: FormBuilder) { }
+  constructor( private route: ActivatedRoute,
+    private router: Router,
+    private auth:  UserAuthService,
+    private toastr: ToastrService
+  ) { }
 
   ngOnInit() {
     
   }
 
+  checkpwdexist(){
+    this.auth.checkpwdexist(this.changepwd.currentpass) 
+      .subscribe((res:any) =>{
+        this.user = res;
+        console.log('user',res);
+        if (res.status == true){
+          this.pwdexist = "password correct";
+          this.newpwdChange = true;
+          this.confpwdChange = true;
+          this.pwdChange=false;
+          this.curntpwdChange=false;
+
+        }
+        else{
+          this.pwdexist = "incorrect password";
+          this.newpwdChange = false;
+          this.confpwdChange = false;
+          this.pwdChange=false;
+        }
+      })
+
+  }
+
+  onChange(event:any){
+    const currentpass = this.changepwd.currentpass;
+    const newpassword = this.changepwd.newpassword;
+    const confirmpassword = this.changepwd.confirmpassword
+    if (newpassword!=''&& newpassword == confirmpassword){
+      this.match = "Password match ";
+        this.pwdChange=true;
+      
+    }
+    else{
+      this.match = "Password does not match ";
+      this.pwdChange=false;
+    }
+  }
+
   passwordChange() {
+    const newpassword = this.changepwd.newpassword;
+    const confirmpassword = this.changepwd.confirmpassword
+      this.auth.updatepwd(newpassword)
+        .subscribe((res:any)=>{
+          console.log('user',res);
+          if(res.status==true){
+            this.toastr.success("Password Updated Successfully.", "Profile", {
+              timeOut: 4000,
+              positionClass: 'toast-top-center'
+            });
+          }
+          else{
+            this.toastr.error("Password Update Failed.", "Profile", {
+              timeOut: 4000,
+              positionClass: 'toast-top-center'
+            });
+          }
+        })
+      }
+   
    
   }
 
-}
+

@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { Chart } from 'chart.js'
+import { Chart } from 'chart.js';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AdminAuthService } from '../../auth/admin-auth.service';
+
 
 @Component({
   selector: 'app-admindashboard',
@@ -12,7 +15,14 @@ export class AdmindashboardComponent implements OnInit {
   ctx:any;
   chart2:any;
   gradientStroke:any; 
-  constructor() { }
+  user: any = {};
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private auth: AdminAuthService,) {
+      
+     }
 
   ngOnInit() {
     this.chart = document.getElementById('myChart');
@@ -47,6 +57,18 @@ export class AdmindashboardComponent implements OnInit {
         }
       }
     });
+
+//get all orders in the system
+this.auth.getOrders()
+.then(user => {
+  this.user = user;
+  this.user = Array.of (this.user);
+  this.user = this.user[0];
+  console.log('this.contact',this.user);
+
+
+});
+
   }
 
 }

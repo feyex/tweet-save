@@ -98,7 +98,6 @@
         <table class="table table-striped">
           <thead>
             <th>NAME</th>
-            <th>ASSIGNED TO</th>
             <th>EMAIL</th>
             <th>PHONE NUMBER</th>
             <th>DATE</th>
@@ -107,15 +106,14 @@
             <th></th>
           </thead>
           <tbody>
-            <tr>
-              <td>Usman Usman</td>
-              <td>Stella Udo</td>
-              <td>mailme@infinitelight.com</td>
-              <td>081 0000 000</td>
-              <td>25 Dec 2019 05:47PM</td>
-              <td>Difficulties in recharging</td>
+            <tr *ngFor="let contacts of user " >
+              <td>{{contacts.fullname}}</td>
+              <td>{{contacts.email}}</td>
+              <td>{{contacts.phoneNumber}}</td>
+              <td>{{contacts.createdAt}}</td>
+              <td>{{contacts.message}}</td>
               <td>
-                <p style="color: #3fa500;">Resolved</p>
+                <p style="color: #3fa500;">{{contacts.status}}</p>
               </td>
               <td>
                 <div class="dropdown show">
@@ -130,52 +128,7 @@
                 </div>
               </td>
             </tr>
-            <tr>
-              <td>Usman Usman</td>
-              <td>Stella Udo</td>
-              <td>mailme@infinitelight.com</td>
-              <td>081 0000 000</td>
-              <td>25 Dec 2019 05:47PM</td>
-              <td>Difficulties in recharging</td>
-              <td>
-                <p style="color: #ffd800;">Processing</p>
-              </td>
-              <td>
-                <div class="dropdown show">
-                  <a class="dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown">
-                    <i class="ion-android-more-vertical" style="color: #a0a0a0; font-size: 18px;"></i>
-                  </a>
-
-                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="#">Edit</a>
-                    <a class="dropdown-item" href="#">Delete</a>
-                  </div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>Usman Usman</td>
-              <td>Stella Udo</td>
-              <td>mailme@infinitelight.com</td>
-              <td>081 0000 000</td>
-              <td>25 Dec 2019 05:47PM</td>
-              <td>Difficulties in recharging</td>
-              <td>
-                <p style="color: #3fa500;">New</p>
-              </td>
-              <td>
-                <div class="dropdown show">
-                  <a class="dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown">
-                    <i class="ion-android-more-vertical" style="color: #a0a0a0; font-size: 18px;"></i>
-                  </a>
-
-                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="#">Edit</a>
-                    <a class="dropdown-item" href="#">Delete</a>
-                  </div>
-                </div>
-              </td>
-            </tr>
+            
           </tbody>
         </table>
       </div>

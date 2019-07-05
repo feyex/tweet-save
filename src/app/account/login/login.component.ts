@@ -32,8 +32,11 @@ export class LoginComponent implements OnInit {
       .subscribe(
        
         (result:any) =>{
-          if(result.status == true){
-            this.router.navigate(['user/dashboard'])
+          // if(result.status == true && result.role =="user"){
+          //   this.router.navigate(['user/dashboard'])
+          // }
+           if(result.status == true && (result.role =="admin" || result.role =="user")){
+            this.router.navigate(['admin/dashboard'])
           }
           else{
             this.toast.error("Incorrect Email or Password.", "Signup Error", {

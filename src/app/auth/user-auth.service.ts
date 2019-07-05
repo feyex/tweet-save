@@ -124,5 +124,27 @@ export class UserAuthService {
             .get(this.apiServer + `/transaction/transactions/${id}`);
     } 
 
+
+    //confirm password exist in db
+    checkpwdexist(password:string){
+      const pwd ={
+        password:password
+      }
+      this.id = localStorage.userid;
+      return this
+                .httpClient
+                .post(this.apiServer+`/api/password/`+this.id, pwd);
+    }
+
+    //update password in db
+    updatepwd(password){
+      const pwd={
+        password:password
+      }
+      this.id = localStorage.userid;
+      return this
+                .httpClient
+                .put(this.apiServer+`/api/password/`+this.id,pwd);
+    }
     
 }

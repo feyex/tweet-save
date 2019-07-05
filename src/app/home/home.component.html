@@ -26,8 +26,8 @@
                             <i class="ion-ios-arrow-down ml-2"></i>
                         </a>
                         <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Electricity Bill</a>
-                            <a class="dropdown-item" href="#">Water Bill</a>
+                            <a class="dropdown-item" [routerLink]="['/user/pay-bills']">Electricity Bill</a>
+                            
                         </div>
                     </li>
                     <li class="nav-item px-3">
@@ -102,12 +102,12 @@
                                 <select name="" id="" class="form-control">
                                     <option value="">Select a service</option>
                                     <option value="">Electricity</option>
-                                    <option value="">Water</option>
+                                    <!-- <option value="">Water</option> -->
                                 </select>
                             </div>
-                                <button class="btn btnOutOrange w-100 ml-0">
+                               <a href="user/pay-bills"> <button class="btn btnOutOrange w-100 ml-0">
                                     PROCEED
-                                </button>
+                                </button> </a>
                             </div>
                         </div>
                     </div>
