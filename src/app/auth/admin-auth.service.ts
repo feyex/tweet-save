@@ -25,13 +25,13 @@ getPayments() {
 
 }
 
-signin(email,firstname,lastname,phoneNumber,password,role) {
+signin(email,firstname,lastname,password,role) {
   const obj = {
     firstname: firstname,
     lastname: lastname,
     password: password,
     email: email,
-    phoneNumber: phoneNumber,
+    // staffid: staffid,
     role: role,
   };
   return this.httpClient.post(`${this.apiServer}/api/users`, obj);
@@ -41,6 +41,11 @@ signin(email,firstname,lastname,phoneNumber,password,role) {
 //fetch all contacts
 getContacts() {
   return this.httpClient.get(`${this.apiServer}/contact/contacts`).toPromise()
+}
+
+//fetch all roles
+getRole() {
+  return this.httpClient.get(`${this.apiServer}/api/admin`).toPromise();
 }
 
 }

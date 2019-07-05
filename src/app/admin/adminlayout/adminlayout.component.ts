@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import * as $ from 'jquery'
+import * as $ from 'jquery';
+import { UserAuthService } from '../../auth/user-auth.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-adminlayout',
@@ -8,7 +11,8 @@ import * as $ from 'jquery'
 })
 export class AdminlayoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth: UserAuthService,
+    private router: Router) { }
 
   
   ngOnInit() {
@@ -22,6 +26,11 @@ export class AdminlayoutComponent implements OnInit {
       });
 
   });
+  }
+
+  logout(){
+    this.auth.logout();
+    this.router.navigate([''])
   }
 
 }
