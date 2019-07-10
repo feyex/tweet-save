@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from './user';
 import { JwtResponse } from './jwt-response';
-import { tap,map } from 'rxjs/operators';
+import { tap, map } from 'rxjs/operators';
 import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -19,7 +19,7 @@ export class UserAuthService {
   authSubject = new BehaviorSubject(false);
 
   // signup user
-  signin(email,firstname,lastname,phoneNumber,password) {
+  signin(email, firstname, lastname, phoneNumber, password) {
     const obj = {
       firstname: firstname,
       lastname: lastname,
@@ -33,16 +33,16 @@ export class UserAuthService {
 
 
   //log user in
-  login(email,password) {
-    const msg ={
+  login(email, password) {
+    const msg = {
       email: email,
       password: password
-    }
+    };
     return this.httpClient.post<any>(`${this.apiServer}/api/login`, msg)
       .pipe(
         map(result => {
-          console.log('res',result)
-          if (result){
+          console.log('res', result);
+          if (result) {
             localStorage.setItem('access_token', result.token );
             localStorage.setItem('userid', result.id );
           }
@@ -51,13 +51,13 @@ export class UserAuthService {
       );
   }
 
-  //log user out
+  // log user out
   logout() {
     localStorage.removeItem('access_token');
-    console.log('rs',localStorage);
+    console.log('rs', localStorage);
   }
 
-  //check if user is logged in
+  // check if user is logged in
   public get loggedIn(): boolean {
     return (localStorage.getItem('access_token') !== null);
   }
@@ -79,7 +79,7 @@ export class UserAuthService {
   // fetch all users
   getUsers() {
 
-    return this.httpClient.get(`${this.apiServer}/api/users`).toPromise()
+    return this.httpClient.get(`${this.apiServer}/api/users`).toPromise();
 
   }
 
@@ -88,12 +88,12 @@ export class UserAuthService {
     this.id = localStorage.userid;
     return this
             .httpClient
-            .get(this.apiServer + `/api/users/`+this.id).toPromise();
+            .get(this.apiServer + `/api/users/` + this.id).toPromise();
     }
 
 
-    //update user info in db
-    updateUser(firstname,lastname,email,phoneNumber) {
+    // update user info in db
+    updateUser(firstname, lastname, email, phoneNumber) {
       const obj = {
         firstname: firstname,
         lastname: lastname,
@@ -102,54 +102,50 @@ export class UserAuthService {
 
       };
       this.id = localStorage.userid;
-     return this
+      return this
             .httpClient
-            .put(this.apiServer + `/api/users/`+this.id , obj);
+            .put(this.apiServer + `/api/users/` + this.id , obj);
     }
 
      // to fetch each Users data by user_Id
-   gettransactionId(id:string) {
+   gettransactionId(id: string) {
     this.id = localStorage.userid;
-    console.log('id',this.id);
+    console.log('id', this.id);
     return this
             .httpClient
-            .get<any[]>(this.apiServer + `/transaction/transact/`+this.id).pipe(map(data => data));
+            .get<any[]>(this.apiServer + `/transaction/transact/` + this.id).pipe(map(data => data));
     }
 
 
-     //to fetch each Users data by Id
-   gettransaction(id:string) {
+     // to fetch each Users data by Id
+   gettransaction(id: string) {
     return this
             .httpClient
             .get(this.apiServer + `/transaction/transactions/${id}`);
     }
 
 
-<<<<<<< HEAD
-}
-=======
 
-    //confirm password exist in db
-    checkpwdexist(password:string){
-      const pwd ={
-        password:password
-      }
+    // confirm password exist in db
+    checkpwdexist(password: string) {
+      const pwd = {
+        password: password
+      };
       this.id = localStorage.userid;
       return this
                 .httpClient
-                .post(this.apiServer+`/api/password/`+this.id, pwd);
+                .post(this.apiServer + `/api/password/` + this.id, pwd);
     }
 
-    //update password in db
-    updatepwd(password){
-      const pwd={
-        password:password
-      }
+    // update password in db
+    updatepwd(password) {
+      const pwd = {
+        password: password
+      };
       this.id = localStorage.userid;
       return this
                 .httpClient
-                .put(this.apiServer+`/api/password/`+this.id,pwd);
+                .put(this.apiServer + `/api/password/` + this.id, pwd);
     }
-    
+
 }
->>>>>>> 1078ee391ca4ae75a5ac6d09f955dbe08e46d7fc
