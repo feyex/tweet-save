@@ -10,7 +10,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 })
 export class UserAuthService {
   id: any;
-  
+
   constructor(private httpClient: HttpClient) { }
   // set backend server url instance
   apiServer = 'http://localhost:4000';
@@ -28,7 +28,7 @@ export class UserAuthService {
       phoneNumber: phoneNumber,
     };
     return this.httpClient.post(`${this.apiServer}/api/users`, obj);
-        
+
   }
 
 
@@ -63,58 +63,58 @@ export class UserAuthService {
   }
 
   // send report message to admin
-  contact(fullname,email,phoneNumber,message) {
+  contact(fullname, email, phoneNumber, message) {
     const obj = {
       fullname: fullname,
       email: email,
       phoneNumber: phoneNumber,
       message: message,
-     
+
     };
     console.log(obj);
     return this.httpClient.post(`${this.apiServer}/contact/contacts`, obj);
-        
+
   }
 
-  //fetch all users
+  // fetch all users
   getUsers() {
-   
+
     return this.httpClient.get(`${this.apiServer}/api/users`).toPromise()
-  
+
   }
 
-   //to fetch each Users data by Id
+   // to fetch each Users data by Id
    getUsersId(id) {
     this.id = localStorage.userid;
     return this
             .httpClient
             .get(this.apiServer + `/api/users/`+this.id).toPromise();
-    } 
+    }
 
 
-    //update user info in db 
+    //update user info in db
     updateUser(firstname,lastname,email,phoneNumber) {
       const obj = {
         firstname: firstname,
         lastname: lastname,
         email: email,
         phoneNumber: phoneNumber,
-       
+
       };
       this.id = localStorage.userid;
      return this
             .httpClient
             .put(this.apiServer + `/api/users/`+this.id , obj);
-    } 
+    }
 
-     //to fetch each Users data by user_Id
+     // to fetch each Users data by user_Id
    gettransactionId(id:string) {
     this.id = localStorage.userid;
     console.log('id',this.id);
     return this
             .httpClient
             .get<any[]>(this.apiServer + `/transaction/transact/`+this.id).pipe(map(data => data));
-    } 
+    }
 
 
      //to fetch each Users data by Id
@@ -122,7 +122,7 @@ export class UserAuthService {
     return this
             .httpClient
             .get(this.apiServer + `/transaction/transactions/${id}`);
-    } 
+    }
 
-    
+
 }

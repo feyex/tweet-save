@@ -6,275 +6,100 @@
             </h4>
         </div>
         <div class="col-12 mt-4 pt-5" style="background: #fafafa; border: 1px solid #e8e8e8;">
-            <div class="d-none d-lg-block">
-                <ul class="nav nav-tabs justify-content-center" role="tablist">
-                    <li class="nav-item mx-3">
-                        <a class="nav-link active" href="#paybill" role="tab" data-toggle="tab">PAY BILL</a>
-                    </li>
-                    <li class="nav-item mx-3">
-                        <a class="nav-link" href="#payment" role="tab" data-toggle="tab">PAYMENT</a>
-                    </li>
-                    <li class="nav-item mx-3">
-                        <a class="nav-link" href="#review" role="tab" data-toggle="tab">REVIEW BILL</a>
-                    </li>
-                    <li class="nav-item mx-3">
-                        <a class="nav-link" href="#done" role="tab" data-toggle="tab">DONE</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="d-lg-none">
-                <ul class="nav nav-tabs ico justify-content-center" role="tablist">
-                    <li class="nav-item mx-3">
-                        <a class="nav-link active" href="#paybill" role="tab" data-toggle="tab">
-                            <i class="ion-card"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item mx-3">
-                        <a class="nav-link" href="#payment" role="tab" data-toggle="tab">
-                            <i class="ion-cash"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item mx-3">
-                        <a class="nav-link" href="#review" role="tab" data-toggle="tab">
-                            <i class="ion-android-search"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item mx-3">
-                        <a class="nav-link" href="#done" role="tab" data-toggle="tab">
-                            <i class="ion-android-done-all"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
 
             <!-- Tab panes -->
             <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active py-5 px-3" id="paybill">
+
+                <form [formGroup]="billformGroup">
+                    <mat-horizontal-stepper [linear]="isLinear" #stepper>
+                    <mat-step [stepControl]="billformGroup">
+                        <ng-template matStepLabel>Initiate</ng-template>
                     <div class="row">
                         <div class="col-lg-7 col-xs-12">
-                            <p class="p-17">
+                            <!-- <p class="p-17">
                                 What do want to do?
-                            </p>
+                            </p> -->
                             <p class="p-14">
                                 Select bill below to continue
                             </p>
                             <div class="selectBox mt-3">
-                                <select name="" id="" class="form-control">
-                                    <option value="">Electricity</option>
-                                    <option value="">Water</option>
-                                    <option value="">Heat</option>
+                                <select formControlName="bill" class="form-control">
+                                    <option value="Electricity">Electricity</option>
                                 </select>
                             </div>
                             <div class="selectBox mt-3">
-                                <select name id class="form-control">
-                                    <option value>Select State</option>
-                                    <option value>Abuja</option>
-                                    <option value>Lagos</option>
+                                <select formControlName="state" class="form-control">
+                                    <option value="">Select State</option>
+                                    <option value="Abuja">Abuja</option>
+                                    <option value="Lagos">Lagos</option>
 
                                 </select>
                             </div>
                             <div class="selectBox mt-3">
-                                <select name id class="form-control">
-                                    <option value>Select Disco</option>
-                                    <option value>Abuja</option>
-                                    <option value>Lagos</option>
+                                <select formControlName="disco" class="form-control">
+                                    <option value="">Select Disco</option>
+                                    <option value="Abuja Disco">Abuja Disco</option>
+                                    <option value="Lagos Disco">Lagos Disco</option>
                                 </select>
                             </div>
-                            <input type="text" class="form-control mt-3" style="height: 40px;"
+                            <input formControlName="meter" class="form-control mt-3" style="height: 40px;"
                                 placeholder="Enter Meter Number">
 
                             <p class="p-17 mt-5">
                                 How much do you want?
                             </p>
-                            <input type="text" class="form-control mt-3 mb-4">
-                            <button class="btn btn-White mb-2 mr-2" style="width: 203px;">CANCEL</button>
-                            <button class="btn btn-Orange mb-2" style="width: 203px;">CONTINUE</button>
+                            <input formControlName="amount" class="form-control mt-3 mb-4">
+                            <p class="p-17 mt-5">
+                                Enter your email
+                            </p>
+                            <input type="email"  formControlName="email" class="form-control mt-3 mb-4">
+                            <button mat-button class="mybtn btn-full px-4 py-2" matStepperNext type="button">Next</button>
                         </div>
                     </div>
+                    </mat-step>
 
-                </div>
-                <div role="tabpanel" class="tab-pane py-5" id="payment">
-                    <div class="col-lg-7 m-auto">
-                        <p class="p-17">
-                            Select payment method
-                        </p>
-                        <p class="p-14">
-                            Input card details
-                        </p>
-                        <a href="#" class="mr-4">
-                            <img src="../../../assets/img/mastercard@2x.png" alt="mastercard">
-                        </a>
-                        <a href="#" class="mr-4">
-                            <img src="../../../assets/img/visa@2x.png" alt="visa">
-                        </a>
-                        <a href="#" class="">
-                            <img src="../../../assets/img/Image 2@2x.jpg" alt="verve">
-                        </a>
-                        <div class="selectBox mt-3">
-                            <select name="" id="" class="form-control">
-                                <option value="">Select Card Type</option>
-                                <option value="">Water</option>
-                                <option value="">Heat</option>
-                            </select>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <input type="text" class="form-control mt-3" placeholder="Enter full name">
-                            </div>
-
-                            <div class="col-8">
-                                <input type="text" class="form-control mt-3" placeholder="">
-                            </div>
-                            <div class="col-4">
-                                <input type="text" class="form-control mt-3" placeholder="">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-5">
-                                <div class="selectBox2 mt-3">
-                                    <select name="" id="" class="form-control">
-                                        <option value="">Month</option>
-                                        <option value="">Water</option>
-                                        <option value="">Heat</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-7">
-                                <div class="selectBox2 mt-3">
-                                    <select name="" id="" class="form-control">
-                                        <option value="">Year</option>
-                                        <option value="">Water</option>
-                                        <option value="">Heat</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-12 mt-3">
-                                <button class="btn btn-White mb-2 mr-2" style="width: 203px;">CANCEL</button>
-                                <button class="btn btn-Orange mb-2" style="width: 203px;">CONTINUE</button>
-                            </div>
-                        </div>
+                <!-- Step two starts here -->
+                  <mat-step>
+                    <ng-template matStepLabel>Review & Pay</ng-template>
+                    <div class="w-100">
+                    <!-- <p class="w-100">You are now done.</p> -->
+                    <ul style="margin-left: 20%; list-style-type: none;">
+                      <li>
+                        Bill<strong>:&nbsp;{{billformGroup.value.bill}}</strong>
+                      </li>
+                      <li>
+                       State<strong>:&nbsp;{{billformGroup.value.state}}</strong>
+                      </li>
+                      <li>
+                       Disco<strong>:&nbsp;{{billformGroup.value.disco}}</strong>
+                      </li>
+                      <li>
+                       Meter<strong>:&nbsp;{{billformGroup.value.meter}}</strong>
+                      </li>
+                      <li>
+                       Amount<strong>:&nbsp;{{billformGroup.value.amount}}</strong>
+                      </li>
+                      <li>
+                       Email<strong>:&nbsp;{{billformGroup.value.email}}</strong>
+                      </li>
+                    </ul>
+                    </div><br/><br/>
+                    <div style="margin-left: 20%;">
+                      <button mat-button class="mybtn btn-full px-2 py-2" matStepperPrevious>Back</button>&nbsp;&nbsp;
+                      <angular4-paystack
+                      [key]="'pk_test_5a8bec923a3f6471bc8d6a5824bd9d6075868940'"
+                      [email]="billformGroup.value.email"
+                      [amount]="billformGroup.value.amount * 100"
+                      [ref]="billformGroup.value.ref"
+                      [channels]="['card']"
+                      [class]="'mybtn btn-full px-4 py-2'"
+                      (close)="paymentCancel()"
+                      (callback)="paymentDone($event)"
+                      (click)="processPayment()">Pay</angular4-paystack>
                     </div>
-                </div>
-                <div role="tabpanel" class="tab-pane py-5" id="review">
-                    <div class="col-lg-7 m-auto">
-                        <p class="p-17">
-                            Review Payment
-                        </p>
-                        <input type="text" class="form-control mt-5">
-                        <input type="text" class="form-control mt-3">
-                        <input type="text" class="form-control mt-3 mb-4">
-                        <button class="btn btn-White mb-2 mr-2" style="width: 203px;">CANCEL</button>
-                        <button class="btn btn-Orange mb-2" style="width: 203px;">SUBMIT</button>
-                    </div>
-                </div>
-                <div role="tabpanel" class="tab-pane py-5" id="done">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 mb-3">
-                                <p class="p-17">
-                                    Transaction Completed
-                                </p>
-                            </div>
-                            <div class="col-lg-4 col-xs-12">
-                                <p class="p-15">
-                                    Token Code:
-                                </p>
-                            </div>
-                            <div class="col-lg-8 col-xs-12">
-                                <p class="p-15">
-                                    <b>98643207530973</b>
-                                </p>
-                            </div>
-                            <div class="col-lg-4 col-xs-12">
-                                <p class="p-15">
-                                    Bill Type
-                                </p>
-                            </div>
-                            <div class="col-lg-8 col-xs-12">
-                                <p class="p-15">
-                                    ELECTRICITY
-                                </p>
-                            </div>
-                            <div class="col-lg-4 col-xs-12">
-                                <p class="p-15">
-                                    Transaction ID:
-                                </p>
-                            </div>
-                            <div class="col-lg-8 col-xs-12">
-                                <p class="p-15">
-                                    IL480B428SH
-                                </p>
-                            </div>
-                            <div class="col-lg-4 col-xs-12">
-                                <p class="p-15">
-                                    State:
-                                </p>
-                            </div>
-                            <div class="col-lg-8 col-xs-12">
-                                <p class="p-15">
-                                    Abuja
-                                </p>
-                            </div>
-                            <div class="col-lg-4 col-xs-12">
-                                <p class="p-15">
-                                    Disco:
-                                </p>
-                            </div>
-                            <div class="col-lg-8 col-xs-12">
-                                <p class="p-15">
-                                    Abuja Electricity Distribution Company
-                                </p>
-                            </div>
-                            <div class="col-lg-4 col-xs-12">
-                                <p class="p-15">
-                                    Meter Number:
-                                </p>
-                            </div>
-                            <div class="col-lg-8 col-xs-12">
-                                <p class="p-15">
-                                    843486547238344
-                                </p>
-                            </div>
-                            <div class="col-lg-4 col-xs-12">
-                                <p class="p-15">
-                                    Amount:
-                                </p>
-                            </div>
-                            <div class="col-lg-8 col-xs-12">
-                                <p class="p-15">
-                                    N8,000
-                                </p>
-                            </div>
-                            <div class="col-lg-4 col-xs-12">
-                                <p class="p-15">
-                                    Payment Method:
-                                </p>
-                            </div>
-                            <div class="col-lg-8 col-xs-12">
-                                <p class="p-15">
-                                    INSTANT PAY
-                                </p>
-                            </div>
-                            <div class="col-12 mt-4">
-                                <p class="text-center">
-                                    <button class="btn btn-Orange mb-2" style="width: 203px;">DONE</button>
-                                </p>
-                                <p class="text-right">
-                                    <button class="btn btn-clear mr-3">
-                                        <img src="../../../assets/img/2 (1).png" alt=""> Print
-                                    </button>
-                                    <button class="btn btn-clear">
-                                        <img src="../../../assets/img/2 (2).png" alt=""> Export
-                                    </button>
-                                </p>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+                  </mat-step>
+                </mat-horizontal-stepper>
+              </form>
             </div>
         </div>
     </div>
-</div>

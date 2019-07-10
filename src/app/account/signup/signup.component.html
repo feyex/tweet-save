@@ -55,7 +55,7 @@
               class="form-control" required />
             <div *ngIf="password.touched && password.invalid" class="invalid-feedback">
               <div *ngIf="password.errors.required">Password is required</div>
-              <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+              <div *ngIf="password.errors.minlength">Password must be at least 8 characters</div>
             </div>
             <a class="py-1 px-3" onclick="toggle(this);">
               <i class="ion-eye" style="font-size: 20px; color: #ddd;"></i>
