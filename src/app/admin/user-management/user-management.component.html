@@ -78,28 +78,14 @@
                         <th>ACTION</th>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>Mayowa Emeka</td>
-                          <td>Mymail@sbsc.com</td>
-                          <td>Administrator</td>
+                        <tr *ngFor ="let role of result">
+                          <td>{{role.firstname}} {{role.lastname}}</td>
+                          <td>{{role.email}}</td>
+                          <td>{{role.role}}</td>
                           <td>
                             <div class="custom-control custom-switch">
                               <input type="checkbox" class="custom-control-input" id="customSwitch2">
                               <label class="custom-control-label" for="customSwitch2">
-                                Activate
-                              </label>
-                            </div>
-                          </td>
-                          <td>Delete</td>
-                        </tr>
-                        <tr>
-                          <td>Mayowa Emeka</td>
-                          <td>Mymail@sbsc.com</td>
-                          <td>Administrator</td>
-                          <td>
-                            <div class="custom-control custom-switch">
-                              <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                              <label class="custom-control-label" for="customSwitch1">
                                 Activate
                               </label>
                             </div>
@@ -164,8 +150,8 @@
                         <th>ACTION</th>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>Administrator</td>
+                          <tr *ngFor ="let role of result">
+                          <td>{{role.role}}</td>
                           <td>Admin User</td>
                           <td>
                             <div class="custom-control custom-switch">
@@ -177,19 +163,7 @@
                           </td>
                           <td>Edit Delete</td>
                         </tr>
-                        <tr>
-                          <td>Administrator</td>
-                          <td>Admin User</td>
-                          <td>
-                            <div class="custom-control custom-switch">
-                              <input type="checkbox" class="custom-control-input" id="customSwitch42">
-                              <label class="custom-control-label" for="customSwitch42">
-                                Activate
-                              </label>
-                            </div>
-                          </td>
-                          <td>Edit Delete</td>
-                        </tr>
+                        
                       </tbody>
                     </table>
                   </div>
@@ -356,63 +330,108 @@
 
 
           <div role="tabpanel" class="tab-pane py-5 px-3" id="createUser">
-            <div class="row">
-              <div class="col-lg-6 col-xs-12 adminA mb-4">
-                <p class="s-14">First Name*</p>
-                <input type="text" class="form-control">
-              </div>
-              <div class="col-lg-6 col-xs-12 adminA mb-4">
-                <p class="s-14">Last Name*</p>
-                <input type="text" class="form-control">
-              </div>
-              <div class="col-lg-6 col-xs-12 adminA mb-4">
-                <p class="s-14">Email Address*</p>
-                <input type="email" class="form-control">
-              </div>
-              <div class="col-lg-6 col-xs-12 adminA mb-4">
-                <p class="s-14">Staff ID*</p>
-                <input type="text" class="form-control">
-              </div>
-              <div class="col-lg-6 col-xs-12 adminA mb-4">
-                <p class="s-14">Department*</p>
-                <div class="selectBox3">
-                  <select name id class="form-control">
-                    <option value>Select Department</option>
-                    <option value>Electricity</option>
-                    <option value>Water</option>
-                  </select>
+            <form #userForm = "ngForm">
+              <div class="row">
+                <div class="col-lg-6 col-xs-12 adminA mb-4">
+                  <p class="s-14">First Name*</p>
+                  <input type="text" class="form-control" #firstname="ngModel" [(ngModel)]="user.firstname" name="firstname" required>
+                  <div *ngIf="firstname?.invalid && (firstname?.dirty || firstname?.touched)" class="text-danger">
+                      <div *ngIf="firstname.errors?.required">
+                          First name is required.
+                      </div>
+                    </div>
                 </div>
-              </div>
-              <div class="col-lg-6 col-xs-12 adminA mb-4">
-                <p class="s-14">Select Role*</p>
-                <div class="selectBox3">
-                  <select name id class="form-control">
-                    <option value>Select Role</option>
-                    <option value>Electricity</option>
-                    <option value>Water</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-lg-6 col-xs-12 adminA mb-4">
-                <p class="s-14">Password*</p>
-                <input type="password" class="form-control">
-              </div>
-              <div class="col-lg-6 col-xs-12 adminA mb-4">
-                <p class="s-14">Confirm Password*</p>
-                <input type="password" class="form-control">
-              </div>
-              <div class="col-lg-5 col-xs-12 mt-4">
 
-                <div class="row">
-                  <div class="col-lg-6 col-xs-12">
-                    <button class="btn-White w-100" style="height: 48px;">CANCEL</button>
+                <div class="col-lg-6 col-xs-12 adminA mb-4">
+                  <p class="s-14">Last Name*</p>
+                  <input type="text" class="form-control" #lastname="ngModel" [(ngModel)]="user.lastname" name="lastname" required>
+                    <div *ngIf="lastname?.invalid && (lastname?.dirty || lastname?.touched)" class="text-danger">
+                        <div *ngIf="lastname.errors?.required">
+                            last name is required.
+                        </div>
+                    </div> 
+                </div>
+
+                <div class="col-lg-6 col-xs-12 adminA mb-4">
+                  <p class="s-14">Email Address*</p>
+                  <input type="email" class="form-control" #email="ngModel" [(ngModel)]="user.email" name="email" pattern="[a-zA-Z0-9.-]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{3,}" required>
+                    <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="text-danger">
+                        <div *ngIf="email.errors?.required">
+                            Email is required.
+                        </div>
+                    </div>
+                    <div *ngIf="email.errors?.pattern" class="text-danger">Please enter valid email</div>
+                </div>
+                <div class="col-lg-6 col-xs-12 adminA mb-4">
+                  <p class="s-14">Staff ID*</p>
+                  <input type="text" class="form-control" #staffid="ngModel" [(ngModel)]="user.staffid" name="staffid" required>
+                    <div *ngIf="staffid?.invalid && (staffid?.dirty || staffid?.touched)" class="text-danger">
+                        <div *ngIf="staffid.errors?.required">
+                            Staff ID is required.
+                        </div>
+                    </div> 
+                </div>
+
+                <div class="col-lg-6 col-xs-12 adminA mb-4">
+                  <p class="s-14">Department*</p>
+                  <div class="selectBox3">
+                    <select name id class="form-control" #role="ngModel" [(ngModel)]="user.role" name="role">
+                      <option value>Select Department</option>
+                      <option value>Electricity</option>
+                      <option value>Water</option>
+                    </select>
                   </div>
-                  <div class="col-lg-6 col-xs-12">
-                    <button class="btn-Orange w-100" style="height: 48px;">CREATE</button>
+                </div>
+
+                <div class="col-lg-6 col-xs-12 adminA mb-4">
+                  <p class="s-14">Select Role*</p>
+                  <div class="selectBox3">
+                    <select #role="ngModel" [(ngModel)]="user.role" name="role" id class="form-control" (change)="onselect()">
+                      <option *ngFor="let role of roles" [value]="role.role">{{role.name}}</option>
+                      <!-- <option value>Admin</option>
+                      <option value>Disco</option>
+                      <option value>Max Impact</option> -->
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-xs-12 adminA mb-4">
+                  <p class="s-14">Password*</p>
+                  <input type="password" class="form-control" #newpassword="ngModel" [(ngModel)]="user.newpassword"
+                      name="newpassword" required (ngModelChange)="onChange(event)">
+                        <div *ngIf="newpassword?.invalid && (newpassword?.dirty || newpassword?.touched)" class="text-danger">
+                            <div *ngIf="newpassword.errors?.required">
+                                new password is required.
+                            </div>
+                        </div>
+                </div>
+
+                <div class="col-lg-6 col-xs-12 adminA mb-4">
+                  <p class="s-14">Confirm Password*</p>
+                  <input type="password" class="form-control" #confirmpassword="ngModel" [(ngModel)]="user.confirmpassword"
+                        name="confirmpassword" required (ngModelChange)="onChange(event)" >
+                          <div *ngIf="confirmpassword?.invalid && (confirmpassword?.dirty || confirmpassword?.touched)" class="text-danger">
+                              <div *ngIf="confirmpassword.errors?.required">
+                                  Confirm password is required.
+                              </div>
+                          </div>
+                          <div ng-message="required" style="color: red !important"  *ngIf="match">
+                            {{match}}
+                          </div>
+                </div>
+
+                <div class="col-lg-5 col-xs-12 mt-4">
+
+                  <div class="row">
+                    <div class="col-lg-6 col-xs-12">
+                      <button class="btn-White w-100" (click)="cancel()" style="height: 48px;">CANCEL</button>
+                    </div>
+                    <div class="col-lg-6 col-xs-12">
+                      <button class="btn-Orange w-100" (click)="signup()" [disabled]="!userform" style="height: 48px;">CREATE</button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </form> 
           </div>
         </div>
       </div>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Chart } from 'chart.js'
+import { Chart } from 'chart.js';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AdminAuthService } from '../../auth/admin-auth.service';
 
 
 @Component({
@@ -12,7 +14,14 @@ export class PaymentComponent implements OnInit {
   ctx: any;
   chart2: any;
   gradientStroke: any;
-  constructor() { }
+  user: any = {};
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private auth: AdminAuthService,) {
+      
+     }
 
   ngOnInit() {
     this.chart = document.getElementById('myChart');
@@ -47,6 +56,19 @@ export class PaymentComponent implements OnInit {
         }
       }
     });
+
+
+    //get all payments in system 
+    this.auth.getPayments()
+      .then(user => {
+        this.user = user;
+        this.user = Array.of (this.user);
+        this.user = this.user[0];
+        console.log('this.contact',this.user);
+
+
+});
+
   }
 
 }
