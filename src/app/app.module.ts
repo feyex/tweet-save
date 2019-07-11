@@ -31,6 +31,8 @@ import { SupportComponent } from './admin/support/support.component';
 import { UserLayoutComponent } from './dashboard/user-layout/user-layout.component';
 import { UserReferralsComponent } from './dashboard/user-referrals/user-referrals.component';
 import { SupportdashboardComponent } from './admin/supportdashboard/supportdashboard.component';
+import { IssueformComponent } from './admin/issueform/issueform.component';
+import { OtpComponent } from './dashboard/otp/otp.component';
 
 
 @NgModule({
@@ -60,6 +62,8 @@ import { SupportdashboardComponent } from './admin/supportdashboard/supportdashb
     UserLayoutComponent,
     UserReferralsComponent,
     SupportdashboardComponent,
+    IssueformComponent,
+    OtpComponent,
   ],
   imports: [
   BrowserModule,

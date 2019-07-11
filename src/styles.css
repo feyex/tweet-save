@@ -121,17 +121,18 @@ transform: scale(1.01) !important;
 }
 .btn-Orange{
 font-family: Avenir;
-color: #fff;
+color: #fff !important;
 font-size: 16px;
 font-weight: 500;
-border-radius: 1px;
+border-radius: 1px !important;
 border: solid 0.5px #f16722;
 background-color: #f16722 !important;
 transition: .3s ease-in-out !important;
 }
 .btn-Orange:hover{
-border: solid 0.5px #f16722;
+border: solid 0.5px #f16722 !important;
 background-color: #fff !important;
+color: #000 !important;
 }
 .btn-White{
 font-family: Avenir;

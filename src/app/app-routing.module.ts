@@ -26,6 +26,9 @@ import { SupportComponent } from './admin/support/support.component';
 import { UserLayoutComponent } from './dashboard/user-layout/user-layout.component';
 import { UserReferralsComponent } from './dashboard/user-referrals/user-referrals.component';
 import { SupportdashboardComponent } from './admin/supportdashboard/supportdashboard.component';
+import { IssueformComponent } from './admin/issueform/issueform.component';
+import { OtpComponent } from './dashboard/otp/otp.component';
+
 
 
 
@@ -43,6 +46,7 @@ const routes: Routes = [{ path: '', component: HomeComponent },
     { path: 'help', component: HelpComponent },
     { path: 'history', component: HistoryComponent },
     { path: 'referrals', component: UserReferralsComponent },
+    { path: 'otp', component: OtpComponent },
   ]
 },
 {
@@ -58,6 +62,7 @@ const routes: Routes = [{ path: '', component: HomeComponent },
     { path: 'add_disco', component: AddDiscoComponent },
     { path: 'support', component: SupportComponent },
     { path: 'support_dashboard', component: SupportdashboardComponent },
+    { path: 'issue_form', component: IssueformComponent },
 
   ]
 },
