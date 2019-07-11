@@ -25,10 +25,10 @@ login = {
   constructor(private lf: FormBuilder,
               private auth: UserAuthService,
               private router: Router,
-              private toast:ToastrService) { }
+              private toast: ToastrService) { }
 
   ngOnInit() {
-    
+
   }
 
   public submit() {
@@ -49,16 +49,17 @@ login = {
               timeOut: 4000,
               positionClass: 'toast-top-center'
             });
-          
+
           }
-          
-        } ,
+
+        },
         error => {
-          this.error = 'Could not authenticate'
+          this.error = 'Could not authenticate';
         }
       );
   }
 
- 
-    
+
+
+
 }

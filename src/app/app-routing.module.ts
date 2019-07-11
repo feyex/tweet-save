@@ -27,6 +27,9 @@ import { SupportComponent } from './admin/support/support.component';
 import { UserLayoutComponent } from './dashboard/user-layout/user-layout.component';
 import { UserReferralsComponent } from './dashboard/user-referrals/user-referrals.component';
 import { SupportdashboardComponent } from './admin/supportdashboard/supportdashboard.component';
+import { IssueformComponent } from './admin/issueform/issueform.component';
+import { OtpComponent } from './dashboard/otp/otp.component';
+
 
 
 
@@ -36,64 +39,64 @@ const routes: Routes = [{ path: '', component: HomeComponent },
 {
   path: 'user', component: UserLayoutComponent,
   children: [
-        { path: 'dashboard', 
+        { path: 'dashboard',
           component: DashboardComponent,
-          canActivate:[AuthGuard],
+          canActivate: [AuthGuard],
           data: {
-            expectedRole:'user'
-        }},  
-        { path: 'manage_wallet', 
+            expectedRole: 'user'
+        }},
+        { path: 'manage-wallet',
           component: ManageWalletComponent,
-          canActivate:[AuthGuard],
+          canActivate: [AuthGuard],
         data: {
-          expectedRole:'user'
-        }},  
-        { path: 'pay_bills', 
+          expectedRole: 'user'
+        }},
+        { path: 'pay-bills',
           component: PayBillsComponent
          },
-        { path: 'pay_bills/:id', 
-          component: PayBillsComponent 
+        { path: 'pay-bills/:id',
+          component: PayBillsComponent
         },
-        { path: 'profile', 
+        { path: 'profile',
           component: ProfileComponent ,
-          canActivate:[AuthGuard],
+          canActivate: [AuthGuard],
           data: {
-            expectedRole:'user'
-          }},  
-        { path: 'change-password', 
+            expectedRole: 'user'
+          }},
+        { path: 'change-password',
             component: ChangePasswordComponent ,
-            canActivate:[AuthGuard],
+            canActivate: [AuthGuard],
             data: {
-            expectedRole:'user'
-        }},  
-        { path: 'help', 
+            expectedRole: 'user'
+        }},
+        { path: 'help',
           component: HelpComponent ,
-          canActivate:[AuthGuard],
+          canActivate: [AuthGuard],
           data: {
-            expectedRole:'user'
-        }},  
-        { path: 'history', 
+            expectedRole: 'user'
+        }},
+        { path: 'history',
           component: HistoryComponent ,
-          canActivate:[AuthGuard],
+          canActivate: [AuthGuard],
           data: {
-            expectedRole:'user'
-        }},  
-        { path: 'referrals', 
+            expectedRole: 'user'
+        }},
+        { path: 'referrals',
           component: UserReferralsComponent ,
-          canActivate:[AuthGuard],
+          canActivate: [AuthGuard],
           data: {
-            expectedRole:'user'
-          }},  
+            expectedRole: 'user'
+          }},
   ]
 },
 {
   path: 'admin', component: AdminlayoutComponent,
     children: [
-          { path: 'dashboard', 
-          component: AdmindashboardComponent , 
-          canActivate:[RoleGuard], 
+          { path: 'dashboard',
+          component: AdmindashboardComponent ,
+          canActivate: [RoleGuard],
           data: {
-            expectedRole:'admin'
+            expectedRole: 'admin'
           }},
           { path: 'orders', component: OrdersComponent },
           { path: 'payment', component: PaymentComponent },

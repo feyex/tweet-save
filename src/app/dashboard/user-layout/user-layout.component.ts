@@ -8,18 +8,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-layout.component.css']
 })
 export class UserLayoutComponent implements OnInit {
-
+user: any = {};
   constructor(private auth: UserAuthService,
-    private router: Router) { }
+              private router: Router) { }
 
 
   ngOnInit() {
   }
 
-  logout(){
+  logout() {
     this.auth.logout();
-    this.router.navigate([''])
+    this.router.navigate(['']);
   }
-  
+
 
 }
