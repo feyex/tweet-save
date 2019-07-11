@@ -3,15 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './account/signup/signup.component';
 import { LoginComponent } from './account/login/login.component';
-import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
-import { ManageWalletComponent } from './dashboard/manage-wallet/manage-wallet.component';
-import { PayBillsComponent } from './dashboard/pay-bills/pay-bills.component';
-import { ProfileComponent } from './dashboard/profile/profile.component';
-import { ChangePasswordComponent } from './dashboard/change-password/change-password.component';
-import { HelpComponent } from './dashboard/help/help.component';
-import { HistoryComponent } from './dashboard/history/history.component';
-import {AuthGuard} from './auth/auth.guard';
 import {RoleGuardGuard as RoleGuard} from './auth/role-guard.guard';
+import { UserModule } from './user-layout/user.module';
+import { UserRoutingModule } from './user-layout/user-routing.module';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 import { AdmindashboardComponent } from './admin/admindashboard/admindashboard.component';
@@ -24,68 +18,20 @@ import { ReferralsComponent } from './admin/referrals/referrals.component';
 import { FeedsComponent } from './admin/feeds/feeds.component';
 import { AddDiscoComponent } from './admin/add-disco/add-disco.component';
 import { SupportComponent } from './admin/support/support.component';
-import { UserLayoutComponent } from './dashboard/user-layout/user-layout.component';
-import { UserReferralsComponent } from './dashboard/user-referrals/user-referrals.component';
 import { SupportdashboardComponent } from './admin/supportdashboard/supportdashboard.component';
+import { AuthGuard } from './auth/auth.guard';
 
 
 
 const routes: Routes = [{ path: '', component: HomeComponent },
 { path: 'signup', component: SignupComponent },
 { path: 'login', component: LoginComponent },
-{
-  path: 'user', component: UserLayoutComponent,
-  children: [
-        { path: 'dashboard',
-          component: DashboardComponent,
-          canActivate: [AuthGuard],
-          data: {
-            expectedRole: 'user'
-        }},
-        { path: 'manage-wallet',
-          component: ManageWalletComponent,
-          canActivate: [AuthGuard],
-        data: {
-          expectedRole: 'user'
-        }},
-        { path: 'pay-bills',
-          component: PayBillsComponent
-         },
-        { path: 'pay-bills/:id',
-          component: PayBillsComponent
-        },
-        { path: 'profile',
-          component: ProfileComponent ,
-          canActivate: [AuthGuard],
-          data: {
-            expectedRole: 'user'
-          }},
-        { path: 'change-password',
-            component: ChangePasswordComponent ,
-            canActivate: [AuthGuard],
-            data: {
-            expectedRole: 'user'
-        }},
-        { path: 'help',
-          component: HelpComponent ,
-          canActivate: [AuthGuard],
-          data: {
-            expectedRole: 'user'
-        }},
-        { path: 'history',
-          component: HistoryComponent ,
-          canActivate: [AuthGuard],
-          data: {
-            expectedRole: 'user'
-        }},
-        { path: 'referrals',
-          component: UserReferralsComponent ,
-          canActivate: [AuthGuard],
-          data: {
-            expectedRole: 'user'
-          }},
-  ]
-},
+
+// lazy-loading applied
+{path: 'user',
+loadChildren: () => import('./user-layout/user.module').then(m => m.UserModule),
+canActivate: [AuthGuard]}, // end lazy-loading
+
 {
   path: 'admin', component: AdminlayoutComponent,
     children: [
@@ -112,12 +58,13 @@ const routes: Routes = [{ path: '', component: HomeComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes),
+            UserRoutingModule, UserModule],
 
 
 
 
 
-  exports: [RouterModule]
+  exports: [RouterModule, UserModule, UserRoutingModule]
 })
 export class AppRoutingModule { }

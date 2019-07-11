@@ -15,7 +15,7 @@ export class PayBillsComponent implements OnInit {
   user: any;
 refNum = Math.floor(Math.random() * 10000000000) + 999;
 
-isLinear = false;
+isLinear = true;
 billformGroup: FormGroup;
 
 constructor(
