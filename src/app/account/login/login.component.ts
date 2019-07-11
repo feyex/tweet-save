@@ -19,40 +19,39 @@ export class LoginComponent implements OnInit {
   constructor(private lf: FormBuilder,
               private auth: UserAuthService,
               private router: Router,
-              private toast:ToastrService) { }
+              private toast: ToastrService) { }
 
   ngOnInit() {
-    
+
   }
 
   public submit() {
-    console.log(this.email,this.password);
+    console.log(this.email, this.password);
     this.auth.login(this.email, this.password)
       .pipe(first())
       .subscribe(
-       
-        (result:any) =>{
-          // if(result.status == true && result.role =="user"){
-          //   this.router.navigate(['user/dashboard'])
-          // }
-           if(result.status == true && (result.role =="admin" || result.role =="user")){
-            this.router.navigate(['admin/dashboard'])
-          }
-          else{
-            this.toast.error("Incorrect Email or Password.", "Signup Error", {
+
+        (result: any) => {
+          if (result.status === true && result.role === 'user') {
+            this.router.navigate(['user/dashboard']);
+          } else if (result.status === true && (result.role === 'admin')) {
+            this.router.navigate(['admin/dashboard']);
+          } else {
+            this.toast.error('Incorrect Email or Password.', 'Signup Error', {
               timeOut: 4000,
               positionClass: 'toast-top-center'
             });
-          
+
           }
-          
-        } ,
+
+        },
         error => {
-          this.error = 'Could not authenticate'
+          this.error = 'Could not authenticate';
         }
       );
   }
 
- 
-    
+
+
+
 }
