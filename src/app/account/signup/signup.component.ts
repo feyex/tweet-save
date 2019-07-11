@@ -21,6 +21,8 @@ export class SignupComponent implements OnInit {
 
   }
 
+  referralNum = Math.floor(Math.random() * 10000000000) + 999;
+
   constructor(private formBuilder: FormBuilder,
               private router: Router,
               private authService: UserAuthService,
@@ -37,9 +39,10 @@ export class SignupComponent implements OnInit {
     const lastname = this.signup.lastname;
     const phoneNumber = this.signup.phoneNumber;
     const password= this.signup.password;
+    const referral = this.referralNum;
     
-    console.log('mmm', email,firstname,phoneNumber,password,lastname)
-    this.authService.signin( email,firstname,lastname,phoneNumber,password).subscribe((res:any) => {
+    console.log('mmm', email,firstname,phoneNumber,password,lastname,referral)
+    this.authService.signin( email,firstname,lastname,phoneNumber,password,referral).subscribe((res:any) => {
     
       if(res.status == true){
         this.toast.success("User Registered Successfully.", "Signup", {

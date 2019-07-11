@@ -12,8 +12,7 @@ export class BillService {
 
   processPayment(user_id,bill, state, disco, meter, amount, email, ref) {
     const billData = {
-      user_id ,
-      bill, state, disco, meter, amount, email, ref
+      user_id ,bill, state, disco, meter, amount, email, ref
     };
     return this.httpClient.post(`${this.apiServer}/transaction/transactions`, billData);
   }
