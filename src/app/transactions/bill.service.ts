@@ -10,8 +10,9 @@ export class BillService {
   // backend server instance
   apiServer = 'http://localhost:4000';
 
-  processPayment(bill, state, disco, meter, amount, email, ref) {
+  processPayment(user_id,bill, state, disco, meter, amount, email, ref) {
     const billData = {
+      user_id ,
       bill, state, disco, meter, amount, email, ref
     };
     return this.httpClient.post(`${this.apiServer}/transaction/transactions`, billData);

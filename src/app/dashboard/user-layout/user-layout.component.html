@@ -141,7 +141,7 @@
         <div class="greyRec py-3">
           <ul class="list-unstyled ">
             <li class="nav-item" [routerLink]="['/user/dashboard']" [routerLinkActive]="['active']">
-              <a class="nav-link" href="user/dashboard">
+              <a class="nav-link" [routerLink]="['/user/dashboard']">
                 <div class="row">
                   <div class="col-3">
                     <img src="../../../assets/img/grey/1 (1).png" height="22px" class="aa" alt="dashboard">
@@ -154,7 +154,7 @@
               </a>
             </li>
             <li class="nav-item" [routerLink]="['/user/manage_wallet']" [routerLinkActive]="['active']">
-              <a class="nav-link" href="user/manage_wallet">
+              <a class="nav-link" [routerLink]="['/user/manage_wallet']">
                 <div class="row">
                   <div class="col-3">
                     <img src="../../../assets/img/grey/1 (11).png" class="aa" height="22px" alt="manage wallet">
@@ -166,8 +166,8 @@
                 </div>
               </a>
             </li>
-            <li class="nav-item" [routerLink]="['/user/pay_bills']" [routerLinkActive]="['active']">
-              <a class="nav-link" href="user/pay_bills">
+            <li class="nav-item" [routerLink]="['/user/pay-bills']" [routerLinkActive]="['active']">
+              <a class="nav-link" [routerLink]="['/user/pay-bills']">
                 <div class="row">
                   <div class="col-3">
                     <img src="../../../assets/img/grey/1 (6).png" class="aa" height="22px" alt="pay bills">

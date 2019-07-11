@@ -119,9 +119,10 @@ export class UserAuthService {
 
      // to fetch each Users data by Id
    gettransaction(id: string) {
+    this.id = localStorage.userid;
     return this
             .httpClient
-            .get(this.apiServer + `/transaction/transactions/${id}`);
+            .get(this.apiServer + `/transaction/transactions/`+ this.id);
     }
 
 
