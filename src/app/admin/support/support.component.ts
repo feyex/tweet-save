@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AdminAuthService } from '../../auth/admin-auth.service';
 
 @Component({
   selector: 'app-support',
@@ -7,9 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SupportComponent implements OnInit {
 
-  constructor() { }
+  user: any = {};
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private auth: AdminAuthService,) {
+      
+     }
 
   ngOnInit() {
+      this.auth.getContacts()
+      .then(user => {
+        this.user = user;
+        this.user = Array.of (this.user);
+        this.user = this.user[0].message;
+        console.log('this.contact',this.user);
+
+
+});
+ 
   }
 
 }
+
+

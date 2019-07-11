@@ -1,8 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { JwtModule } from '@auth0/angular-jwt';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatStepperModule } from '@angular/material/stepper';
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
+import { MatInputModule, MatButtonModule } from '@angular/material';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ToastrModule } from 'ngx-toastr';
+import { Angular4PaystackModule } from 'angular4-paystack';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +21,9 @@ import { ManageWalletComponent } from './dashboard/manage-wallet/manage-wallet.c
 import { PayBillsComponent } from './dashboard/pay-bills/pay-bills.component';
 import { ProfileComponent } from './dashboard/profile/profile.component';
 import { ChangePasswordComponent } from './dashboard/change-password/change-password.component';
+import {AuthGuard} from './auth/auth.guard';
+import {UserAuthService} from './auth/user-auth.service';
+import { BillService } from './transactions/bill.service';
 
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { HelpComponent } from './dashboard/help/help.component';
@@ -33,7 +43,11 @@ import { UserReferralsComponent } from './dashboard/user-referrals/user-referral
 import { SupportdashboardComponent } from './admin/supportdashboard/supportdashboard.component';
 import { IssueformComponent } from './admin/issueform/issueform.component';
 import { OtpComponent } from './dashboard/otp/otp.component';
+import { NavbarComponent } from './dashboard/navbar/navbar.component';
 
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
 
 @NgModule({
   declarations: [
@@ -64,15 +78,33 @@ import { OtpComponent } from './dashboard/otp/otp.component';
     SupportdashboardComponent,
     IssueformComponent,
     OtpComponent,
+    NavbarComponent,
   ],
   imports: [
-  BrowserModule,
+BrowserModule,
   AppRoutingModule,
   FormsModule,
   ReactiveFormsModule,
-  HttpClientModule
+  HttpClientModule,
+  BrowserAnimationsModule,
+  MatStepperModule, MatInputModule, MatButtonModule,
+  MatFormFieldModule,
+  ToastrModule.forRoot(),
+  Angular4PaystackModule,
+  JwtModule.forRoot ({
+    config: {
+      tokenGetter: tokenGetter,
+      whitelistedDomains: ['localhost:4000/dashboard'],
+      blacklistedRoutes: ['localhost:4000/api/login']
+    }
+  })
   ],
-  providers: [],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA,
+    NO_ERRORS_SCHEMA
+  ],
+  providers: [AuthGuard, UserAuthService, BillService,
+    {provide: STEPPER_GLOBAL_OPTIONS, useValue: {showError: false}}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

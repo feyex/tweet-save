@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserAuthService } from '../../auth/user-auth.service';
+
 
 @Component({
   selector: 'app-history',
@@ -7,9 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoryComponent implements OnInit {
 
-  constructor() { }
+  user: any = {};
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private auth: UserAuthService) {
+     }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.auth.gettransactionId(params.id)
+      .subscribe(user => {
+        this.user = user;
+        this.user = Array.of (this.user);
+        console.log('this.transaction', this.user[0]._id);
+  });
+
+});
+
   }
 
 }
+
+

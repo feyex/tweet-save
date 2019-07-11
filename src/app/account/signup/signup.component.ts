@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { User } from '../../auth/user';
 import { UserAuthService } from '../../auth/user-auth.service';
-import { from } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-signup',
@@ -16,34 +16,50 @@ export class SignupComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
-              private authService: UserAuthService) {
+              private authService: UserAuthService,
+              private toast:ToastrService) {
   }
 
   ngOnInit() {
     this.signupForm = this.formBuilder.group({
-      fullname: ['', [Validators.required]],
-      phone: ['', [Validators.required]],
+      firstname:  ['', Validators.required],
+      lastname: ['', [Validators.required]],
+      phoneNumber: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
-      password_confirmation: ['', [Validators.required, Validators.minLength(8)]]
+      password: ['', [Validators.required, Validators.minLength(8)]]
+
     });
-    console.log('formdetails', this.signupForm);
+ 
   }
 
   signup() {
     const email = this.signupForm.value.email;
-    const firstname = this.signupForm.value.fullname;
-    const phone = this.signupForm.value.phone;
+    const firstname = this.signupForm.value.firstname;
+    const lastname = this.signupForm.value.lastname;
+    const phoneNumber = this.signupForm.value.phoneNumber;
     const password= this.signupForm.value.password;
-    const password_confirmation= this.signupForm.value.password_confirmation;
-    console.log('mmm', email,firstname,phone,password,password_confirmation)
-    this.authService.signin( email,firstname,phone,password,password_confirmation).subscribe((res) => {
-      var json: any = res;
-      // this.loading = false;
-      console.log('res',res)
-      console.log('Signed up!....>>');
-      return this.router.navigate(['/login']);
-    });
+    
+    console.log('mmm', email,firstname,phoneNumber,password,lastname)
+    this.authService.signin( email,firstname,lastname,phoneNumber,password).subscribe((res:any) => {
+    
+      if(res.status == true){
+        this.toast.success("User Registered Successfully.", "Signup", {
+          timeOut: 4000,
+          positionClass: 'toast-top-center'
+        });
+        this.router.navigate(['/login']);
+      }
+      else{
+        this.toast.error("Registration Failed.", "Signup Error", {
+          timeOut: 4000,
+          positionClass: 'toast-top-center'
+        });
+      
+      }
+     
+    }
+    
+    );
   }
 
 }

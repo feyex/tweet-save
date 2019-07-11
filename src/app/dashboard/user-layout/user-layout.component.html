@@ -16,15 +16,15 @@
       </button>
 
       <div class="ml-auto px-1 py-0 border-left">
-        <a class="p-13" href="#gallery" data-offset="90">
-          Ademosu Adeposi <br>
-          <a href="#" class="p-11">Logout</a>
+        <a class="p-13"  data-offset="90">
+          {{user.name}} <br>
+          <a (click)="logout()" class="p-11">Logout</a>
         </a>
       </div>
       <div class="collapse greyRec w-100" id="navbarTogglerDemo02">
         <ul class="list-unstyled navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="user/dashboard">
+            <a class="nav-link" [routerLink]="['dashboard']">
               <div class="row px-2">
                 <div class="col-3">
                   <img src="../../../assets/img/grey/1 (1).png" height="22px" class="aa" alt="dashboard">
@@ -37,7 +37,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="user/manage_wallet">
+            <a class="nav-link" [routerLink]="['manage-wallet']">
               <div class="row px-2">
                 <div class="col-3">
                   <img src="../../../assets/img/grey/1 (11).png" class="aa" height="22px" alt="manage wallet">
@@ -50,7 +50,7 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="user/pay_bills">
+            <a class="nav-link" [routerLink]="['pay-bills']">
               <div class="row px-2">
                 <div class="col-3">
                   <img src="../../../assets/img/grey/1 (6).png" class="aa" height="22px" alt="pay bills">
@@ -63,7 +63,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="user/history">
+            <a class="nav-link" [routerLink]="['history']">
               <div class="row px-2">
                 <div class="col-3">
                   <img src="../../../assets/img/grey/1 (9).png" class="aa" height="22px" alt="History">
@@ -76,7 +76,7 @@
             </a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="user/referrals">
+            <a class="nav-link" [routerLink]="['referrals']">
               <div class="row px-2">
                 <div class="col-3">
                   <img src="../../../assets/img/grey/1 (8).png" class="aa" height="22px" alt="Referrals">
@@ -89,7 +89,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="user/help">
+            <a class="nav-link" [routerLink]="['help']">
               <div class="row px-2">
                 <div class="col-3">
                   <img src="../../../assets/img/grey/1 (7).png" class="aa" height="22px" alt="Help">
@@ -102,7 +102,7 @@
             </a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link dropdown-toggle" href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" >
+            <a class="nav-link dropdown-toggle"  data-toggle="collapse" aria-expanded="false" >
               <div class="row px-2">
                 <div class="col-3">
                   <img src="../../../assets/img/grey/1 (10).png" class="aa" height="22px" alt="Settings">
@@ -115,10 +115,10 @@
               </div>
               <ul class="collapse list-unstyled px-3" id="pageSubmenu">
                 <li>
-                  <a href="user/profile">Profile</a>
+                  <a class="nav-link" [routerLink]="['profile']">Profile</a>
                 </li>
                 <li>
-                  <a href="user/change_password">Change Password</a>
+                  <a class="nav-link" [routerLink]="['change-password']">change Password</a>
                 </li>
 
               </ul>
@@ -231,10 +231,10 @@
                 </div>
                 <ul class="collapse list-unstyled px-3" id="pageSubmenu">
                   <li>
-                    <a href="user/profile">Profile</a>
+                    <a [routerLink]="['profile']">Profile</a>
                   </li>
                   <li>
-                    <a href="user/change_password">Change Password</a>
+                    <a [routerLink]="['change-password']">Change Password</a>
                   </li>
 
                 </ul>

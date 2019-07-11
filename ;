@@ -1,0 +1,50 @@
+Merge branch 'master' of https://github.com/feyex/InfiniteLight--FE
+
+# Conflicts:
+#	package-lock.json
+#	package.json
+#	src/app/auth/user-auth.service.ts
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch master
+# Your branch and 'origin/master' have diverged,
+# and have 1 and 2 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   package-lock.json
+#	modified:   package.json
+#	modified:   src/app/account/login/login.component.ts
+#	modified:   src/app/admin/admindashboard/admindashboard.component.html
+#	modified:   src/app/admin/admindashboard/admindashboard.component.ts
+#	modified:   src/app/admin/adminlayout/adminlayout.component.html
+#	modified:   src/app/admin/adminlayout/adminlayout.component.ts
+#	modified:   src/app/admin/orders/orders.component.html
+#	modified:   src/app/admin/orders/orders.component.ts
+#	modified:   src/app/admin/payment/payment.component.html
+#	modified:   src/app/admin/payment/payment.component.ts
+#	modified:   src/app/admin/support/support.component.html
+#	modified:   src/app/admin/support/support.component.ts
+#	modified:   src/app/admin/user-management/user-management.component.html
+#	modified:   src/app/admin/user-management/user-management.component.ts
+#	modified:   src/app/app-routing.module.ts
+#	new file:   src/app/auth/admin-auth.service.ts
+#	modified:   src/app/auth/auth.guard.ts
+#	new file:   src/app/auth/role-guard.guard.spec.ts
+#	new file:   src/app/auth/role-guard.guard.ts
+#	modified:   src/app/auth/user-auth.service.ts
+#	modified:   src/app/dashboard/change-password/change-password.component.html
+#	modified:   src/app/dashboard/change-password/change-password.component.ts
+#	modified:   src/app/dashboard/history/history.component.html
+#	modified:   src/app/home/home.component.html
+#

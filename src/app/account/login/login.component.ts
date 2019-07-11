@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { UserAuthService } from '../../auth/user-auth.service';
-import { User } from '../../auth/user';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -11,24 +11,47 @@ import { User } from '../../auth/user';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
+
+  public email: string;
+  public password: string;
+  public error: string;
 
   constructor(private lf: FormBuilder,
-              private authService: UserAuthService,
-              private router: Router) { }
+              private auth: UserAuthService,
+              private router: Router,
+              private toast: ToastrService) { }
 
   ngOnInit() {
-    this.loginForm = this.lf.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
-    });
+
   }
 
-  login(form) {
-    console.log('I process login form', this.loginForm);
-    this.authService.login(form.value).subscribe((res) => {
-      console.log('Logged in! ...yaay!!!');
-      this.router.navigate(['/']);
-    });
+  public submit() {
+    console.log(this.email, this.password);
+    this.auth.login(this.email, this.password)
+      .pipe(first())
+      .subscribe(
+
+        (result: any) => {
+          if (result.status === true && result.role === 'user') {
+            this.router.navigate(['user/dashboard']);
+          } else if (result.status === true && (result.role === 'admin')) {
+            this.router.navigate(['admin/dashboard']);
+          } else {
+            this.toast.error('Incorrect Email or Password.', 'Signup Error', {
+              timeOut: 4000,
+              positionClass: 'toast-top-center'
+            });
+
+          }
+
+        },
+        error => {
+          this.error = 'Could not authenticate';
+        }
+      );
   }
+
+
+
+
 }

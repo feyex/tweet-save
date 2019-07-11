@@ -1,4 +1,6 @@
-@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '../node_modules/ngx-toastr/toastr.css';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 @font-face{
   src: url('./assets/fonts/avenir/Avenir Roman.otf');
   font-family: Avenir;
@@ -460,22 +462,36 @@ top: -1.5em !important;
   box-shadow: none;
 }
 
-.table thead th{
+/* .table thead th{
   font-family: Avenir;
   font-size: 11px;
   font-weight: 500;
   border-top: none !important;
   color: #9b9b9b;
+} */
+
+.table th, td {
+  font-family: Avenir;
+  font-size: 11px;
+  font-weight: 500;
+  border-top: none !important;
+  color: #9b9b9b;
+  border: 2px solid #000;
+  border-radius: 3px;
+  border-spacing: 5px;
 }
-.table tbody td{
+/* .table th tbody td{
   font-family: Avenir;
   font-size: 12px;
   color: #333333;
   font-weight: normal;
   padding-top: 20px;
   padding-bottom: 20px;
-}
-.table tbody td a{
+
+} */
+.table td a{
+font-family: Avenir;
+font-weight: 500;
 color: #333;
 font-size: 12px;
 text-decoration: none;
@@ -644,14 +660,14 @@ min-height: 260px;
   background: #fafafa !important;
 }
 
-.table.table-striped thead th, .table.table-striped tbody tr td,.table.create thead th, .table.create tbody tr td{
+.table.table-striped th, .table.table-striped tr td,.table.create th, .table.create tr td{
   color: #31384c !important;
   font-family: source sans pro !important;
 }
-.table.table-striped thead th, .table.create thead th{
+.table.table-striped th, .table.create th{
   font-weight: 600;
 }
-.table-striped tbody tr:nth-of-type(odd){
+.table-striped tr:nth-of-type(odd){
   background-color: #f5f8fa;
   border-bottom: solid 1px #e6e9ec;
   border-top: solid 1px #e6e9ec;
@@ -663,10 +679,10 @@ min-height: 260px;
 }
 .gtxtt{
   color: #cecece;
-  
+
 }
 a.gtxtt{
-  text-decoration: none; 
+  text-decoration: none;
 }
 .btxtt{
   color: #31384c;
@@ -772,7 +788,7 @@ border: 1px solid #f16722;
 }
 .selectBox3:after{
 content:"\f107 ";
-font-family: FontAwesome; 
+font-family: FontAwesome;
 color: #31384c;
 position: absolute;
 right: 0px;
@@ -786,10 +802,10 @@ pointer-events: none;
 }
 .selectBox1:after{
   content:"\f107 ";
-  font-family: FontAwesome; 
+  font-family: FontAwesome;
   color: #31384c;
   position: absolute;
-  
+
   right: 20px;
   /* margin-right: -10px; */
   margin-top: -30px;
@@ -975,7 +991,7 @@ pointer-events: none;
 #sidebar ul li.active > a{
   color: #f16722;
   border-left: 4px solid #f16722;
-  
+
 }
 #sidebar.active ul li.active i{
   color: #f16722;
@@ -1001,8 +1017,8 @@ pointer-events: none;
   }
   #sidebar {
       margin-left: 0;
-      width: 80px; 
-      
+      width: 80px;
+
   }
   #sidebar .col-9{
     display: none !important;
@@ -1011,10 +1027,10 @@ pointer-events: none;
     margin-left: +80px !important;
     /* width: 100%; */
     /* transition: margin-left .3s; */
-  
+
   }
   #content.active, #adNav.active{
-    margin-left: 0 !important; 
+    margin-left: 0 !important;
     /* margin-left: +80px !important; */
     /* transition: margin-left .3s; */
   }
@@ -1160,3 +1176,8 @@ pointer-events: none;
     font-size: 12px;
   }
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.mybtn { color: white;
+          background-color: orangered;
+           }

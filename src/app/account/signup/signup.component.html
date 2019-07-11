@@ -1,81 +1,78 @@
+<div class="container py-5">
+  <div class="row">
+    <div class="col-lg-4 col-xs-12 m-auto">
+      <form [formGroup]="signupForm">
+        <div class="dashboard" style="background: #fff;">
+          <p class="p-16">SIGNUP.</p>
+          <p class="p-12">Sign up to continue</p>
+          <div class="input-group mb-4">
+            <div class="input-group-prepend pl-3 pr-1">
+              <i class="ion-person" style="font-size: 20px; color: #ddd;"></i>
+            </div>
+            <input #firstname formControlName="firstname" class="form-control" placeholder="first Name" required>
+            <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)" class="alert alert-danger">
 
-  <div class="container py-5">
-    <div class="row">
-      <div class="col-lg-4 col-xs-12 m-auto">
-        <form [formGroup]="signupForm" >
-          <div class="dashboard" style="background: #fff;">
-            <p class="p-16">SIGNUP.</p>
-            <p class="p-12">Sign up to continue</p>
-            <div class="input-group mb-4">
-              <div class="input-group-prepend pl-3 pr-1">
-                <i class="ion-person" style="font-size: 20px; color: #ddd;"></i>
+              <div *ngIf="firstname.errors.required">
+                firstname is required.
               </div>
-              <input #fullname formControlName="fullname" class="form-control" placeholder="Full Name" required>
-              <div *ngIf="fullname.invalid && (fullname.dirty || fullname.touched)" class="alert alert-danger">
-                <div *ngIf="fullname.errors.required">full Name is required</div>
-              </div>
+              
             </div>
-            <div class="input-group mb-4">
-              <div class="input-group-prepend pl-3 pr-1">
-                <i class="ion-person" style="font-size: 20px; color: #ddd;"></i>
-              </div>
-              <input formControlName="phone" #phone class="form-control" placeholder="Phone Number"
-                required>
-              <div *ngIf="phone.touched && phone.invalid">
-                <div *ngIf="phone.errors.required">Phone number is required</div>
-              </div>
-            </div>
-            <div class="input-group">
-              <div class="input-group-prepend pl-3 pr-1">
-                <i class="ion-person" style="font-size: 20px; color: #ddd;"></i>
-              </div>
-              <input type="email" formControlName="email" #email class="form-control" placeholder="johndoe@example.com"
-                required>
-              <div *ngIf="email.touched && email.invalid">
-                <div *ngIf="email.errors.required">Email is required</div>
-              </div>
-            </div>
-
-            <div class="input-group mt-4">
-              <div class="input-group-prepend py-1 pl-3 pr-1">
-                <i class="ion-locked" style="font-size: 18px; color: #ddd;"></i>
-              </div>
-              <input type="password" formControlName="password" #password id="password" placeholder="enter password"
-                class="form-control" required />
-              <div *ngIf="password.touched && password.invalid" class="invalid-feedback">
-                <div *ngIf="password.errors.required">Password is required</div>
-                <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
-              </div>
-              <a class="py-1 px-3" onclick="toggle(this);">
-                <i class="ion-eye" style="font-size: 20px; color: #ddd;"></i>
-              </a>
-            </div>
-            <div class="input-group mt-4">
-              <div class="input-group-prepend py-1 pl-3 pr-1">
-                <i class="ion-locked" style="font-size: 18px; color: #ddd;"></i>
-              </div>
-              <input type="password" formControlName="password_confirmation" #password_confirmation id="password" placeholder="confirm password"
-                class="form-control" required />
-              <div *ngIf="password.touched && password.invalid" class="invalid-feedback">
-                <div *ngIf="password.errors.required">Password is required</div>
-                <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
-              </div>
-              <a class="py-1 px-3" onclick="toggle(this);">
-                <i class="ion-eye" style="font-size: 20px; color: #ddd;"></i>
-              </a>
-            </div>
-            <div class="p-12 my-3" style="color: #333;">
-              By clicking the sign up button below you agreed to the
-              <a href="#" style="color: #f16722">Terms & Conditions</a>
-            </div>
-            <button [disabled] (click)="signup()" type="submit" class="btn btn-Orange w-100 mt-3 rounded">SIGN UP</button>
-            <p class="text-center p-12 my-5">
-              Already Registered?
-              <a routerLink="/login" style="color: #f16722">Login Here</a>
-            </p>
           </div>
-        </form>
-      </div>
+          <div class="input-group mb-4">
+            <div class="input-group-prepend pl-3 pr-1">
+              <i class="ion-person" style="font-size: 20px; color: #ddd;"></i>
+            </div>
+            <input #lastname formControlName="lastname" class="form-control" placeholder="last Name" required>
+            <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)" class="alert alert-danger">
+              <div *ngIf="lastname.errors.required">last Name is required</div>
+            </div>
+          </div>
+          <div class="input-group mb-4">
+            <div class="input-group-prepend pl-3 pr-1">
+              <i class="ion-person" style="font-size: 20px; color: #ddd;"></i>
+            </div>
+            <input formControlName="phoneNumber" #phoneNumber class="form-control" placeholder="Phone Number" required>
+            <!-- <div *ngIf="phoneNumber.touched && phoneNumber.invalid">
+              <div *ngIf="phoneNumber.errors.required">Phone number is required</div>
+            </div> -->
+          </div>
+          <div class="input-group">
+            <div class="input-group-prepend pl-3 pr-1">
+              <i class="ion-person" style="font-size: 20px; color: #ddd;"></i>
+            </div>
+            <input type="email" formControlName="email" #email class="form-control" placeholder="johndoe@example.com"
+              required>
+            <div *ngIf="email.touched && email.invalid">
+              <div *ngIf="email.errors.required">Email is required</div>
+            </div>
+          </div>
+
+          <div class="input-group mt-4">
+            <div class="input-group-prepend py-1 pl-3 pr-1">
+              <i class="ion-locked" style="font-size: 18px; color: #ddd;"></i>
+            </div>
+            <input type="password" formControlName="password" #password id="password" placeholder="enter password"
+              class="form-control" required />
+            <div *ngIf="password.touched && password.invalid" class="invalid-feedback">
+              <div *ngIf="password.errors.required">Password is required</div>
+              <div *ngIf="password.errors.minlength">Password must be at least 8 characters</div>
+            </div>
+            <a class="py-1 px-3" onclick="toggle(this);">
+              <i class="ion-eye" style="font-size: 20px; color: #ddd;"></i>
+            </a>
+          </div>
+
+          <div class="p-12 my-3" style="color: #333;">
+            By clicking the sign up button below you agreed to the
+            <a href="#" style="color: #f16722">Terms & Conditions</a>
+          </div>
+          <button  (click)="signup()" type="submit" class="btn btn-Orange w-100 mt-3 rounded">SIGN UP</button>
+          <p class="text-center p-12 my-5">
+            Already Registered?
+            <a routerLink="/login" style="color: #f16722">Login Here</a>
+          </p>
+        </div>
+      </form>
     </div>
   </div>
- 
+</div>

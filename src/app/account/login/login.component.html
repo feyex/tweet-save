@@ -2,7 +2,8 @@
   <div class="container py-5">
     <div class="row">
       <div class="col-lg-4 col-xs-12 m-auto">
-        <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
+          <h4 *ngIf="error">{{error}}</h4>
+        <form (ngSubmit)="submit()">
           <div class="dashboard" style="background: #fff;">
             <p class="p-16">LOGIN.</p>
             <p class="p-12">Login to make payment</p>
@@ -10,7 +11,7 @@
               <div class="input-group-prepend pl-3 pr-1">
                 <i class="ion-person" style="font-size: 20px; color: #ddd;"></i>
               </div>
-              <input formControlName="email" #email name="email" type="email" class="form-control"
+              <input type="email" name="email"  class="form-control" [(ngModel)]="email" 
                 placeholder="johndoe@example.com" required />
             </div>
 
@@ -18,8 +19,8 @@
               <div class="input-group-prepend py-1 pl-3 pr-1">
                 <i class="ion-locked" style="font-size: 18px; color: #ddd;"></i>
               </div>
-              <input formControlname="password" #password name="password" type="password" id="password"
-                class="form-control" required />
+              <input  name="password" type="password" id="password"
+                class="form-control" [(ngModel)]="password" required />
               <a class="py-1 px-3" onclick="toggle(this);">
                 <i class="ion-eye" style="font-size: 20px; color: #ddd;"></i>
               </a>
@@ -57,3 +58,4 @@
       }
     }
   </script>
+

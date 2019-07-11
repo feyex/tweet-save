@@ -20,7 +20,7 @@
 
             </div>
         </div>
-        <div class="col-12 my-4">
+        <!-- <div class="col-12 my-4">
             <div class="row">
                 <div class="col-lg-4">
                     <div class="input-group">
@@ -33,53 +33,39 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="col-12">
             <div class="dashboard">
                 <div class="table-responsive-md">
                     <table class="table">
-                        <thead>
+                        <!-- <thead> -->
                             <tr>
-                                <th>S/N</th>
                                 <th>METER NUMBER</th>
                                 <th>TOP UP DATE</th>
                                 <th>AMOUNT</th>
-                                <th>TOKEN CODE</th>
+                                <th>ENERGY TOKEN</th>
                                 <th>PAYMENT METHOD</th>
                                 <th>STATUS</th>
                                 <th>ACTION</th>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>35467653567</td>
-                                <td>Wed April 29, 2016. 13:00 </td>
-                                <td>5,000</td>
-                                <td>76542345653</td>
-                                <td>PayPal</td>
-                                <td><i class="ion-record"></i> Completed</td>
+                        <!-- </thead> -->
+                        <!-- <tbody> -->
+                            <tr *ngFor="let transactions of user">
+
+                                <td>{{transactions.meter}}</td>
+                                <td>{{transactions.createdAt}} </td>
+                                <td>{{transactions.amount}}</td>
+                                <td>{{transactions.token}}</td>
+                                <td>{{transactions.paymentMethod}}</td>
+                                <td>{{transactions.status}}</td>
                                 <td>
-                                    <a href="#" class="p-14"><i class="ion-android-expand"
-                                            style="color: #2fe666;"></i>&nbsp; Re - Initiate</a>
+                                  <a [routerLink]="['pay-bills', transactions._id]" class="p-14"><i class="ion-android-expand"
+                                            style="color: #069e34;"></i>Pay-New</a>
 
                                 </td>
-                            </tr>
                             <tr>
-                                <td>2</td>
-                                <td>35467653567</td>
-                                <td>Wed April 29, 2016. 13:00 </td>
-                                <td>5,000</td>
-                                <td>76542345653</td>
-                                <td>PayPal</td>
-                                <td><i class="ion-record"></i> Completed</td>
-                                <td>
-                                    <a href="#" class="p-14"><i class="ion-android-expand"
-                                            style="color: #2fe666;"></i>&nbsp; Re - Initiate</a>
 
-                                </td>
-                            </tr>
-                        </tbody>
+                        <!-- </tbody> -->
                     </table>
                 </div>
             </div>
