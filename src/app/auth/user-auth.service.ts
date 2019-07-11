@@ -32,7 +32,7 @@ export class UserAuthService {
   }
 
 
-  //log user in
+  // log user in
   login(email, password) {
     const msg = {
       email: email,

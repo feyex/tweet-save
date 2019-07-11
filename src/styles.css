@@ -461,22 +461,36 @@ top: -1.5em !important;
   box-shadow: none;
 }
 
-.table thead th{
+/* .table thead th{
   font-family: Avenir;
   font-size: 11px;
   font-weight: 500;
   border-top: none !important;
   color: #9b9b9b;
+} */
+
+.table th, td {
+  font-family: Avenir;
+  font-size: 11px;
+  font-weight: 500;
+  border-top: none !important;
+  color: #9b9b9b;
+  border: 2px solid #000;
+  border-radius: 3px;
+  border-spacing: 5px;
 }
-.table tbody td{
+/* .table th tbody td{
   font-family: Avenir;
   font-size: 12px;
   color: #333333;
   font-weight: normal;
   padding-top: 20px;
   padding-bottom: 20px;
-}
-.table tbody td a{
+
+} */
+.table td a{
+font-family: Avenir;
+font-weight: 500;
 color: #333;
 font-size: 12px;
 text-decoration: none;
@@ -645,14 +659,14 @@ min-height: 260px;
   background: #fafafa !important;
 }
 
-.table.table-striped thead th, .table.table-striped tbody tr td,.table.create thead th, .table.create tbody tr td{
+.table.table-striped th, .table.table-striped tr td,.table.create th, .table.create tr td{
   color: #31384c !important;
   font-family: source sans pro !important;
 }
-.table.table-striped thead th, .table.create thead th{
+.table.table-striped th, .table.create th{
   font-weight: 600;
 }
-.table-striped tbody tr:nth-of-type(odd){
+.table-striped tr:nth-of-type(odd){
   background-color: #f5f8fa;
   border-bottom: solid 1px #e6e9ec;
   border-top: solid 1px #e6e9ec;

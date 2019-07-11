@@ -38,20 +38,20 @@ const routes: Routes = [{ path: '', component: HomeComponent },
   children: [
         { path: 'dashboard',
           component: DashboardComponent,
-          canActivate:[AuthGuard],
+          canActivate: [AuthGuard],
           data: {
-            expectedRole:'user'
+            expectedRole: 'user'
         }},
-        { path: 'manage_wallet',
+        { path: 'manage-wallet',
           component: ManageWalletComponent,
-          canActivate:[AuthGuard],
+          canActivate: [AuthGuard],
         data: {
-          expectedRole:'user'
+          expectedRole: 'user'
         }},
-        { path: 'pay_bills',
+        { path: 'pay-bills',
           component: PayBillsComponent
          },
-        { path: 'pay_bills/:id',
+        { path: 'pay-bills/:id',
           component: PayBillsComponent
         },
         { path: 'profile',

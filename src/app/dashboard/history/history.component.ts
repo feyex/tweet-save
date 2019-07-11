@@ -15,21 +15,20 @@ export class HistoryComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private auth:  UserAuthService,) {
-      
+    private auth: UserAuthService) {
      }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.auth.gettransactionId(params['id'])
+      this.auth.gettransactionId(params.id)
       .subscribe(user => {
         this.user = user;
-        this.user = Array.of (this.user)
-        console.log('this.transaction',this.user[0]._id);
-  })
+        this.user = Array.of (this.user);
+        console.log('this.transaction', this.user[0]._id);
+  });
 
 });
- 
+
   }
 
 }
