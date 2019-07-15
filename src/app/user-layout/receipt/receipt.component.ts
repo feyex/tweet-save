@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BillService } from './../../transactions/bill.service';
-import { PayBillsComponent } from '../pay-bills/pay-bills.component';
 
 @Component({
   selector: 'app-receipt',
@@ -11,6 +10,7 @@ import { PayBillsComponent } from '../pay-bills/pay-bills.component';
 export class ReceiptComponent implements OnInit {
 
   user: any;
+  isPrinting: boolean;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -25,5 +25,10 @@ export class ReceiptComponent implements OnInit {
         }
   });
   }
+
+  onPrint() {
+    console.log('hey I print your receipt ===');
+    window.print();
+   }
 
 }

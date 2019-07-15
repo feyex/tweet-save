@@ -26,11 +26,12 @@ import { AuthGuard } from '../auth/auth.guard';
 import { UserAuthService } from '../auth/user-auth.service';
 import { BillService } from '../transactions/bill.service';
 import { ReceiptComponent } from './receipt/receipt.component';
+import { PrintLayoutComponent } from './print-layout/print-layout.component';
 
 @NgModule({
   declarations: [UserLayoutComponent, DashboardComponent, ManageWalletComponent,
                 PayBillsComponent, ProfileComponent, ChangePasswordComponent, HelpComponent,
-                HistoryComponent, UserReferralsComponent, ReceiptComponent, ],
+                HistoryComponent, UserReferralsComponent, ReceiptComponent, PrintLayoutComponent ],
   imports: [
     CommonModule,
     UserRoutingModule,

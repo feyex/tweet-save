@@ -10,6 +10,7 @@ import { MatInputModule, MatButtonModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ToastrModule } from 'ngx-toastr';
 import { Angular4PaystackModule } from 'angular4-paystack';
+import { NgxPrintModule } from 'ngx-print';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +22,7 @@ import {UserAuthService} from './auth/user-auth.service';
 import { BillService } from './transactions/bill.service';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { NavbarComponent } from './user-layout/navbar/navbar.component';
+
 
 
 export function tokenGetter() {
@@ -48,6 +50,7 @@ export function tokenGetter() {
   MatFormFieldModule,
   ToastrModule.forRoot(),
   Angular4PaystackModule,
+  NgxPrintModule,
   JwtModule.forRoot ({
     config: {
       tokenGetter,

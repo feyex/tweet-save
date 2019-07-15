@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BillService {
 
-
-  constructor(private httpClient: HttpClient) { }
+  isPrinting = false;
+  constructor(private httpClient: HttpClient,
+              private router: Router) { }
   // backend server instance
   apiServer = 'http://localhost:4000';
 
@@ -24,4 +25,21 @@ export class BillService {
     // console.log('id', id);
     return this.httpClient.get(`${this.apiServer}/transaction/latesttransact`);
   }
+
+
+  // printDocument() {
+
+  //   // this.router.navigate(['/user',
+  //   //   { outlets: {
+  //   //     receipt: ['receipt']
+  //   //   }}]);
+  // }
+
+  // onDataReady() {
+  //   setTimeout(() => {
+  //     window.print();
+  //     this.isPrinting = false;
+  //     // this.router.navigate([{ outlets: { receipt: null }}]);
+  //   });
+  // }
 }
