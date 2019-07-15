@@ -21,7 +21,7 @@ export class SignupComponent implements OnInit {
 
   }
 
-  referralNum = Math.floor(Math.random() * 10000000000) + 999;
+  referralNum = Math.floor(Math.random() * 100000);
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
@@ -30,7 +30,7 @@ export class SignupComponent implements OnInit {
   }
 
   ngOnInit() {
- 
+    
   }
 
   create() {
@@ -41,7 +41,7 @@ export class SignupComponent implements OnInit {
     const password= this.signup.password;
     const referral = this.referralNum;
     
-    console.log('mmm', email,firstname,phoneNumber,password,lastname,referral)
+ 
     this.authService.signin( email,firstname,lastname,phoneNumber,password,referral).subscribe((res:any) => {
     
       if(res.status == true){

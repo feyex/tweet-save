@@ -19,7 +19,7 @@ export class UserLayoutComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.auth.getUsersId(params['id']).then(res => {
         this.user = res;
-        console.log('this.user',this.user.message.firstname);
+        console.log('this.user',this.user.message.referral);
   })
 
 });

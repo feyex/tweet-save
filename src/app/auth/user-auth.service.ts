@@ -42,7 +42,7 @@ export class UserAuthService {
     return this.httpClient.post<any>(`${this.apiServer}/api/login`, msg)
       .pipe(
         map(result => {
-          console.log('res', result);
+
           if (result) {
             localStorage.setItem('access_token', result.token );
             localStorage.setItem('userid', result.id );
@@ -55,7 +55,6 @@ export class UserAuthService {
   // log user out
   logout() {
     localStorage.removeItem('access_token');
-    console.log('rs', localStorage);
   }
 
   // check if user is logged in
@@ -72,7 +71,7 @@ export class UserAuthService {
       message: message,
 
     };
-    console.log(obj);
+
     return this.httpClient.post(`${this.apiServer}/contact/contacts`, obj);
 
   }
@@ -111,7 +110,6 @@ export class UserAuthService {
      // to fetch each Users data by user_Id
    gettransactionId(id: string) {
     this.id = localStorage.userid;
-    console.log('id', this.id);
     return this
             .httpClient
             .get<any[]>(this.apiServer + `/transaction/transact/` + this.id).pipe(map(data => data));

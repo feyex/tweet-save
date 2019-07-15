@@ -14,7 +14,10 @@
         aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <i class="ion-android-menu"></i>
       </button>
-
+     
+      <div class="ml-auto px-1 py-0 border-left" style="margin-right: -763px !important;">
+        <b style="color: #323366">Referral code:</b> {{this.user.message?.referral}}
+      </div>
       <div class="ml-auto px-1 py-0 border-left">
         <a class="p-13"  data-offset="90">
           {{this.user.message?.firstname}} {{this.user.message?.lastname}} <br>

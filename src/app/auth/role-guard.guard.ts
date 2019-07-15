@@ -12,10 +12,14 @@ export class RoleGuardGuard implements CanActivate {
   constructor(public auth: UserAuthService, public router: Router) {}
 
   canActivate(route: ActivatedRouteSnapshot): boolean {
-    // this will be passed from the route config
-    // on the data property
+
+    if (!localStorage.getItem('access_token')) {
+      this.router.navigate(['login']);
+      return false;
+    }
+
     const expectedRole = route.data.expectedRole;
-    console.log('role', expectedRole);
+
     const token = localStorage.getItem('access_token');
     // decode the token to get its payload
     const tokenPayload = decode(token);

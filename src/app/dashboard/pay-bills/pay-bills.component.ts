@@ -12,9 +12,9 @@ import { BillService } from './../../transactions/bill.service';
   styleUrls: ['./pay-bills.component.css']
 })
 export class PayBillsComponent implements OnInit {
-  
+
 user: any;
-refNum = Math.floor(Math.random() * 10000000000) + 999;
+refNum = Math.floor(1000 + Math.random() * 9000);
 
 isLinear = false;
 billformGroup: FormGroup;
@@ -28,13 +28,15 @@ constructor(
   ) { }
 
 ngOnInit() {
-    this.route.params.subscribe(params => {
+  
+    this.route.params.subscribe(params=>{
       this.auth.gettransaction(params['id'])
-        .subscribe(res => {
+        .subscribe(res =>{
           this.user = res;
-          console.log('users', this.user);
-        });
-    });
+          console.log('users',this.user)
+        })
+    })
+  
 
     this.billformGroup = this.bfb.group({
       bill: ['', Validators.required],
