@@ -12,8 +12,9 @@ import { BillService } from './../../transactions/bill.service';
   styleUrls: ['./pay-bills.component.css']
 })
 export class PayBillsComponent implements OnInit {
-  user: any;
-refNum = Math.floor(Math.random() * 10000000000) + 999;
+
+user: any;
+refNum = Math.floor(1000 + Math.random() * 9000);
 
 billformGroup: FormGroup;
 // bill = new FormControl(Validators.required);
@@ -27,6 +28,7 @@ constructor(
   ) { }
 
 ngOnInit() {
+
     this.route.params.subscribe(params => {
       this.auth.gettransaction(params['id'])
         .subscribe(res => {
@@ -34,6 +36,7 @@ ngOnInit() {
           console.log('users', this.user);
         });
     });
+
 
     this.billformGroup = this.bfb.group({
       bill: ['', Validators.required],
@@ -54,9 +57,10 @@ ngOnInit() {
     const amount = this.billformGroup.value.amount;
     const email = this.billformGroup.value.email;
     const ref = this.refNum;
+    const user_id = localStorage.userid;
     console.log('refNum', ref);
     console.log('Hey, its me Paystack payment button');
-    this.billService.processPayment(bill, state, disco, meter, amount, email, ref)
+    this.billService.processPayment(bill, state, disco, meter, amount, email, ref, user_id)
     .subscribe((res: any) => {
       if (res.status == true) {
         console.log('Bill data saved to DB', res);
@@ -67,4 +71,3 @@ ngOnInit() {
 
   paymentCancel() {}
 }
-

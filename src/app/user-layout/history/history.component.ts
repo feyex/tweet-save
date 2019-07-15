@@ -11,6 +11,7 @@ import { UserAuthService } from '../../auth/user-auth.service';
 export class HistoryComponent implements OnInit {
 
   user: any = {};
+  userlist: any[];
 
   constructor(
     private route: ActivatedRoute,
@@ -23,9 +24,9 @@ export class HistoryComponent implements OnInit {
       this.auth.gettransactionId(params.id)
       .subscribe(user => {
         this.user = user;
-        this.user = Array.of (this.user);
-        console.log('this.transaction', this.user[0]._id);
-  });
+        this.userlist = Array.of (this.user)
+        console.log('this.transaction',this.userlist);
+  })
 
 });
 
