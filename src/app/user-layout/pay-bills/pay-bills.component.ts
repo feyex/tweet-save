@@ -62,7 +62,7 @@ ngOnInit() {
     console.log('Hey, its me Paystack payment button');
     this.billService.processPayment(bill, state, disco, meter, amount, email, ref, user_id)
     .subscribe((res: any) => {
-      if (res.status == true) {
+      if (res.status === true) {
         console.log('Bill data saved to DB', res);
         this.router.navigate(['user/receipt']);
       } else { console.error(); }

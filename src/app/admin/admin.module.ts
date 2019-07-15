@@ -14,12 +14,13 @@ import { FeedsComponent } from './feeds/feeds.component';
 import { AddDiscoComponent } from './add-disco/add-disco.component';
 import { SupportComponent } from './support/support.component';
 import { SupportdashboardComponent } from './supportdashboard/supportdashboard.component';
+import { IssueformComponent } from './issueform/issueform.component';
 import {RoleGuardGuard as RoleGuard} from '../auth/role-guard.guard';
 
 @NgModule({
   declarations: [AdminlayoutComponent, AdmindashboardComponent, OrdersComponent, PaymentComponent,
                  AdminhistoryComponent, UserManagementComponent, ReferralsComponent, FeedsComponent,
-                 AddDiscoComponent, SupportComponent, SupportdashboardComponent, RoleGuard],
+                 AddDiscoComponent, SupportComponent, SupportdashboardComponent, IssueformComponent, RoleGuard],
 
   imports: [
     CommonModule,

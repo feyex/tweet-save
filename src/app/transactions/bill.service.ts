@@ -7,39 +7,20 @@ import { Router } from '@angular/router';
 })
 export class BillService {
 
-  isPrinting = false;
-  constructor(private httpClient: HttpClient,
-              private router: Router) { }
+
+  constructor(private httpClient: HttpClient) { }
   // backend server instance
   apiServer = 'http://localhost:4000';
 
-  processPayment(user_id,bill, state, disco, meter, amount, email, ref) {
+  // tslint:disable-next-line:variable-name
+  processPayment(user_id, bill, state, disco, meter, amount, email, ref) {
     const billData = {
-      user_id ,bill, state, disco, meter, amount, email, ref
+      user_id, bill, state, disco, meter, amount, email, ref
     };
     return this.httpClient.post(`${this.apiServer}/transaction/transactions`, billData);
   }
 
   getTransData() {
-    // const id = localStorage.getItem;
-    // console.log('id', id);
     return this.httpClient.get(`${this.apiServer}/transaction/latesttransact`);
   }
-
-
-  // printDocument() {
-
-  //   // this.router.navigate(['/user',
-  //   //   { outlets: {
-  //   //     receipt: ['receipt']
-  //   //   }}]);
-  // }
-
-  // onDataReady() {
-  //   setTimeout(() => {
-  //     window.print();
-  //     this.isPrinting = false;
-  //     // this.router.navigate([{ outlets: { receipt: null }}]);
-  //   });
-  // }
 }

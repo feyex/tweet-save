@@ -19,13 +19,13 @@ export class UserAuthService {
   authSubject = new BehaviorSubject(false);
 
   // signup user
-  signin(email, firstname, lastname, phoneNumber, password,referral) {
+  signin(email, firstname, lastname, phoneNumber, password, referral) {
     const obj = {
-      firstname: firstname,
-      lastname: lastname,
-      password: password,
-      email: email,
-      phoneNumber: phoneNumber,
+      firstname,
+      lastname,
+      password,
+      email,
+      phoneNumber,
       referral
     };
     return this.httpClient.post(`${this.apiServer}/api/users`, obj);
@@ -36,8 +36,8 @@ export class UserAuthService {
   // log user in
   login(email, password) {
     const msg = {
-      email: email,
-      password: password
+      email,
+      password
     };
     return this.httpClient.post<any>(`${this.apiServer}/api/login`, msg)
       .pipe(
@@ -65,10 +65,10 @@ export class UserAuthService {
   // send report message to admin
   contact(fullname, email, phoneNumber, message) {
     const obj = {
-      fullname: fullname,
-      email: email,
-      phoneNumber: phoneNumber,
-      message: message,
+      fullname,
+      email,
+      phoneNumber,
+      message,
 
     };
 
@@ -95,10 +95,10 @@ export class UserAuthService {
     // update user info in db
     updateUser(firstname, lastname, email, phoneNumber) {
       const obj = {
-        firstname: firstname,
-        lastname: lastname,
-        email: email,
-        phoneNumber: phoneNumber,
+        firstname,
+        lastname,
+        email,
+        phoneNumber,
 
       };
       this.id = localStorage.userid;
@@ -121,7 +121,7 @@ export class UserAuthService {
     this.id = localStorage.userid;
     return this
             .httpClient
-            .get(this.apiServer + `/transaction/transactions/`+ this.id);
+            .get(this.apiServer + `/transaction/transactions/` + this.id);
     }
 
 
@@ -129,7 +129,7 @@ export class UserAuthService {
     // confirm password exist in db
     checkpwdexist(password: string) {
       const pwd = {
-        password: password
+        password
       };
       this.id = localStorage.userid;
       return this
@@ -140,7 +140,7 @@ export class UserAuthService {
     // update password in db
     updatepwd(password) {
       const pwd = {
-        password: password
+        password
       };
       this.id = localStorage.userid;
       return this
