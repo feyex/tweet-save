@@ -15,8 +15,8 @@ export class PayBillsComponent implements OnInit {
   user: any;
 refNum = Math.floor(Math.random() * 10000000000) + 999;
 
-isLinear = true;
 billformGroup: FormGroup;
+// bill = new FormControl(Validators.required);
 
 constructor(
     private bfb: FormBuilder,
@@ -46,7 +46,7 @@ ngOnInit() {
     });
   }
 
-  processPayment() {
+  paymentDone($event) {
     const bill = this.billformGroup.value.bill;
     const state = this.billformGroup.value.state;
     const disco = this.billformGroup.value.disco;
@@ -57,13 +57,14 @@ ngOnInit() {
     console.log('refNum', ref);
     console.log('Hey, its me Paystack payment button');
     this.billService.processPayment(bill, state, disco, meter, amount, email, ref)
-    .subscribe((res: any ) => {
-      if (res.status === true) {
-        console.log('Bill data saved to DB', res.status);
+    .subscribe((res: any) => {
+      if (res.status == true) {
+        console.log('Bill data saved to DB', res);
+        this.router.navigate(['user/receipt']);
       } else { console.error(); }
     });
   }
+
   paymentCancel() {}
-  paymentDone($event) {}
 }
 

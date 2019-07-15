@@ -11,7 +11,7 @@
             <div class="tab-content">
 
                 <form [formGroup]="billformGroup">
-                    <mat-horizontal-stepper [linear]="isLinear" #stepper>
+                    <mat-horizontal-stepper linear #stepper="matHorizontalStepper">
                     <mat-step [stepControl]="billformGroup">
                         <ng-template matStepLabel>Initiate</ng-template>
                     <div class="row">
@@ -23,12 +23,12 @@
                                 Select bill below to continue
                             </p>
                             <div class="selectBox mt-3">
-                                <select formControlName="bill" class="form-control">
+                                <select formControlName="bill" class="form-control" required>
                                     <option value="Electricity">Electricity</option>
                                 </select>
                             </div>
                             <div class="selectBox mt-3">
-                                <select formControlName="state" class="form-control">
+                                <select formControlName="state" class="form-control" required>
                                     <option value="">Select State</option>
                                     <option value="Abuja">Abuja</option>
                                     <option value="Lagos">Lagos</option>
@@ -36,24 +36,24 @@
                                 </select>
                             </div>
                             <div class="selectBox mt-3">
-                                <select formControlName="disco" class="form-control">
+                                <select formControlName="disco" class="form-control" required>
                                     <option value="">Select Disco</option>
-                                    <option value="Abuja Disco">Abuja Disco</option>
-                                    <option value="Lagos Disco">Lagos Disco</option>
+                                    <option value="Abuja Distribution Company">Abuja Disco</option>
+                                    <option value="Lagos Distribution Company">Lagos Disco</option>
                                 </select>
                             </div>
                             <input formControlName="meter" class="form-control mt-3" style="height: 40px;"
-                                placeholder="Enter Meter Number">
+                                placeholder="Enter Meter Number" required>
 
                             <p class="p-17 mt-5">
                                 How much do you want?
                             </p>
-                            <input formControlName="amount" class="form-control mt-3 mb-4">
+                            <input formControlName="amount" class="form-control mt-3 mb-4" require>
                             <p class="p-17 mt-5">
                                 Enter your email
                             </p>
-                            <input type="email"  formControlName="email" class="form-control mt-3 mb-4">
-                            <button mat-button class="mybtn btn-full px-4 py-2" matStepperNext type="button">Next</button>
+                            <input type="email"  formControlName="email" class="form-control mt-3 mb-4" required>
+                            <button mat-button class="btn btn-Orange mb-2" style="width: 200px;" [disabled]="!billformGroup" matStepperNext type="button">Next</button>
                         </div>
                     </div>
                     </mat-step>
@@ -85,17 +85,16 @@
                     </ul>
                     </div><br/><br/>
                     <div style="margin-left: 20%;">
-                      <button mat-button class="mybtn btn-full px-2 py-2" matStepperPrevious>Back</button>&nbsp;&nbsp;
+                      <button mat-button class="btn btn-Orange mb-2" style="width: 100px;" matStepperPrevious>Back</button>&nbsp;&nbsp;
                       <angular4-paystack
                       [key]="'pk_test_5a8bec923a3f6471bc8d6a5824bd9d6075868940'"
                       [email]="billformGroup.value.email"
                       [amount]="billformGroup.value.amount * 100"
                       [ref]="billformGroup.value.ref"
                       [channels]="['card']"
-                      [class]="'mybtn btn-full px-4 py-2'"
+                      [class]="'btn btn-Orange mb-2'"
                       (close)="paymentCancel()"
-                      (callback)="paymentDone($event)"
-                      (click)="processPayment()">Pay</angular4-paystack>
+                      (callback)="paymentDone($event)">Pay Now</angular4-paystack>
                     </div>
                   </mat-step>
                 </mat-horizontal-stepper>

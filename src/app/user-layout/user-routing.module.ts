@@ -10,6 +10,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { HelpComponent } from './help/help.component';
 import { HistoryComponent } from './history/history.component';
 import { UserReferralsComponent } from './user-referrals/user-referrals.component';
+import { ReceiptComponent } from './receipt/receipt.component';
 
 const routes: Routes = [
   {
@@ -63,12 +64,18 @@ const routes: Routes = [
             data: {
               expectedRole: 'user'
             }},
+            { path: 'receipt',
+            component: ReceiptComponent ,
+            canActivate: [AuthGuard],
+            data: {
+              expectedRole: 'user'
+            }},
     ]
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+exports: [RouterModule]
 })
 export class UserRoutingModule { }
