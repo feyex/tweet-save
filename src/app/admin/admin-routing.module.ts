@@ -19,10 +19,11 @@ const routes: Routes = [
       children: [
             { path: 'dashboard',
             component: AdmindashboardComponent ,
-            canActivate: [RoleGuard],
-            data: {
-              expectedRole: 'admin'
-            }},
+            // canActivate: [RoleGuard],
+            // data: {
+            //   expectedRole: 'admin'
+            // }
+          },
             { path: 'orders', component: OrdersComponent },
             { path: 'payment', component: PaymentComponent },
             { path: 'history', component: AdminhistoryComponent },
