@@ -14,10 +14,10 @@ import { BillService } from './../../transactions/bill.service';
 export class PayBillsComponent implements OnInit {
 
 user: any;
-refNum = Math.floor(1000 + Math.random() * 9000);
+refNum = Math.floor(1000 + Math.random() * 10000000000);
 
-isLinear = false;
 billformGroup: FormGroup;
+// bill = new FormControl(Validators.required);
 
 constructor(
     private bfb: FormBuilder,
@@ -28,15 +28,15 @@ constructor(
   ) { }
 
 ngOnInit() {
-  
-    this.route.params.subscribe(params=>{
+
+    this.route.params.subscribe(params => {
       this.auth.gettransaction(params['id'])
-        .subscribe(res =>{
+        .subscribe(res => {
           this.user = res;
-          console.log('users',this.user)
-        })
-    })
-  
+          console.log('users', this.user);
+        });
+    });
+
 
     this.billformGroup = this.bfb.group({
       bill: ['', Validators.required],
@@ -49,7 +49,7 @@ ngOnInit() {
     });
   }
 
-  processPayment() {
+  paymentDone($event) {
     const bill = this.billformGroup.value.bill;
     const state = this.billformGroup.value.state;
     const disco = this.billformGroup.value.disco;
@@ -57,16 +57,17 @@ ngOnInit() {
     const amount = this.billformGroup.value.amount;
     const email = this.billformGroup.value.email;
     const ref = this.refNum;
-    const user_id = localStorage.userid;
+    // const user_id = localStorage.userid;
     console.log('refNum', ref);
-    console.log('Hey, its me Paystack payment button',user_id);
-    this.billService.processPayment(user_id,bill, state, disco, meter, amount, email, ref)
-    .subscribe((res: any ) => {
+    console.log('Hey, its me Paystack payment button');
+    this.billService.processPayment(bill, state, disco, meter, amount, email, ref)
+    .subscribe((res: any) => {
       if (res.status === true) {
-        console.log('Bill data saved to DB', res.status);
+        console.log('Bill data saved to DB', res);
+        this.router.navigate(['user/receipt']);
       } else { console.error(); }
     });
   }
+
   paymentCancel() {}
-  paymentDone($event) {}
 }

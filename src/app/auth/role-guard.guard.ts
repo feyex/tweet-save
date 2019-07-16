@@ -12,7 +12,7 @@ export class RoleGuardGuard implements CanActivate {
   constructor(public auth: UserAuthService, public router: Router) {}
 
   canActivate(route: ActivatedRouteSnapshot): boolean {
-
+    
     if (!localStorage.getItem('access_token')) {
       this.router.navigate(['login']);
       return false;
@@ -24,13 +24,13 @@ export class RoleGuardGuard implements CanActivate {
     // decode the token to get its payload
     const tokenPayload = decode(token);
 
-    if (localStorage.getItem('access_token') && tokenPayload.role !== expectedRole) {
 
+    if (localStorage.getItem('access_token') && tokenPayload.role !== expectedRole) {
       this.router.navigate(['login']);
       return false;
-
     }
-
+   
     return true;
   }
 }
+
