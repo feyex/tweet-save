@@ -6,6 +6,10 @@ import { LoginComponent } from './account/login/login.component';
 
 import { UserModule } from './user-layout/user.module';
 import { UserRoutingModule } from './user-layout/user-routing.module';
+import { AdminRoutingModule } from './admin/admin-routing.module';
+import { AdminModule } from './admin/admin.module';
+
+
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { AuthGuard } from './auth/auth.guard';
 
@@ -31,8 +35,11 @@ loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)},
 
 @NgModule({
   imports: [RouterModule.forRoot(routes),
-            UserRoutingModule, UserModule],
+            UserRoutingModule, UserModule,
+            AdminModule,AdminRoutingModule],
 
-  exports: [RouterModule, UserModule, UserRoutingModule]
+  exports: [RouterModule, UserModule,
+            UserRoutingModule,AdminModule,
+            AdminRoutingModule]
 })
 export class AppRoutingModule { }
