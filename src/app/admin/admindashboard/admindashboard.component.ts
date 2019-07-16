@@ -16,6 +16,7 @@ export class AdmindashboardComponent implements OnInit {
   chart2:any;
   gradientStroke:any; 
   user: any = {};
+  order: Object;
 
   constructor(
     private route: ActivatedRoute,
@@ -61,10 +62,10 @@ export class AdmindashboardComponent implements OnInit {
 //get all orders in the system
 this.auth.getOrders()
 .then(user => {
-  this.user = user;
-  this.user = Array.of (this.user);
+  this.order = user;
+  this.user = Array.of (this.order);
   this.user = this.user[0];
-  console.log('this.contact',this.user);
+  console.log('this.contact',this.user.length);
 
 
 });
