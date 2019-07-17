@@ -397,7 +397,7 @@
                 <div class="col-lg-6 col-xs-12 adminA mb-4">
                   <p class="s-14">Password*</p>
                   <input type="password" class="form-control" #newpassword="ngModel" [(ngModel)]="user.newpassword"
-                      name="newpassword" required (ngModelChange)="onChange(event)">
+                      name="newpassword" required (ngModelChange)="onChange()">
                         <div *ngIf="newpassword?.invalid && (newpassword?.dirty || newpassword?.touched)" class="text-danger">
                             <div *ngIf="newpassword.errors?.required">
                                 new password is required.
@@ -408,7 +408,7 @@
                 <div class="col-lg-6 col-xs-12 adminA mb-4">
                   <p class="s-14">Confirm Password*</p>
                   <input type="password" class="form-control" #confirmpassword="ngModel" [(ngModel)]="user.confirmpassword"
-                        name="confirmpassword" required (ngModelChange)="onChange(event)" >
+                        name="confirmpassword" required (ngModelChange)="onChange()" >
                           <div *ngIf="confirmpassword?.invalid && (confirmpassword?.dirty || confirmpassword?.touched)" class="text-danger">
                               <div *ngIf="confirmpassword.errors?.required">
                                   Confirm password is required.

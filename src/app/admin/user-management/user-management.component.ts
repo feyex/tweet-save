@@ -58,7 +58,7 @@ export class UserManagementComponent implements OnInit {
     this.user.confirmpassword = "";
   }
 
-  onChange(event:any){
+  public onChange(){
  
     const newpassword = this.user.newpassword;
     const confirmpassword = this.user.confirmpassword;

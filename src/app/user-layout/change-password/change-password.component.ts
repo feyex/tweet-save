@@ -38,6 +38,12 @@ export class ChangePasswordComponent implements OnInit {
     
   }
 
+  public cancel(){
+    this.changepwd.currentpass = "";
+    this.changepwd.newpassword ="";
+    this.changepwd.confirmpassword="";
+  }
+
   checkpwdexist(){
     this.auth.checkpwdexist(this.changepwd.currentpass) 
       .subscribe((res:any) =>{
@@ -61,7 +67,7 @@ export class ChangePasswordComponent implements OnInit {
 
   }
 
-  onChange(event:any){
+  public onChange(){
     const currentpass = this.changepwd.currentpass;
     const newpassword = this.changepwd.newpassword;
     const confirmpassword = this.changepwd.confirmpassword
