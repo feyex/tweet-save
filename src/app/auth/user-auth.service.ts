@@ -110,6 +110,7 @@ export class UserAuthService {
      // to fetch each Users data by user_Id
    gettransactionId(id: string) {
     this.id = localStorage.userid;
+    console.log(this.id);
     return this
             .httpClient
             .get<any[]>(this.apiServer + `/transaction/transact/` + this.id).pipe(map(data => data));
