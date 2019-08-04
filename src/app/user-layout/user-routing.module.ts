@@ -30,11 +30,17 @@ const routes: Routes = [
             expectedRole: 'user'
           }},
           { path: 'pay-bills',
-            component: PayBillsComponent
-           },
+            component: PayBillsComponent,
+            canActivate: [AuthGuard],
+            data: {
+              expectedRole: 'user'
+            }},
           { path: 'pay-bills/:id',
-            component: PayBillsComponent
-          },
+            component: PayBillsComponent,
+            canActivate: [AuthGuard],
+            data: {
+              expectedRole: 'user'
+            }},
           { path: 'profile',
             component: ProfileComponent ,
             canActivate: [AuthGuard],

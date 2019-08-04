@@ -57,12 +57,14 @@ export class UserBillComponent implements OnInit {
       const amount = this.billformGroup.value.amount;
       const email = this.billformGroup.value.email;
       const ref = this.refNum;
-      const user_id = localStorage.userid;
+      const user_id = "";
+
       console.log('refNum', ref);
       console.log('Hey, its me Paystack payment button');
       this.billService.processPayment(bill, state, disco, meter, amount, email, ref, user_id)
       .subscribe((res: any) => {
-        if (res.status === true) {
+        console.log('res',res)
+        if (res.status == true) {
           console.log('Bill data saved to DB', res);
           this.router.navigate(['user-receipt']);
         } else { console.error(); }
