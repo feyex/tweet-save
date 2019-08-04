@@ -8,7 +8,8 @@ export class AdminAuthService {
   id: any;
 
    // set backend server url instance
-   apiServer = 'http://localhost:4000';
+  //  apiServer = 'http://localhost:4000';
+  apiServer ="https://infinitelight-api.herokuapp.com";
 
    constructor(private httpClient: HttpClient) { }
 
