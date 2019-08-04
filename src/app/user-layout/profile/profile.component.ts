@@ -67,6 +67,7 @@ public submit() {
             timeOut: 4000,
             positionClass: 'toast-top-center'
           });
+          window.location.reload();
         }
         else{
           this.toastr.error("Update Failed.", "Profile Error", {

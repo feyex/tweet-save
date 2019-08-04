@@ -12,6 +12,7 @@ import { HistoryComponent } from './history/history.component';
 import { UserReferralsComponent } from './user-referrals/user-referrals.component';
 import { ReceiptComponent } from './receipt/receipt.component';
 
+
 const routes: Routes = [
   {
     path: 'user', component: UserLayoutComponent,

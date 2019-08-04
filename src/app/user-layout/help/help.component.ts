@@ -62,6 +62,8 @@ export class HelpComponent implements OnInit {
               timeOut: 4000,
               positionClass: 'toast-top-center'
             });
+            this.contact.message = "";
+            
           }
           else{
             this.toastr.error("Report Failed. Please fill all required fields", "Report Error", {

@@ -15,6 +15,7 @@ export class PaymentComponent implements OnInit {
   chart2: any;
   gradientStroke: any;
   user: any = {};
+  collection: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -64,6 +65,7 @@ export class PaymentComponent implements OnInit {
         this.user = user;
         this.user = Array.of (this.user);
         this.user = this.user[0];
+        this.collection = this.user.length;
         console.log('this.contact',this.user);
 
 
@@ -71,4 +73,33 @@ export class PaymentComponent implements OnInit {
 
   }
 
+ //Pagination functionalities
+ config = {
+  itemsPerPage: 10,
+  currentPage: 1,
+  totalitems: this.collection
+};
+
+public maxSize: number = 20;
+public directionLinks: boolean = true;
+public autoHide: boolean = false;
+public responsive: boolean = true;
+public labels: any = {
+    previousLabel: '<',
+    nextLabel: '>',
+    screenReaderPaginationLabel: 'Pagination',
+    screenReaderPageLabel: 'page',
+    screenReaderCurrentLabel: `You're on page`
+};
+
+onPageChange(event){
+  console.log(event);
+  this.config.currentPage = event;
 }
+
+}
+
+
+
+
+

@@ -4,6 +4,9 @@
       <h4>
         <img src="../../../assets/img/refer.svg" alt="referrals">&nbsp; Referrals
       </h4>
+      <h6>
+         Referral No: {{this.user.message?.referral}}
+      </h6>
     </div>
     <div class="col-lg-6 col-xs-12 mb-3">
       <div class="dashboard">
@@ -38,6 +41,13 @@
           For every friend you refer to our great electricity service, We’ll give you both 500
           Electricity Unit.
           The more friends you refer, the more unit you can receive
+        </p>
+        <p class="p-16">
+          Input referral code:
+        </p>
+        <p>
+          <input type="text" class="refer form-control" placeholder="3456">
+          <button class="btn-Orange py-2 px-4 mt-3">Submit</button>
         </p>
         <p class="p-16">
           Share our link on

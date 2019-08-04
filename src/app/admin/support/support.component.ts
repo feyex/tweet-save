@@ -10,6 +10,7 @@ import { AdminAuthService } from '../../auth/admin-auth.service';
 export class SupportComponent implements OnInit {
 
   user: any = {};
+  collection: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,13 +25,49 @@ export class SupportComponent implements OnInit {
         this.user = user;
         this.user = Array.of (this.user);
         this.user = this.user[0].message;
-        console.log('this.contact',this.user);
+        this.collection = this.user.length;
 
-
-});
+    });
  
   }
 
+  deleteSupport(id){
+    this.auth.deleteContact(id)
+    .subscribe (user => {
+      this.user= user;
+      alert('message deleted');
+    })
+    window.location.reload();
+  }
+
+//Pagination functionalities
+config = {
+  itemsPerPage: 7,
+  currentPage: 1,
+  totalitems: this.collection
+};
+
+public maxSize: number = 20;
+public directionLinks: boolean = true;
+public autoHide: boolean = false;
+public responsive: boolean = true;
+public labels: any = {
+    previousLabel: '<',
+    nextLabel: '>',
+    screenReaderPaginationLabel: 'Pagination',
+    screenReaderPageLabel: 'page',
+    screenReaderCurrentLabel: `You're on page`
+};
+
+onPageChange(event){
+  console.log(event);
+  this.config.currentPage = event;
 }
+
+}
+
+
+
+
 
 

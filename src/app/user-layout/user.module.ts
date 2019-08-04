@@ -9,6 +9,7 @@ import { MatInputModule, MatButtonModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ToastrModule } from 'ngx-toastr';
 import { Angular4PaystackModule } from 'angular4-paystack';
+import { HighchartsChartModule } from 'highcharts-angular';
 
 import { UserRoutingModule } from './user-routing.module';
 
@@ -26,11 +27,13 @@ import { UserAuthService } from '../auth/user-auth.service';
 import { BillService } from '../transactions/bill.service';
 import { ReceiptComponent } from './receipt/receipt.component';
 
+
 @NgModule({
   declarations: [UserLayoutComponent, DashboardComponent, ManageWalletComponent,
                 PayBillsComponent, ProfileComponent, ChangePasswordComponent, HelpComponent,
                 HistoryComponent, UserReferralsComponent, ReceiptComponent ],
   imports: [
+    HighchartsChartModule,
     CommonModule,
     UserRoutingModule,
     FormsModule,

@@ -8,6 +8,7 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { MatInputModule, MatButtonModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ToastrModule } from 'ngx-toastr';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 import { AdminRoutingModule } from './admin-routing.module';
 
@@ -24,12 +25,13 @@ import { SupportComponent } from './support/support.component';
 import { SupportdashboardComponent } from './supportdashboard/supportdashboard.component';
 import { IssueformComponent } from './issueform/issueform.component';
 import {RoleGuardGuard as RoleGuard} from '../auth/role-guard.guard';
-import {AdminAuthService} from '../auth/admin-auth.service'
+import {AdminAuthService} from '../auth/admin-auth.service';
+import { SearchPipe } from './admindashboard/search.pipe'
 
 @NgModule({
   declarations: [AdminlayoutComponent, AdmindashboardComponent, OrdersComponent, PaymentComponent,
                  AdminhistoryComponent, UserManagementComponent, ReferralsComponent, FeedsComponent,
-                 AddDiscoComponent, SupportComponent, SupportdashboardComponent, IssueformComponent],
+                 AddDiscoComponent, SupportComponent, SupportdashboardComponent, IssueformComponent, SearchPipe],
 
   imports: [
     CommonModule,
@@ -39,6 +41,7 @@ import {AdminAuthService} from '../auth/admin-auth.service'
     BrowserAnimationsModule,
     MatStepperModule, MatInputModule, MatButtonModule,
     MatFormFieldModule,
+    NgxPaginationModule,
     ToastrModule.forRoot(),
     AdminRoutingModule
   ],

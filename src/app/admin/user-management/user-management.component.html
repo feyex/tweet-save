@@ -33,7 +33,7 @@
               <div class="col-12">
                 <div class="p-2" style="border: 1px solid #e6e9ec">
                   <div class="row">
-                    <div class="col-lg-2">
+                    <div class="col-lg-3 pt-2">
                       <div class="input-group admin">
                         <div class="input-group-prepend pt-2 px-2">
                           <i class="fas fa-align-left" style="color: #31384c;font-size: 16px;"></i>
@@ -47,17 +47,17 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-3 pt-2">
                       <div class="input-group admin">
                         <div class="input-group-prepend px-2 py-2">
                           <img src="../../../assets/img/search.svg" alt="search">
                         </div>
-                        <input type="text" placeholder="Search" class="form-control s-14">
+                        <input type="text" [(ngModel)] ="searchText" placeholder="Search" class="form-control s-14">
                       </div>
                     </div>
                     <div class="col-lg-2"></div>
                     <div class="col-lg-2"></div>
-                    <div class="col-lg-2"></div>
+                    <!-- <div class="col-lg-2"></div> -->
                     <div class="col-lg-2">
                       <button class="btn btn-Orange w-100">
                         CREATE USER
@@ -78,7 +78,7 @@
                         <th>ACTION</th>
                       </thead>
                       <tbody>
-                        <tr *ngFor ="let role of result">
+                        <tr *ngFor ="let role of result| paginate: config | search:{firstname: searchText, lastname:searchText, email: searchText, role: searchText}; let i=index;">
                           <td>{{role.firstname}} {{role.lastname}}</td>
                           <td>{{role.email}}</td>
                           <td>{{role.role}}</td>
@@ -94,6 +94,21 @@
                         </tr>
                       </tbody>
                     </table>
+
+                     <!-- pagination controls -->
+                    <pagination-controls 
+                    [maxSize]="maxSize"
+                    [directionLinks]="directionLinks"
+                    [autoHide]="autoHide"
+                    [responsive]="responsive"
+                    [previousLabel]="labels.previousLabel"
+                    [nextLabel]="labels.nextLabel"
+                    [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
+                    [screenReaderPageLabel]="labels.screenReaderPageLabel"
+                    [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel"
+                    (pageChange)="onPageChange($event)">
+                  </pagination-controls>
+
                   </div>
                 </div>
               </div>
@@ -106,7 +121,7 @@
               <div class="col-12">
                 <div class="p-2" style="border: 1px solid #e6e9ec">
                   <div class="row">
-                    <div class="col-lg-2">
+                    <div class="col-lg-3 pt-2">
                       <div class="input-group admin">
                         <div class="input-group-prepend pt-2 px-2">
                           <i class="fas fa-align-left" style="color: #31384c;font-size: 16px;"></i>
@@ -120,7 +135,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-3 pt-2">
                       <div class="input-group admin">
                         <div class="input-group-prepend px-2 py-2">
                           <img src="../../../assets/img/search.svg" alt="search">
@@ -130,7 +145,7 @@
                     </div>
                     <div class="col-lg-2"></div>
                     <div class="col-lg-2"></div>
-                    <div class="col-lg-2"></div>
+                    <!-- <div class="col-lg-2"></div> -->
                     <div class="col-lg-2">
                       <button class="btn btn-Orange w-100">
                         CREATE ROLE
@@ -152,16 +167,16 @@
                       <tbody>
                           <tr *ngFor ="let role of result">
                           <td>{{role.role}}</td>
-                          <td>Admin User</td>
+                          <td>{{role.role}}</td>
                           <td>
                             <div class="custom-control custom-switch">
-                              <input type="checkbox" class="custom-control-input" id="customSwitch3">
-                              <label class="custom-control-label" for="customSwitch3">
+                              <input type="checkbox" class="custom-control-input" id="">
+                              <label class="custom-control-label" for="">
                                 Activate
                               </label>
                             </div>
                           </td>
-                          <td>Edit Delete</td>
+                          <td><a > Delete</a></td>
                         </tr>
                         
                       </tbody>
@@ -335,7 +350,7 @@
                 <div class="col-lg-6 col-xs-12 adminA mb-4">
                   <p class="s-14">First Name*</p>
                   <input type="text" class="form-control" #firstname="ngModel" [(ngModel)]="user.firstname" name="firstname" required>
-                  <div *ngIf="firstname?.invalid && (firstname?.dirty || firstname?.touched)" class="text-danger">
+                  <div *ngIf="firstname?.invalid && (firstname?.dirty || firstname?.touched)" class="space text-danger">
                       <div *ngIf="firstname.errors?.required">
                           First name is required.
                       </div>
@@ -345,7 +360,7 @@
                 <div class="col-lg-6 col-xs-12 adminA mb-4">
                   <p class="s-14">Last Name*</p>
                   <input type="text" class="form-control" #lastname="ngModel" [(ngModel)]="user.lastname" name="lastname" required>
-                    <div *ngIf="lastname?.invalid && (lastname?.dirty || lastname?.touched)" class="text-danger">
+                    <div *ngIf="lastname?.invalid && (lastname?.dirty || lastname?.touched)" class="space text-danger">
                         <div *ngIf="lastname.errors?.required">
                             last name is required.
                         </div>
@@ -355,7 +370,7 @@
                 <div class="col-lg-6 col-xs-12 adminA mb-4">
                   <p class="s-14">Email Address*</p>
                   <input type="email" class="form-control" #email="ngModel" [(ngModel)]="user.email" name="email" pattern="[a-zA-Z0-9.-]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{3,}" required>
-                    <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="text-danger">
+                    <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="space text-danger">
                         <div *ngIf="email.errors?.required">
                             Email is required.
                         </div>
@@ -365,7 +380,7 @@
                 <div class="col-lg-6 col-xs-12 adminA mb-4">
                   <p class="s-14">Staff ID*</p>
                   <input type="text" class="form-control" #staffid="ngModel" [(ngModel)]="user.staffid" name="staffid" required>
-                    <div *ngIf="staffid?.invalid && (staffid?.dirty || staffid?.touched)" class="text-danger">
+                    <div *ngIf="staffid?.invalid && (staffid?.dirty || staffid?.touched)" class="space text-danger">
                         <div *ngIf="staffid.errors?.required">
                             Staff ID is required.
                         </div>
@@ -375,7 +390,7 @@
                 <div class="col-lg-6 col-xs-12 adminA mb-4">
                   <p class="s-14">Department*</p>
                   <div class="selectBox3">
-                    <select name id class="form-control" #role="ngModel" [(ngModel)]="user.role" name="role">
+                    <select name id class="form-control" #dept="ngModel" [(ngModel)]="user.dept" name="role">
                       <option value>Select Department</option>
                       <option value>Electricity</option>
                       <option value>Water</option>
@@ -398,7 +413,7 @@
                   <p class="s-14">Password*</p>
                   <input type="password" class="form-control" #newpassword="ngModel" [(ngModel)]="user.newpassword"
                       name="newpassword" required (ngModelChange)="onChange()">
-                        <div *ngIf="newpassword?.invalid && (newpassword?.dirty || newpassword?.touched)" class="text-danger">
+                        <div *ngIf="newpassword?.invalid && (newpassword?.dirty || newpassword?.touched)" class="space text-danger">
                             <div *ngIf="newpassword.errors?.required">
                                 new password is required.
                             </div>
@@ -409,12 +424,12 @@
                   <p class="s-14">Confirm Password*</p>
                   <input type="password" class="form-control" #confirmpassword="ngModel" [(ngModel)]="user.confirmpassword"
                         name="confirmpassword" required (ngModelChange)="onChange()" >
-                          <div *ngIf="confirmpassword?.invalid && (confirmpassword?.dirty || confirmpassword?.touched)" class="text-danger">
+                          <div *ngIf="confirmpassword?.invalid && (confirmpassword?.dirty || confirmpassword?.touched)" class="space text-danger">
                               <div *ngIf="confirmpassword.errors?.required">
                                   Confirm password is required.
                               </div>
                           </div>
-                          <div ng-message="required" style="color: red !important"  *ngIf="match">
+                          <div ng-message="required" style="color: red !important" class="space" *ngIf="match">
                             {{match}}
                           </div>
                 </div>

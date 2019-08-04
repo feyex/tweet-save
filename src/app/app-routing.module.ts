@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './account/signup/signup.component';
 import { LoginComponent } from './account/login/login.component';
+import { UserBillComponent } from './account/user-bill/user-bill.component';
+import { UserReceiptComponent } from './account/user-receipt/user-receipt.component';
 
 import { UserModule } from './user-layout/user.module';
 import { UserRoutingModule } from './user-layout/user-routing.module';
@@ -20,6 +22,8 @@ const routes: Routes = [
 { path: '', component: HomeComponent },
 { path: 'signup', component: SignupComponent },
 { path: 'login', component: LoginComponent },
+{ path: 'user-bill',component: UserBillComponent},
+{ path: 'user-receipt',component: UserReceiptComponent},
 
 // lazy-loading applied
 { path: 'user',
