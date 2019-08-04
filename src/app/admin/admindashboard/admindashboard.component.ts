@@ -17,6 +17,7 @@ export class AdmindashboardComponent implements OnInit {
   gradientStroke:any; 
   user: any = {};
   order: Object;
+  collection: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -59,17 +60,58 @@ export class AdmindashboardComponent implements OnInit {
       }
     });
 
-//get all orders in the system
+    //display all transactions
+    this.showorders();
+
+  }
+
+showorders(){
+  //get all orders in the system
 this.auth.getOrders()
 .then(user => {
   this.order = user;
   this.user = Array.of (this.order);
   this.user = this.user[0];
-  console.log('this.contact',this.user.length);
+
+  //pagination function
+ this.collection = this.user.length;
+  console.log('this.contacts',this.user);
 
 
 });
+}
 
+  deleteorder(id){
+    this.auth.deleteOrder(id)
+    .then (user => {
+      this.user = user;
+      alert('user deleted');
+    })
+    window.location.reload();
+  }
+
+  //Pagination functionalities
+  config = {
+    itemsPerPage: 10,
+    currentPage: 1,
+    totalitems: this.collection
+  };
+
+  public maxSize: number = 20;
+  public directionLinks: boolean = true;
+  public autoHide: boolean = false;
+  public responsive: boolean = true;
+  public labels: any = {
+      previousLabel: '<',
+      nextLabel: '>',
+      screenReaderPaginationLabel: 'Pagination',
+      screenReaderPageLabel: 'page',
+      screenReaderCurrentLabel: `You're on page`
+  };
+
+  onPageChange(event){
+    console.log(event);
+    this.config.currentPage = event;
   }
 
 }

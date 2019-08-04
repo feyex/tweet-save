@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AdminAuthService {
+  id: any;
 
    // set backend server url instance
    apiServer = 'http://localhost:4000';
@@ -46,6 +47,36 @@ getContacts() {
 //fetch all roles
 getRole() {
   return this.httpClient.get(`${this.apiServer}/api/admin`).toPromise();
+}
+
+//delete all users
+deleteOrder(id) {
+  return this.httpClient.delete(`${this.apiServer}/transaction/transactions/${id}`).toPromise();
+}
+
+//store disco
+disco(state,disco) {
+  const obj = {
+    state: state,
+    disco: disco,
+  };
+  return this.httpClient.post(`${this.apiServer}/disco/discos`, obj);
+      
+}
+
+//fetch all disco
+getDisco(){
+  return this.httpClient.get(`${this.apiServer}/disco/discos`);
+}
+
+//delete individual disco
+deleteDiisco(id){
+  return this.httpClient.delete(`${this.apiServer}/disco/discos/${id}`)
+}
+
+//delete individual disco
+deleteContact(id){
+  return this.httpClient.delete(`${this.apiServer}/contact/contacts/${id}`)
 }
 
 }

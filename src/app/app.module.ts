@@ -11,6 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ToastrModule } from 'ngx-toastr';
 import { Angular4PaystackModule } from 'angular4-paystack';
 import { NgxPrintModule } from 'ngx-print';
+import { HighchartsChartModule } from 'highcharts-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +22,8 @@ import {AuthGuard} from './auth/auth.guard';
 import {UserAuthService} from './auth/user-auth.service';
 import { BillService } from './transactions/bill.service';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { UserBillComponent } from './account/user-bill/user-bill.component';
+import { UserReceiptComponent } from './account/user-receipt/user-receipt.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -33,9 +36,12 @@ export function tokenGetter() {
     SignupComponent,
     LoginComponent,
     PagenotfoundComponent,
+    UserBillComponent,
+    UserReceiptComponent,
 
   ],
   imports: [
+  HighchartsChartModule,
   BrowserModule,
   AppRoutingModule,
   FormsModule,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
 import { UserAuthService } from '../../auth/user-auth.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 
 
 @Component({
@@ -10,9 +10,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./adminlayout.component.css']
 })
 export class AdminlayoutComponent implements OnInit {
-
+  user: any = {};
   constructor(private auth: UserAuthService,
-    private router: Router) { }
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   
   ngOnInit() {
@@ -26,6 +27,14 @@ export class AdminlayoutComponent implements OnInit {
       });
 
   });
+
+  //to get the user details of who is logged in
+  this.route.params.subscribe(params => {
+    this.auth.getUsersId(params['id']).then(res => {
+      this.user = res;
+})
+
+});
   }
 
   logout(){

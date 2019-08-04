@@ -19,20 +19,74 @@ const routes: Routes = [
       children: [
             { path: 'dashboard',
             component: AdmindashboardComponent ,
-            // canActivate: [RoleGuard],
-            // data: {
-            //   expectedRole: 'admin'
-            // }
+            canActivate: [RoleGuard],
+            data: {
+              expectedRole: 'admin'
+            }
           },
-            { path: 'orders', component: OrdersComponent },
-            { path: 'payment', component: PaymentComponent },
-            { path: 'history', component: AdminhistoryComponent },
-            { path: 'user_management', component: UserManagementComponent },
-            { path: 'referrals', component: ReferralsComponent },
-            { path: 'feeds', component: FeedsComponent },
-            { path: 'add_disco', component: AddDiscoComponent },
-            { path: 'support', component: SupportComponent },
-            { path: 'support_dashboard', component: SupportdashboardComponent },
+            { path: 'orders', 
+              component: OrdersComponent,
+              canActivate: [RoleGuard],
+              data: {
+                expectedRole: 'admin'
+              }
+            },
+            { path: 'payment', 
+              component: PaymentComponent,
+              canActivate: [RoleGuard],
+              data: {
+                expectedRole: 'admin'
+              }
+            },
+            { path: 'history',
+              component: AdminhistoryComponent ,
+              canActivate: [RoleGuard],
+              data: {
+                expectedRole: 'admin'
+              }
+            },
+            { path: 'user_management',
+              component: UserManagementComponent ,
+              canActivate: [RoleGuard],
+              data: {
+                expectedRole: 'admin'
+              }
+            },
+            { path: 'referrals', 
+              component: ReferralsComponent ,
+              canActivate: [RoleGuard],
+              data: {
+                expectedRole: 'admin'
+              }
+            },
+            { path: 'feeds', 
+              component: FeedsComponent ,
+              canActivate: [RoleGuard],
+              data: {
+                expectedRole: 'admin'
+              }
+            },
+            { path: 'add_disco', 
+              component: AddDiscoComponent ,
+              canActivate: [RoleGuard],
+              data: {
+                expectedRole: 'admin'
+              }
+            },
+            { path: 'support', 
+              component: SupportComponent ,
+              canActivate: [RoleGuard],
+              data: {
+                expectedRole: 'admin'
+              }
+            },
+            { path: 'support_dashboard', 
+              component: SupportdashboardComponent ,
+              canActivate: [RoleGuard],
+              data: {
+                expectedRole: 'admin'
+              }
+            }
 
     ]
   },

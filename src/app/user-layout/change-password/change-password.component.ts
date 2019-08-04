@@ -93,6 +93,9 @@ export class ChangePasswordComponent implements OnInit {
               timeOut: 4000,
               positionClass: 'toast-top-center'
             });
+            this.changepwd.currentpass = "";
+            this.changepwd.newpassword =" ";
+            this.changepwd.confirmpassword="";
           }
           else{
             this.toastr.error("Password Update Failed.", "Profile", {

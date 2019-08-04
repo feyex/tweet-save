@@ -17,6 +17,7 @@ export class UserManagementComponent implements OnInit {
     email: "",
     staffid: "",
     role:"",
+    dept:"",
     newpassword:"",
     confirmpassword:""
   }
@@ -31,6 +32,7 @@ export class UserManagementComponent implements OnInit {
     match: string;
     userform = false;
     result: any;
+  collection: any;
 
 
   constructor(
@@ -44,7 +46,7 @@ export class UserManagementComponent implements OnInit {
     this.auth.getRole()
       .then((res:any)=>{
         this.result = res;
-        console.log('role',this.result)
+        this.collection = this.result.length;
       })
   }
 
@@ -90,6 +92,7 @@ export class UserManagementComponent implements OnInit {
           timeOut: 4000,
           positionClass: 'toast-top-center'
         });
+        window.location.reload();
       }
       else{
         this.toastr.error("Registration Failed.", "Signup Error", {
@@ -114,5 +117,35 @@ onselect(){
   console.log(this.user.role)
 }
   
+
+deleteorder(id){
+  this.auth.deleteOrder(id)
+  .then (user => {
+    this.result = user;
+  })
+}
+//Pagination functionalities
+config = {
+  itemsPerPage: 10,
+  currentPage: 1,
+  totalitems: this.collection
+};
+
+public maxSize: number = 20;
+public directionLinks: boolean = true;
+public autoHide: boolean = false;
+public responsive: boolean = true;
+public labels: any = {
+    previousLabel: '<',
+    nextLabel: '>',
+    screenReaderPaginationLabel: 'Pagination',
+    screenReaderPageLabel: 'page',
+    screenReaderCurrentLabel: `You're on page`
+};
+
+onPageChange(event){
+  console.log(event);
+  this.config.currentPage = event;
+}
 
 }
