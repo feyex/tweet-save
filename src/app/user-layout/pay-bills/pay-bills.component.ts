@@ -13,6 +13,8 @@ import { BillService } from './../../transactions/bill.service';
 })
 export class PayBillsComponent implements OnInit {
 
+public isLinear:any;
+public processPayment:any;
 user: any;
 refNum = Math.floor(1000 + Math.random() * 10000000000);
 

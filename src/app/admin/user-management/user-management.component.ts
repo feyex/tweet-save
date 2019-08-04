@@ -32,7 +32,8 @@ export class UserManagementComponent implements OnInit {
     match: string;
     userform = false;
     result: any;
-  collection: any;
+    collection: any;
+    searchText:any;
 
 
   constructor(

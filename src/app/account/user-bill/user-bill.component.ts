@@ -10,6 +10,9 @@ import { BillService } from './../../transactions/bill.service';
   styleUrls: ['./user-bill.component.css']
 })
 export class UserBillComponent implements OnInit {
+
+  public isLinear:any;
+  public processPayment:any;
   user: any;
   refNum = Math.floor(1000 + Math.random() * 10000000000);
   

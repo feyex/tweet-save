@@ -16,6 +16,7 @@ export class PaymentComponent implements OnInit {
   gradientStroke: any;
   user: any = {};
   collection: any;
+  searchText:any;
 
   constructor(
     private route: ActivatedRoute,
