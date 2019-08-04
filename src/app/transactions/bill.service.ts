@@ -9,8 +9,8 @@ export class BillService {
 
   constructor(private httpClient: HttpClient) { }
   // backend server instance
-  apiServer = 'http://localhost:4000';
-  // apiServer ="https://infinitelight-api.herokuapp.com";
+  // apiServer = 'http://localhost:4000';
+  apiServer ="https://infinitelight-api.herokuapp.com";
 
 
   processPayment(bill, state, disco, meter, amount, email, ref,user_id) {

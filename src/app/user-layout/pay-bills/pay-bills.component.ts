@@ -60,7 +60,7 @@ ngOnInit() {
     const email = this.billformGroup.value.email;
     const ref = this.refNum;
     const user_id = localStorage.userid;
-    console.log('refNum', ref);
+    
     console.log('Hey, its me Paystack payment button');
     this.billService.processPayment(bill, state, disco, meter, amount, email, ref, user_id)
     .subscribe((res: any) => {
