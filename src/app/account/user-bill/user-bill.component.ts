@@ -57,7 +57,7 @@ export class UserBillComponent implements OnInit {
       const amount = this.billformGroup.value.amount;
       const email = this.billformGroup.value.email;
       const ref = this.refNum;
-      const user_id = "";
+      const user_id = null;
 
       console.log('refNum', ref);
       console.log('Hey, its me Paystack payment button');
