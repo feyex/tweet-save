@@ -39,33 +39,32 @@
                 <div class="table-responsive-md">
                     <table class="table">
                         <!-- <thead> -->
-                            <tr>
-                                <th>METER NUMBER</th>
-                                <th>TOP UP DATE</th>
-                                <th>AMOUNT</th>
-                                <th>ENERGY TOKEN</th>
-                                <th>PAYMENT METHOD</th>
-                                <th>STATUS</th>
-                                <th>ACTION</th>
-                            </tr>
+                        <tr>
+                            <th>METER NUMBER</th>
+                            <th>TOP UP DATE</th>
+                            <th>AMOUNT</th>
+                            <th>ENERGY TOKEN</th>
+                            <th>PAYMENT METHOD</th>
+                            <th>STATUS</th>
+                            <th>ACTION</th>
+                        </tr>
                         <!-- </thead> -->
                         <!-- <tbody> -->
-                            <tr *ngFor="let transactions of user">
+                        <tr *ngFor="let transactions of user">
 
-                                <td>{{transactions.meter}}</td>
-                                <td>{{transactions.createdAt}} </td>
-                                <td>{{transactions.amount}}</td>
-                                <td>{{transactions.token}}</td>
-                                <td>{{transactions.paymentMethod}}</td>
-                                <td>{{transactions.status}}</td>
-                                <td>
-                                     class="p-14"><i class="ion-android-expand"
-                                            style="color: #069e34;"></i>Pay-New</a>
+                            <td>{{transactions.meter}}</td>
+                            <td>{{transactions.createdAt}} </td>
+                            <td>{{transactions.amount}}</td>
+                            <td>{{transactions.token}}</td>
+                            <td>{{transactions.paymentMethod}}</td>
+                            <td>{{transactions.status}}</td>
+                            <td>
+                                class="p-14"><i class="ion-android-expand" style="color: #069e34;"></i><a>Pay-New</a>
 
-                                </td>
-                            <tr>
+                            </td>
+                        <tr>
 
-                        <!-- </tbody> -->
+                            <!-- </tbody> -->
                     </table>
                 </div>
             </div>
