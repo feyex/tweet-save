@@ -1,0 +1,45 @@
+<div id="signup">
+  <div class="container pt-3 pb-2">
+    <div class="row">
+      <div class="col-12 mb-4">
+        <a class="navbar-brand" [routerLink]="['']" routerLinkActive="router-link-active">
+          <div class="logo">
+          </div>
+        </a>
+      </div>
+      <div class="col-lg-4 col-xs-12 m-auto">
+        <form #signupForm = "ngForm">
+          <div class="dashboard" style="background: #fff;">
+            <p class="p-16">Tweet Save.</p>
+            <p class="p-12">Save Tweet or Messages</p>
+    
+            <div>
+              <div class="input-group">
+                <textarea #message="ngModel" [(ngModel)]="signup.message"
+                name="message" class="form-control" placeholder="Message" required cols="30" rows="5"></textarea>
+              </div>
+              <div *ngIf="message?.invalid && (message?.dirty || message?.touched)" class="text-danger">
+                <div class="space" *ngIf="message.errors?.required">
+                    Tweet Message  is required.
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="input-group mt-3">
+                <div class="input-group-prepend pl-3 pr-1">
+                  <i class="ion-person" style="font-size: 20px; color: #ddd;"></i>
+                </div>
+                <input type="text" #source="ngModel" [(ngModel)]="signup.source"
+                name="source" class="form-control" placeholder="Source">
+              </div>
+            </div>
+            <div class="p-12 my-2" style="color: #333;">
+              By clicking the submit button below you agreed to submit this tweet message which will be used for resaerch purpose
+            </div>
+            <button [disabled]="!signupForm.form.valid" (click)="create()" type="submit" class="btn btn-Orange w-100 mt-4 rounded">SUBMIT</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

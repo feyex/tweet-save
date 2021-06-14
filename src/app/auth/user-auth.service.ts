@@ -13,23 +13,19 @@ export class UserAuthService {
 
   constructor(private httpClient: HttpClient) { }
   // set backend server url instance
-  // apiServer = 'http://localhost:4000';
-  apiServer ="https://infinitelight-api.herokuapp.com";
+  apiServer = 'http://localhost:4000';
+  // apiServer ="https://infinitelight-api.herokuapp.com";
 
   // assume the API uses Jwtoken to authenticate user access
   authSubject = new BehaviorSubject(false);
 
   // signup user
-  signin(email, firstname, lastname, phoneNumber, password, referral) {
+  submitTweet(message, source) {
     const obj = {
-      firstname,
-      lastname,
-      password,
-      email,
-      phoneNumber,
-      referral
+      message,
+      source,
     };
-    return this.httpClient.post(`${this.apiServer}/api/users`, obj);
+    return this.httpClient.post(`${this.apiServer}/tweet/tweets`, obj);
 
   }
 

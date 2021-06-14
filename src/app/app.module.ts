@@ -16,14 +16,11 @@ import { HighchartsChartModule } from 'highcharts-angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { SignupComponent } from './account/signup/signup.component';
-import { LoginComponent } from './account/login/login.component';
+import { SignupComponent } from './account/tweet/tweet.component';
 import {AuthGuard} from './auth/auth.guard';
 import {UserAuthService} from './auth/user-auth.service';
 import { BillService } from './transactions/bill.service';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
-import { UserBillComponent } from './account/user-bill/user-bill.component';
-import { UserReceiptComponent } from './account/user-receipt/user-receipt.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -34,10 +31,7 @@ export function tokenGetter() {
     AppComponent,
     HomeComponent,
     SignupComponent,
-    LoginComponent,
     PagenotfoundComponent,
-    UserBillComponent,
-    UserReceiptComponent,
 
   ],
   imports: [

@@ -92,7 +92,7 @@ a.nav-link:hover{
   border-left: 0.5px solid #c1c1c1;
 }
 #signup{
-  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.36), rgba(67, 67, 67, 0.26)), url('./assets/img/homme.jpg');
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.36), rgba(67, 67, 67, 0.26)), url('./assets/images/v.jpg');
   background-size: cover;
   min-height: 100vh;
 }
@@ -108,13 +108,13 @@ a.nav-link:hover{
   font-size: 18px;
 }
 .carousel-1{
-  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.26), rgba(67, 67, 67, 0.16)), url('./assets/img/hoomee.jpg');
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.26), rgba(67, 67, 67, 0.16)), url('./assets/images/a.jpg');
 }
 .carousel-2{
-  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.26), rgba(67, 67, 67, 0.16)), url('./assets/img/homme.jpg');
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.26), rgba(67, 67, 67, 0.16)), url('./assets/images/cc.jpg');
 }
 .carousel-3{
-  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.26), rgba(67, 67, 67, 0.16)), url('./assets/img/homee.png');
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.26), rgba(67, 67, 67, 0.16)), url('./assets/images/Inbound-Marketing-New-York-846x540.jpg');
 }
 .carousel-1, .carousel-2, .carousel-3{
   background-size: cover;
