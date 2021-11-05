@@ -12,6 +12,7 @@
           <div class="dashboard" style="background: #fff;">
             <p class="p-16">Tweet Save.</p>
             <p class="p-12">Save Tweet or Messages</p>
+            <a href="/tweet" class="s-13 gtxtt">View All</a>
     
             <div>
               <div class="input-group">
@@ -31,6 +32,15 @@
                 </div>
                 <input type="text" #source="ngModel" [(ngModel)]="signup.source"
                 name="source" class="form-control" placeholder="Source">
+              </div>
+            </div>
+            <div>
+              <div class="input-group mt-3">
+                <div class="input-group-prepend pl-3 pr-1">
+                  <i class="ion-person" style="font-size: 20px; color: #ddd;"></i>
+                </div>
+                <input type="text" #source="ngModel" [(ngModel)]="signup.area"
+                name="area" class="form-control" placeholder="Area">
               </div>
             </div>
             <div class="p-12 my-2" style="color: #333;">

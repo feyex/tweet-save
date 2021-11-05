@@ -4,13 +4,14 @@ import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './account/tweet/tweet.component';
 
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { ListTweetComponent } from './account/list-tweet/list-tweet.component';
 
 
 
 
 const routes: Routes = [
-// { path: '', component: HomeComponent },
 { path: '', component: SignupComponent },
+{ path: 'tweet', component: ListTweetComponent },
 
 // end lazy-loading
 { path: '**', component: PagenotfoundComponent },

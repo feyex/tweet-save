@@ -15,6 +15,7 @@ export class SignupComponent implements OnInit {
   signup = {
     message : "",
     source : "", 
+    area : ""
   }
 
   referralNum = Math.floor(Math.random() * 100000);
@@ -33,9 +34,10 @@ export class SignupComponent implements OnInit {
 
     const message = this.signup.message;
     const source = this.signup.source;
+    const area = this.signup.area;
     
  
-    this.authService.submitTweet(message,source).subscribe((res:any) => {
+    this.authService.submitTweet(message,source,area).subscribe((res:any) => {
     
       if(res.status == true){
         this.toast.success("Tweet Message Submitted Successfully.", "Success", {

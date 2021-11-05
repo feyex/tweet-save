@@ -21,6 +21,9 @@ import {AuthGuard} from './auth/auth.guard';
 import {UserAuthService} from './auth/user-auth.service';
 import { BillService } from './transactions/bill.service';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { ListTweetComponent } from './account/list-tweet/list-tweet.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -32,6 +35,7 @@ export function tokenGetter() {
     HomeComponent,
     SignupComponent,
     PagenotfoundComponent,
+    ListTweetComponent,
 
   ],
   imports: [
@@ -47,6 +51,7 @@ export function tokenGetter() {
   ToastrModule.forRoot(),
   Angular4PaystackModule,
   NgxPrintModule,
+  NgxPaginationModule,
   JwtModule.forRoot ({
     config: {
       tokenGetter,

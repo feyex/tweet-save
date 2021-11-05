@@ -20,10 +20,11 @@ export class UserAuthService {
   authSubject = new BehaviorSubject(false);
 
   // signup user
-  submitTweet(message, source) {
+  submitTweet(message, source, area) {
     const obj = {
       message,
       source,
+      area
     };
     return this.httpClient.post(`${this.apiServer}/tweet/tweets`, obj);
 
@@ -58,34 +59,22 @@ export class UserAuthService {
   public get loggedIn(): boolean {
     return (localStorage.getItem('access_token') !== null);
   }
+//delete all tweet
+deleteTweets(id) {
+  return this.httpClient.delete(`${this.apiServer}/tweets/${id}`).toPromise();
+}
 
-  // send report message to admin
-  contact(fullname, email, phoneNumber, message) {
-    const obj = {
-      fullname,
-      email,
-      phoneNumber,
-      message,
-
-    };
-
-    return this.httpClient.post(`${this.apiServer}/contact/contacts`, obj);
-
+  // fetch all tweets
+  getTweets() {
+    return this.httpClient.get(`${this.apiServer}/tweet/tweets`).toPromise();
   }
 
-  // fetch all users
-  getUsers() {
-
-    return this.httpClient.get(`${this.apiServer}/api/users`).toPromise();
-
-  }
-
-   // to fetch each Users data by Id
-   getUsersId(id) {
+   // to fetch each Tweet data by Id
+   getTweetsId(id) {
     this.id = localStorage.userid;
     return this
             .httpClient
-            .get(this.apiServer + `/api/users/` + this.id).toPromise();
+            .get(this.apiServer + `/tweet/tweets` + this.id).toPromise();
     }
 
 
