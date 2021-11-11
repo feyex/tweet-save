@@ -23,6 +23,7 @@ import { BillService } from './transactions/bill.service';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ListTweetComponent } from './account/list-tweet/list-tweet.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { BibleTweetComponent } from './account/bible-tweet/bible-tweet.component';
 
 
 export function tokenGetter() {
@@ -36,6 +37,7 @@ export function tokenGetter() {
     SignupComponent,
     PagenotfoundComponent,
     ListTweetComponent,
+    BibleTweetComponent,
 
   ],
   imports: [

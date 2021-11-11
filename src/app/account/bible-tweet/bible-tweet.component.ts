@@ -1,15 +1,13 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { Chart } from 'chart.js';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AdminAuthService } from '../../auth/admin-auth.service';
 import { UserAuthService } from 'src/app/auth/user-auth.service';
 
 @Component({
-  selector: 'app-list-tweet',
-  templateUrl: './list-tweet.component.html',
-  styleUrls: ['./list-tweet.component.css']
+  selector: 'app-bible-tweet',
+  templateUrl: './bible-tweet.component.html',
+  styleUrls: ['./bible-tweet.component.css']
 })
-export class ListTweetComponent implements OnInit {
+export class BibleTweetComponent implements OnInit {
   searchText:any;
   chart: any;
   ctx:any;
@@ -18,6 +16,8 @@ export class ListTweetComponent implements OnInit {
   user: any = {};
   order: Object;
   collection: any = 0;
+  currentView:boolean = true;
+  record: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,19 +29,40 @@ export class ListTweetComponent implements OnInit {
   ngOnInit() {
    
     //display all tweet
-    this.showTweets();
-
+    // this.showTweets();
+    this.showYorubaBible();
+    console.log(this.currentView,'currviewn')
   }
 
 showTweets(){
+this.currentView = false;
+this.collection = 0;
 this.auth.getTweets()
 .then(user => {
   this.order = user;
   this.user = Array.of (this.order);
   this.user = this.user[0].message;
+  console.log(this.user, 'this.user', this.currentView)
 
   //pagination function
  this.collection = this.user.length;
+
+});
+}
+
+showYorubaBible(){
+this.collection = 0;
+this.currentView = true;
+const dt = new Date()
+
+this.auth.getYorubaBible()
+.then(rec => {
+  this.order = rec;
+  this.record = Array.of (this.order);
+  this.record = this.record[0].message;
+  console.log(this.order, this.record)
+  //pagination function
+ this.collection = this.record.length;
 
 });
 }

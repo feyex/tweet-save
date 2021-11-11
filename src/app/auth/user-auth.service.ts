@@ -69,6 +69,10 @@ deleteTweets(id) {
     return this.httpClient.get(`${this.apiServer}/tweet/tweets`).toPromise();
   }
 
+  getYorubaBible() {
+    return this.httpClient.get(`${this.apiServer}/api/yoruba`).toPromise();
+  }
+
    // to fetch each Tweet data by Id
    getTweetsId(id) {
     this.id = localStorage.userid;

@@ -6,11 +6,11 @@
             <p class="p-16">View Tweets</p>
             <div class="col-8">
               <p class="s-13 btxtt">
-                  Total Number of Records: <small class="s-23">{{this.user?.length}} </small>
-              </p>
+                Total Number of Records: <small class="s-23">{{this.record?.length}} </small>
+            </p>
               <a href="#" class="s-13 gtxtt">Save Tweet</a> <br>
-              <a href="/bible-tweet" class="s-13 gtxtt text-danger" >View Yoruba Corpus</a> <br>
-              <a class="s-13 gtxtt text-primary" (click)="showTweets()" >View Tweet Corpus</a>
+              <a class="s-13 gtxtt text-danger" (click)="showYorubaBible()" >View Yoruba Corpus</a> <br>
+              <a href ="/tweet"class="s-13 gtxtt text-primary" >View Tweet Corpus</a>
             </div>
             <div class="col-12 my-4">
               <div class="table-responsive-md" style="border: 1px solid #e6e9ec;">
@@ -23,27 +23,24 @@
                           <th>DATE</th>
                           <th></th>
                       </thead>
+      
                       <tbody>
-                          <tr *ngFor="let contacts of user  | paginate: config ; let i=index;">
-                              <td class="p-14">{{i + 1}}</td>
-                              <td class="p-14">{{contacts?.message}}</td>
-                              <td class="p-14">{{contacts?.source}}</td>
-                              <td class="p-14">{{contacts?.area}}</td>
-                              <td class="p-14">{{contacts?.createdAt | date:'shortDate'}}</td>
-                             
-                              <td>
-                                <div class="dropdown show">
-                                  <a class="dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown">
-                                    <i class="ion-android-more-vertical" style="color: #a0a0a0; font-size: 18px;"></i>
-                                  </a>
-                
-                                  <!-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item" (click)= "deleteTweet(contacts._id)">Delete</a>
-                                  </div> -->
-                                </div>
-                              </td>
-                            </tr>   
-                      </tbody>
+                        <tr *ngFor="let yoruba of record  | paginate: config ; let i=index;">
+                            <td class="p-14">{{i + 1}}</td>
+                            <td class="p-14">{{yoruba.text}}</td>
+                            <td class="p-14">{{yoruba?.source}}</td>
+                            <td class="p-14">{{yoruba?.source}}</td>
+                            <td class="p-14">{{dt | date:'shortDate'}}</td>
+                           
+                            <td>
+                              <div class="dropdown show">
+                                <a class="dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown">
+                                  <i class="ion-android-more-vertical" style="color: #a0a0a0; font-size: 18px;"></i>
+                                </a>
+                              </div>
+                            </td>
+                          </tr>   
+                    </tbody>
                   </table>
                   <!-- pagination controls -->
                   <pagination-controls 
