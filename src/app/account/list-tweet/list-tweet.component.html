@@ -21,25 +21,29 @@
                           <th>SOURCE</th>
                           <th>AREA</th>
                           <th>DATE</th>
+                          <th>ASSIGN POLARITY</th>
+
                           <th></th>
                       </thead>
                       <tbody>
-                          <tr *ngFor="let contacts of user  | paginate: config ; let i=index;">
+                          <tr *ngFor="let tweet of user  | paginate: config ; let i=index;">
                               <td class="p-14">{{i + 1}}</td>
-                              <td class="p-14">{{contacts?.message}}</td>
-                              <td class="p-14">{{contacts?.source}}</td>
-                              <td class="p-14">{{contacts?.area}}</td>
-                              <td class="p-14">{{contacts?.createdAt | date:'shortDate'}}</td>
-                             
+                              <td class="p-14">{{tweet?.message}}</td>
+                              <td class="p-14">{{tweet?.source}}</td>
+                              <td class="p-14">{{tweet?.area}}</td>
+                              <td class="p-14">{{tweet?.createdAt | date:'shortDate'}}</td>
+                              <td class="p-14"><select name="" id=""></select></td>
                               <td>
                                 <div class="dropdown show">
                                   <a class="dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown">
                                     <i class="ion-android-more-vertical" style="color: #a0a0a0; font-size: 18px;"></i>
                                   </a>
                 
-                                  <!-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
                                     <a class="dropdown-item" (click)= "deleteTweet(contacts._id)">Delete</a>
-                                  </div> -->
+                                    <a class="dropdown-item" (click)= "deleteTweet(contacts._id)">View Polarity</a>
+                                    
+                                  </div>
                                 </div>
                               </td>
                             </tr>   
