@@ -1,7 +1,4 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { Chart } from 'chart.js';
-import { ActivatedRoute, Router } from '@angular/router';
-import { AdminAuthService } from '../../auth/admin-auth.service';
 import { UserAuthService } from 'src/app/auth/user-auth.service';
 
 @Component({
@@ -10,49 +7,46 @@ import { UserAuthService } from 'src/app/auth/user-auth.service';
   styleUrls: ['./list-tweet.component.css']
 })
 export class ListTweetComponent implements OnInit {
-  searchText:any;
+  searchText: any;
   chart: any;
-  ctx:any;
-  chart2:any;
-  gradientStroke:any; 
+  ctx: any;
+  chart2: any;
+  gradientStroke: any;
   user: any = {};
   order: Object;
   collection: any = 0;
 
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
     private auth: UserAuthService,) {
-      
-     }
+
+  }
 
   ngOnInit() {
-   
     //display all tweet
     this.showTweets();
 
   }
 
-showTweets(){
-this.auth.getTweets()
-.then(user => {
-  this.order = user;
-  this.user = Array.of (this.order);
-  this.user = this.user[0].message;
+  showTweets() {
+    this.auth.getTweets()
+      .then(user => {
+        this.order = user;
+        this.user = Array.of(this.order);
+        this.user = this.user[0].message;
 
-  //pagination function
- this.collection = this.user.length;
+        //pagination function
+        this.collection = this.user.length;
 
-});
-}
+      });
+  }
 
-  deleteTweet(id){
+  deleteTweet(id) {
     this.auth.deleteTweets(id)
-    .then (user => {
-      this.user = user;
-      alert('tweet deleted');
-    })
-    window.location.reload();
+      .then(user => {
+        this.user = user;
+        alert('tweet deleted');
+      })
+    // window.location.reload();
   }
 
   //Pagination functionalities
@@ -67,14 +61,14 @@ this.auth.getTweets()
   public autoHide: boolean = true;
   public responsive: boolean = true;
   public labels: any = {
-      previousLabel: '<',
-      nextLabel: '>',
-      screenReaderPaginationLabel: 'Pagination',
-      screenReaderPageLabel: 'page',
-      screenReaderCurrentLabel: `You're on page`
+    previousLabel: '<',
+    nextLabel: '>',
+    screenReaderPaginationLabel: 'Pagination',
+    screenReaderPageLabel: 'page',
+    screenReaderCurrentLabel: `You're on page`
   };
 
-  onPageChange(event){
+  onPageChange(event) {
     console.log(event);
     this.config.currentPage = event;
   }

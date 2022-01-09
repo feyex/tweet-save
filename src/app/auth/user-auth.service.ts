@@ -13,13 +13,13 @@ export class UserAuthService {
 
   constructor(private httpClient: HttpClient) { }
   // set backend server url instance
-  // apiServer = 'http://localhost:4000';
-  apiServer ="https://tweet-be.herokuapp.com";
+  apiServer = 'http://localhost:4000';
+  // apiServer = "https://tweet-be.herokuapp.com";
 
   // assume the API uses Jwtoken to authenticate user access
   authSubject = new BehaviorSubject(false);
 
-  // signup user
+  // submit tweet
   submitTweet(message, source, area) {
     const obj = {
       message,
@@ -42,8 +42,8 @@ export class UserAuthService {
         map(result => {
 
           if (result) {
-            localStorage.setItem('access_token', result.token );
-            localStorage.setItem('userid', result.id );
+            localStorage.setItem('access_token', result.token);
+            localStorage.setItem('userid', result.id);
           }
           return result;
         })
@@ -59,10 +59,10 @@ export class UserAuthService {
   public get loggedIn(): boolean {
     return (localStorage.getItem('access_token') !== null);
   }
-//delete all tweet
-deleteTweets(id) {
-  return this.httpClient.delete(`${this.apiServer}/tweets/${id}`).toPromise();
-}
+  //delete all tweet
+  deleteTweets(id) {
+    return this.httpClient.delete(`${this.apiServer}/tweets/${id}`).toPromise();
+  }
 
   // fetch all tweets
   getTweets() {
@@ -73,70 +73,90 @@ deleteTweets(id) {
     return this.httpClient.get(`${this.apiServer}/api/yoruba`).toPromise();
   }
 
-   // to fetch each Tweet data by Id
-   getTweetsId(id) {
+  // to fetch each Tweet data by Id
+  getTweetsId(id) {
+    // this.id = localStorage.userid;
+    return this
+      .httpClient
+      .get(this.apiServer + `/tweet/tweets/` + id).toPromise();
+  }
+
+  // submit tweet
+  saveSentiment(tweetId: string, score: number) {
+    const obj = {
+      tweetId,
+      score
+    };
+    return this.httpClient.post(`${this.apiServer}/tweet/sentiment`, obj);
+
+  }
+
+  // calculate tweet
+  calcSentiment(tweetId: string) {
+    const obj = {
+      tweetId
+    };
+    return this.httpClient.post(`${this.apiServer}/tweet/calcSentiment`, obj);
+
+  }
+
+  // fetch all sentiment tweets
+  getSentiment() {
+    return this.httpClient.get(`${this.apiServer}/tweet/sentiment`).toPromise();
+  }
+
+  // update user info in db
+  updateUser(firstname, lastname, email, phoneNumber) {
+    const obj = {
+      firstname,
+      lastname,
+      email,
+      phoneNumber,
+
+    };
     this.id = localStorage.userid;
     return this
-            .httpClient
-            .get(this.apiServer + `/tweet/tweets` + this.id).toPromise();
-    }
+      .httpClient
+      .put(this.apiServer + `/api/users/` + this.id, obj);
+  }
 
-
-    // update user info in db
-    updateUser(firstname, lastname, email, phoneNumber) {
-      const obj = {
-        firstname,
-        lastname,
-        email,
-        phoneNumber,
-
-      };
-      this.id = localStorage.userid;
-      return this
-            .httpClient
-            .put(this.apiServer + `/api/users/` + this.id , obj);
-    }
-
-     // to fetch each Users data by user_Id
-   gettransactionId(id: string) {
-    this.id = localStorage.userid;
-    console.log(this.id);
+  getSentimentById(id) {
+    // this.id = localStorage.userid;
     return this
-            .httpClient
-            .get<any[]>(this.apiServer + `/transaction/transact/` + this.id).pipe(map(data => data));
-    }
+      .httpClient
+      .get(this.apiServer + `/tweet/sentiment/` + id).toPromise();
+  }
 
-
-     // to fetch each Users data by Id
-   gettransaction(id: string) {
+  // to fetch each Users data by Id
+  gettransaction(id: string) {
     this.id = localStorage.userid;
     return this
-            .httpClient
-            .get(this.apiServer + `/transaction/transactions/` + this.id);
-    }
+      .httpClient
+      .get(this.apiServer + `/transaction/transactions/` + this.id);
+  }
 
 
 
-    // confirm password exist in db
-    checkpwdexist(password: string) {
-      const pwd = {
-        password
-      };
-      this.id = localStorage.userid;
-      return this
-                .httpClient
-                .post(this.apiServer + `/api/password/` + this.id, pwd);
-    }
+  // confirm password exist in db
+  checkpwdexist(password: string) {
+    const pwd = {
+      password
+    };
+    this.id = localStorage.userid;
+    return this
+      .httpClient
+      .post(this.apiServer + `/api/password/` + this.id, pwd);
+  }
 
-    // update password in db
-    updatepwd(password) {
-      const pwd = {
-        password
-      };
-      this.id = localStorage.userid;
-      return this
-                .httpClient
-                .put(this.apiServer + `/api/password/` + this.id, pwd);
-    }
+  // update password in db
+  updatepwd(password) {
+    const pwd = {
+      password
+    };
+    this.id = localStorage.userid;
+    return this
+      .httpClient
+      .put(this.apiServer + `/api/password/` + this.id, pwd);
+  }
 
 }

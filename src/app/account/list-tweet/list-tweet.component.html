@@ -21,7 +21,7 @@
                           <th>SOURCE</th>
                           <th>AREA</th>
                           <th>DATE</th>
-                          <th>ASSIGN POLARITY</th>
+                          <th>Assign Polarity</th>
 
                           <th></th>
                       </thead>
@@ -32,7 +32,6 @@
                               <td class="p-14">{{tweet?.source}}</td>
                               <td class="p-14">{{tweet?.area}}</td>
                               <td class="p-14">{{tweet?.createdAt | date:'shortDate'}}</td>
-                              <td class="p-14"><select name="" id=""></select></td>
                               <td>
                                 <div class="dropdown show">
                                   <a class="dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown">
@@ -40,8 +39,9 @@
                                   </a>
                 
                                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item" (click)= "deleteTweet(contacts._id)">Delete</a>
-                                    <a class="dropdown-item" (click)= "deleteTweet(contacts._id)">View Polarity</a>
+                                    <a class="dropdown-item" href="calcSentiment/{{tweet?._id}}">Save Sentiment</a>
+                                    <a class="dropdown-item" (click)= "deleteTweet(tweet._id)">Delete</a>
+                                    <a class="dropdown-item" href="viewSentiment/{{tweet?._id}}">View Sentiment</a>
                                     
                                   </div>
                                 </div>

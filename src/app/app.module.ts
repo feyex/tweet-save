@@ -24,6 +24,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ListTweetComponent } from './account/list-tweet/list-tweet.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { BibleTweetComponent } from './account/bible-tweet/bible-tweet.component';
+import { CalcSentimentComponent } from './account/calc-sentiment/calc-sentiment.component';
+import { ViewSentimentComponent } from './account/view-sentiment/view-sentiment.component';
 
 
 export function tokenGetter() {
@@ -38,6 +40,8 @@ export function tokenGetter() {
     PagenotfoundComponent,
     ListTweetComponent,
     BibleTweetComponent,
+    CalcSentimentComponent,
+    ViewSentimentComponent,
 
   ],
   imports: [
