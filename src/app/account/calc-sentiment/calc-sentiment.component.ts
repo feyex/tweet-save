@@ -45,7 +45,6 @@ export class CalcSentimentComponent implements OnInit {
     }
     this.service.saveSentiment(this.tweetId, this.score).subscribe(
       (res:any) => {
-        console.log(res, 'ressss')
         if(res.status == true){
           this.toast.success("Polarity Submitted Successfully.", "Success", {
             timeOut: 4000,
