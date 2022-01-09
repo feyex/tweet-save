@@ -11,7 +11,7 @@ import { UserAuthService } from 'src/app/auth/user-auth.service';
 export class ViewSentimentComponent implements OnInit {
   tweetId: any;
   sentimentResponse: any
-  tweetResponse: Object;
+  tweetResponse: any;
 
   constructor(private activatedRoute:ActivatedRoute, private service:UserAuthService, private toast:ToastrService, private route:Router) { }
 
