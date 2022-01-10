@@ -6,7 +6,7 @@
             <!-- <p class="p-16">View Sentiment</p> -->
             <div class="col-8">
               <p class="s-10 btxtt">
-                  Sentiment Score: <small class="s-23 text-danger"> {{this.tweetResponse?.sentiment}} </small>
+                  Sentiment: <small class="s-23 text-primary"> {{this.tweetResponse?.polarity}} </small>
               </p>
               <!-- <a href="/bible-tweet" class="s-13 gtxtt text-danger" >View Yoruba Corpus</a> <br> -->
               <a href="/tweet" class="s-13 gtxtt text-danger" >View Tweet Corpus</a> <br>
@@ -17,7 +17,7 @@
                       <thead>
                           <th>S|N</th>
                           <th>MESSAGE</th>
-                          <th>SCORE</th>
+                          <th>SENTIMENT</th>
                           <th>DATE</th>
 
                           <th></th>
@@ -26,7 +26,7 @@
                           <tr *ngFor="let sentiment of sentimentResponse ; let i=index;">
                               <td class="p-14">{{i + 1}}</td>
                               <td class="p-14">{{this.tweetResponse?.message}}</td>
-                              <td class="p-14">{{sentiment?.score}}</td>
+                              <td class="p-14">{{sentiment?.polarity}}</td>
                               <td class="p-14">{{sentiment?.createdAt | date:'shortDate'}}</td>
                             </tr>   
                       </tbody>

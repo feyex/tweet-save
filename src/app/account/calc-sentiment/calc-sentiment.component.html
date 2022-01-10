@@ -14,19 +14,19 @@
     
             <div class="mb-2">
               <p>Message</p>
-              <div class="text-danger input-group">
+              <div class="text-primary input-group">
                <p>{{this.tweetResponse?.message}}</p>
               </div>
             </div>
             <div class="mt-3">
               <p>Source</p>
-              <div class="text-danger input-group">
+              <div class="text-primary input-group">
                <p>{{this.tweetResponse?.source}}</p>
               </div>
             </div>
             <div>
               <div>Select Polarity</div>
-              <div class="mt-3">
+              <div class="mt-3 col-md-4">
                 <select [(ngModel)]="selectedOption" >
                   <option value="" selected disabled>Select Polarity</option>
                   <option *ngFor="let polarities of polarity">
